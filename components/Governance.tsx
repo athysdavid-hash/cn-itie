@@ -13,7 +13,7 @@ const governance = [
   },
   {
     title: "Société civile",
-    desc: "Contribution des organisations citoyennes à la transparence.",
+    desc: "Engagement citoyen pour la transparence des ressources.",
     icon: "🤝",
     color: "from-green-500 to-emerald-600",
   },
@@ -23,10 +23,10 @@ export default function Governance() {
   return (
     <section className="py-12 px-4 bg-white">
 
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
 
         {/* HEADER */}
-        <div className="text-center max-w-3xl mx-auto mb-10">
+        <div className="text-center max-w-3xl mx-auto mb-8">
 
           <p className="text-xs font-black tracking-[0.25em] text-cyan-600 uppercase">
             Gouvernance
@@ -36,42 +36,48 @@ export default function Governance() {
             Gouvernance multipartite
           </h2>
 
-          <p className="text-slate-500 text-sm mt-4 leading-relaxed">
-            Collaboration entre l'État, les entreprises et la société civile.
+          <p className="text-slate-500 text-sm mt-3 leading-relaxed">
+            Collaboration entre l'État, les entreprises extractives
+            et la société civile pour renforcer la transparence.
           </p>
 
         </div>
 
         {/* GRID */}
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid lg:grid-cols-3 gap-4">
 
           {governance.map((item, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-[22px] bg-[#f4f8fb] border border-slate-200 p-5 hover:shadow-xl transition"
+              className="group relative overflow-hidden rounded-2xl bg-[#f4f8fb] border border-slate-200 p-5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             >
 
+              {/* GLOW */}
               <div
-                className={`absolute top-0 right-0 w-28 h-28 bg-gradient-to-br ${item.color} opacity-10 blur-2xl`}
+                className={`absolute top-0 right-0 w-[120px] h-[120px] bg-gradient-to-br ${item.color} opacity-10 blur-3xl`}
               />
 
               <div className="relative z-10">
 
+                {/* ICON */}
                 <div
-                  className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.color} text-white flex items-center justify-center text-2xl shadow-lg`}
+                  className={`w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} text-white flex items-center justify-center text-2xl shadow-lg`}
                 >
                   {item.icon}
                 </div>
 
-                <h3 className="text-2xl font-black text-[#062b57] mt-4">
+                {/* TITLE */}
+                <h3 className="text-xl font-black text-[#062b57] mt-4">
                   {item.title}
                 </h3>
 
+                {/* DESC */}
                 <p className="text-slate-600 text-sm leading-relaxed mt-3">
                   {item.desc}
                 </p>
 
-                <button className="mt-4 bg-[#062b57] text-white px-4 py-2 rounded-xl text-sm font-black">
+                {/* BUTTON */}
+                <button className="mt-4 bg-[#062b57] hover:bg-cyan-600 text-white px-4 py-2 rounded-xl text-sm font-black transition">
                   Explorer
                 </button>
 
