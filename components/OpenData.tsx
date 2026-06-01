@@ -1,136 +1,118 @@
 const datasets = [
   {
     title: "Revenus extractifs",
-    description:
-      "Publication des revenus issus des hydrocarbures et des mines.",
+    description: "Hydrocarbures et mines",
     icon: "💰",
-    files: "XLSX • CSV • PDF",
+    files: "XLSX • CSV",
   },
   {
     title: "Permis miniers",
-    description:
-      "Liste complète des permis actifs et des zones attribuées.",
+    description: "Permis et zones",
     icon: "📄",
-    files: "GeoJSON • XLSX",
+    files: "GeoJSON",
   },
   {
     title: "Production pétrolière",
-    description:
-      "Volumes de production et statistiques nationales.",
+    description: "Volumes nationaux",
     icon: "🛢️",
     files: "CSV • API",
   },
   {
     title: "Contrats publiés",
-    description:
-      "Accès aux contrats extractifs et accords publics.",
+    description: "Documents officiels",
     icon: "📘",
-    files: "PDF • DOCX",
+    files: "PDF",
   },
 ]
 
 export default function OpenData() {
   return (
-    <section className="py-24 px-4 bg-white">
+    <section className="py-12 px-4 bg-white">
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
 
         {/* HEADER */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
 
-          <p className="text-sm font-black tracking-[0.3em] text-cyan-600 uppercase">
+          <p className="text-xs font-black tracking-[0.25em] text-cyan-600 uppercase">
             Open Data
           </p>
 
-          <h2 className="text-4xl lg:text-6xl font-black text-[#062b57] mt-4">
-            Centre national des données ouvertes
+          <h2 className="text-2xl lg:text-3xl font-black text-[#062b57] mt-2">
+            Centre des données ouvertes
           </h2>
 
-          <p className="text-slate-500 text-xl max-w-3xl mx-auto mt-6 leading-relaxed">
-            Accédez aux données publiques, rapports ITIE, statistiques
-            extractives, permis, contrats et ressources documentaires
-            du secteur extractif en République du Congo.
+          <p className="text-slate-500 text-sm max-w-2xl mx-auto mt-3">
+            Rapports, statistiques, permis et contrats.
           </p>
 
         </div>
 
-        {/* MAIN LAYOUT */}
-        <div className="grid lg:grid-cols-[380px_1fr] gap-10">
+        <div className="grid lg:grid-cols-[260px_1fr] gap-5">
 
-          {/* LEFT PANEL */}
-          <div className="bg-gradient-to-br from-[#062b57] to-[#0b4d91] rounded-[32px] p-10 text-white shadow-2xl flex flex-col justify-between">
+          {/* LEFT */}
+          <div className="bg-gradient-to-br from-[#062b57] to-[#0b4d91] rounded-2xl p-5 text-white">
 
-            <div>
+            <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-xl mb-4">
+              📊
+            </div>
 
-              <div className="w-20 h-20 rounded-[24px] bg-white/10 backdrop-blur-xl flex items-center justify-center text-4xl mb-8">
-                📊
+            <h3 className="text-xl font-black">
+              Open Data
+            </h3>
+
+            <p className="text-sm text-slate-300 mt-2">
+              Données publiques extractives.
+            </p>
+
+            <div className="grid grid-cols-2 gap-3 mt-5">
+
+              <div>
+                <h4 className="text-xl font-black">24+</h4>
+                <p className="text-xs text-slate-300">
+                  Jeux
+                </p>
               </div>
 
-              <h3 className="text-4xl font-black leading-tight">
-                Plateforme Open Data
-              </h3>
-
-              <p className="text-slate-300 mt-6 leading-relaxed">
-                Explorez les principales bases de données publiques
-                relatives aux industries extractives, à la transparence
-                des revenus et à la gouvernance des ressources naturelles.
-              </p>
+              <div>
+                <h4 className="text-xl font-black">98%</h4>
+                <p className="text-xs text-slate-300">
+                  Ouvertes
+                </p>
+              </div>
 
             </div>
 
-            <div className="mt-10">
-
-              <div className="grid grid-cols-2 gap-4 mb-8">
-
-                <div>
-                  <h4 className="text-3xl font-black">24+</h4>
-                  <p className="text-slate-300 text-sm">
-                    Jeux de données
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="text-3xl font-black">98%</h4>
-                  <p className="text-slate-300 text-sm">
-                    Données ouvertes
-                  </p>
-                </div>
-
-              </div>
-
-              <button className="w-full bg-cyan-500 hover:bg-cyan-600 py-4 rounded-2xl font-black transition shadow-xl">
-                Explorer la plateforme
-              </button>
-
-            </div>
+            <button className="w-full bg-cyan-500 mt-5 py-2 rounded-xl text-sm font-black">
+              Explorer
+            </button>
 
           </div>
 
-          {/* RIGHT PANEL */}
-          <div className="space-y-5">
+          {/* RIGHT */}
+          <div className="space-y-3">
 
             {datasets.map((item, index) => (
               <div
                 key={index}
-                className="group bg-[#f8fbfd] hover:bg-white border border-slate-200 rounded-[28px] p-7 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
+                className="bg-[#f8fbfd] border border-slate-200 rounded-2xl p-4"
               >
 
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div className="flex items-center justify-between">
 
-                  {/* LEFT */}
-                  <div className="flex items-center gap-5">
+                  <div className="flex items-center gap-3">
 
-                    <div className="w-16 h-16 rounded-2xl bg-cyan-50 flex items-center justify-center text-3xl">
+                    <div className="w-10 h-10 rounded-xl bg-cyan-50 flex items-center justify-center text-lg">
                       {item.icon}
                     </div>
 
                     <div>
 
-                      <h3 className="text-2xl font-black text-[#062b57]">
+                      <h3 className="text-base font-black text-[#062b57]">
                         {item.title}
                       </h3>
 
-                      <p className="text-slate-500 mt-2 leading-relaxed">
+                      <p className="text-xs text-slate-500">
                         {item.description}
                       </p>
 
@@ -138,22 +120,13 @@ export default function OpenData() {
 
                   </div>
 
-                  {/* RIGHT */}
-                  <div className="flex items-center gap-6">
+                  <div className="text-right">
 
-                    <div className="text-right">
+                    <p className="text-xs font-bold text-cyan-600">
+                      {item.files}
+                    </p>
 
-                      <p className="text-cyan-600 font-black">
-                        {item.files}
-                      </p>
-
-                      <p className="text-slate-400 text-sm mt-1">
-                        Formats disponibles
-                      </p>
-
-                    </div>
-
-                    <button className="w-14 h-14 rounded-2xl bg-[#062b57] text-white text-xl hover:scale-110 transition shadow-lg">
+                    <button className="mt-1 w-8 h-8 rounded-lg bg-[#062b57] text-white">
                       →
                     </button>
 
