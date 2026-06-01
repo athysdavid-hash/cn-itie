@@ -1,17 +1,27 @@
 "use client"
 
+import dynamic from "next/dynamic"
 import "leaflet/dist/leaflet.css"
 
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
-import L from "leaflet"
+const MapContainer = dynamic(
+  () => import("react-leaflet").then((m) => m.MapContainer),
+  { ssr: false }
+)
 
-const icon = new L.Icon({
-  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-})
+const TileLayer = dynamic(
+  () => import("react-leaflet").then((m) => m.TileLayer),
+  { ssr: false }
+)
 
+const Marker = dynamic(
+  () => import("react-leaflet").then((m) => m.Marker),
+  { ssr: false }
+)
+
+const Popup = dynamic(
+  () => import("react-leaflet").then((m) => m.Popup),
+  { ssr: false }
+)
 export default function InteractiveMap() {
   return (
     <section className="bg-white rounded-[24px] overflow-hidden border border-slate-200 shadow-lg">
@@ -40,7 +50,7 @@ export default function InteractiveMap() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        <Marker position={[-4.78, 11.86]} icon={icon}>
+        <Marker position={[-4.78, 11.86]} >
           <Popup>
             <strong>Pointe-Noire Offshore</strong>
             <br />
@@ -50,7 +60,7 @@ export default function InteractiveMap() {
           </Popup>
         </Marker>
 
-        <Marker position={[-4.2, 13.3]} icon={icon}>
+        <Marker position={[-4.2, 13.3]} >
           <Popup>
             <strong>Marine XII</strong>
             <br />
@@ -58,7 +68,7 @@ export default function InteractiveMap() {
           </Popup>
         </Marker>
 
-        <Marker position={[-2.8, 13.8]} icon={icon}>
+        <Marker position={[-2.8, 13.8]} >
           <Popup>
             <strong>Zanaga</strong>
             <br />
@@ -66,7 +76,7 @@ export default function InteractiveMap() {
           </Popup>
         </Marker>
 
-        <Marker position={[-4.26, 15.28]} icon={icon}>
+        <Marker position={[-4.26, 15.28]} >
           <Popup>
             <strong>Brazzaville</strong>
             <br />

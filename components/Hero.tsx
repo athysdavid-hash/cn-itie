@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"
 export default function Hero() {
   return (
     <section className="relative min-h-[60vh] flex items-center overflow-hidden py-10">
@@ -172,3 +173,10 @@ export default function Hero() {
     </section>
   )
 } 
+<motion.div
+  initial={{ opacity: 0, y: 40 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+>
+  ...
+</motion.div>
