@@ -18,21 +18,16 @@ const news = [
     date: "03 Mai 2026",
     category: "Gouvernance",
   },
-  {
-    title: "Nouvelles statistiques extractives",
-    date: "28 Avril 2026",
-    category: "Données",
-  },
 ]
 
 export default function News() {
   return (
     <section className="h-full">
 
-      <div className="bg-white rounded-[18px] border border-slate-200 overflow-hidden shadow-sm h-full">
+      <div className="bg-white rounded-[20px] border border-slate-200 overflow-hidden shadow-sm h-full">
 
         {/* FEATURED */}
-        <div className="relative h-[160px] overflow-hidden">
+        <div className="relative h-[150px]">
 
           <img
             src={news[0].image}
@@ -40,21 +35,17 @@ export default function News() {
             className="w-full h-full object-cover"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-[#031b34] via-[#031b34]/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#031b34] to-transparent" />
 
-          <div className="absolute bottom-0 left-0 p-4">
+          <div className="absolute bottom-3 left-3">
 
-            <span className="bg-cyan-500 text-white text-[9px] font-black uppercase px-2 py-1 rounded-full">
+            <span className="bg-cyan-500 text-white text-[9px] px-2 py-1 rounded-full font-black">
               {news[0].category}
             </span>
 
-            <h2 className="text-base font-black text-white mt-2 max-w-sm">
+            <h2 className="text-sm font-black text-white mt-2 max-w-xs">
               {news[0].title}
             </h2>
-
-            <p className="text-slate-300 text-xs mt-1">
-              {news[0].date}
-            </p>
 
           </div>
 
@@ -63,14 +54,14 @@ export default function News() {
         {/* LIST */}
         <div className="p-4">
 
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between mb-3">
 
             <h3 className="text-lg font-black text-[#062b57]">
               Actualités
             </h3>
 
-            <button className="text-cyan-600 text-xs font-black">
-              Voir tout →
+            <button className="text-cyan-600 text-xs font-bold">
+              Voir tout
             </button>
 
           </div>
@@ -80,24 +71,24 @@ export default function News() {
             {news.slice(1).map((item, index) => (
               <div
                 key={index}
-                className="flex items-center gap-2 border-b border-slate-100 pb-2"
+                className="flex gap-2 border-b border-slate-100 pb-2"
               >
 
                 <div className="w-8 h-8 rounded-lg bg-cyan-50 flex items-center justify-center text-xs">
                   📰
                 </div>
 
-                <div className="flex-1">
+                <div>
 
                   <p className="text-[9px] uppercase font-black text-cyan-600">
                     {item.category}
                   </p>
 
-                  <h4 className="font-bold text-xs text-[#062b57]">
+                  <h4 className="text-xs font-bold text-[#062b57]">
                     {item.title}
                   </h4>
 
-                  <p className="text-slate-400 text-[10px]">
+                  <p className="text-[10px] text-slate-400">
                     {item.date}
                   </p>
 
