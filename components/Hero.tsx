@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="relative min-h-[70vh] flex items-center overflow-hidden py-10">
+    <section className="relative min-h-[60vh] flex items-center overflow-hidden py-10">
 
       {/* IMAGE DE FOND */}
       <div
@@ -35,7 +35,7 @@ export default function Hero() {
 
             </div>
 
-            <h1 className="text-3xl lg:text-4xl font-black text-white leading-tight">
+            <h1 className="text-2xl lg:text-3xl font-black text-white leading-tight">
 
               Comité National
               <br />
