@@ -21,83 +21,70 @@ const media = [
 
 export default function Media() {
   return (
-    <section className="py-24 px-4 bg-[#031b34] group overflow-hidden">
+    <section className="py-12 px-4 bg-[#031b34]">
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
 
         {/* HEADER */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
 
           <div>
 
-            <p className="text-sm font-black tracking-[0.3em] text-cyan-400 uppercase">
+            <p className="text-xs font-black tracking-[0.25em] text-cyan-400 uppercase">
               Média
             </p>
 
-            <h2 className="text-4xl lg:text-6xl font-black text-white mt-4 leading-tight">
+            <h2 className="text-3xl lg:text-4xl font-black text-white mt-2">
               Galerie & vidéos
             </h2>
 
-            <p className="text-slate-300 text-xl max-w-3xl mt-6 leading-relaxed">
-              Revivez les conférences, publications et événements
-              organisés autour de la transparence extractive.
+            <p className="text-slate-300 text-sm max-w-2xl mt-3">
+              Conférences, publications et événements du CN-ITIE Congo.
             </p>
 
           </div>
 
-          <button className="bg-cyan-500 hover:bg-cyan-600 hover:scale-105 transition text-white px-8 py-4 rounded-2xl font-black shadow-2xl">
-
-            Voir toute la galerie
-
+          <button className="bg-cyan-500 text-white px-5 py-2 rounded-xl font-bold text-sm">
+            Voir la galerie
           </button>
 
         </div>
 
         {/* GRID */}
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
 
           {media.map((item, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-[36px] bg-white/5 border border-white/10 backdrop-blur-xl hover:-translate-y-4 hover:shadow-2xl transition-all duration-700 group-hover:scale-105 duration-500"
+              className="overflow-hidden rounded-[22px] bg-white/5 border border-white/10"
             >
 
-              {/* IMAGE */}
-              <div className="relative h-[420px] group overflow-hidden">
+              <div className="relative h-[240px]">
 
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                  className="w-full h-full object-cover"
                 />
 
-                {/* OVERLAY */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
 
-                {/* PLAY */}
                 <div className="absolute inset-0 flex items-center justify-center">
 
-                  <button className="w-24 h-24 rounded-full bg-white/20 backdrop-blur-xl border border-white/20 text-white text-4xl hover:scale-110 transition shadow-2xl">
-
+                  <button className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-lg text-white text-xl">
                     ▶
-
                   </button>
 
                 </div>
 
-                {/* CONTENT */}
-                <div className="absolute bottom-8 left-8 right-8">
+                <div className="absolute bottom-4 left-4 right-4">
 
-                  <span className="inline-flex bg-cyan-500 text-white px-4 py-2 rounded-full text-sm font-black mb-5">
-
+                  <span className="inline-flex bg-cyan-500 text-white px-3 py-1 rounded-full text-xs font-black mb-2">
                     {item.category}
-
                   </span>
 
-                  <h3 className="text-4xl font-black text-white leading-tight">
-
+                  <h3 className="text-xl font-black text-white leading-tight">
                     {item.title}
-
                   </h3>
 
                 </div>

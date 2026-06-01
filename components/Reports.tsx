@@ -27,32 +27,30 @@ const reports = [
 
 export default function Reports() {
   return (
-    <section className="py-24 px-4 bg-[#f4f8fb]">
+    <section className="py-10 px-4 bg-[#f4f8fb]">
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
 
         {/* HEADER */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
 
           <div>
 
-            <p className="text-sm font-black tracking-[0.3em] text-cyan-600 uppercase">
+            <p className="text-xs font-black tracking-[0.2em] text-cyan-600 uppercase">
               Publications
             </p>
 
-            <h2 className="text-4xl lg:text-6xl font-black text-[#062b57] mt-4">
+            <h2 className="text-2xl lg:text-4xl font-black text-[#062b57] mt-2">
               Rapports ITIE
             </h2>
 
-            <p className="text-slate-500 text-xl max-w-3xl mt-6 leading-relaxed">
-              Consultez les publications officielles, rapports annuels
-              et documents de transparence extractive.
+            <p className="text-slate-500 text-sm max-w-2xl mt-3">
+              Consultez les rapports et publications officielles.
             </p>
 
           </div>
 
-          {/* FILTER */}
-          <select className="bg-white border border-slate-200 px-6 py-4 rounded-2xl font-bold text-[#062b57] shadow-sm outline-none">
+          <select className="bg-white border border-slate-200 px-4 py-2 rounded-xl font-bold text-[#062b57] shadow-sm outline-none">
 
             <option>Toutes les années</option>
             <option>2025</option>
@@ -64,59 +62,49 @@ export default function Reports() {
         </div>
 
         {/* GRID */}
-        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-10">
+        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
 
           {reports.map((report, index) => (
             <div
               key={index}
-              className="group bg-white rounded-[32px] overflow-hidden border border-slate-200 shadow-sm hover:shadow-2xl hover:-translate-y-3 transition-all duration-500"
+              className="group bg-white rounded-[20px] overflow-hidden border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300"
             >
 
-              {/* COVER */}
-              <div className="relative h-[320px] overflow-hidden">
+              {/* IMAGE */}
+              <div className="relative h-[180px] overflow-hidden">
 
                 <img
                   src={report.image}
                   alt={report.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                  className="w-full h-full object-cover"
                 />
 
-                {/* OVERLAY */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
 
-                {/* YEAR */}
-                <div className="absolute top-5 left-5 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full text-sm font-black text-[#062b57]">
-
+                <div className="absolute top-3 left-3 bg-white px-3 py-1 rounded-full text-xs font-black text-[#062b57]">
                   {report.year}
-
                 </div>
 
-                {/* TITLE */}
-                <div className="absolute bottom-6 left-6 right-6">
+                <div className="absolute bottom-3 left-3 right-3">
 
-                  <h3 className="text-3xl font-black text-white leading-tight">
-
+                  <h3 className="text-lg font-black text-white">
                     {report.title}
-
                   </h3>
 
                 </div>
 
               </div>
 
-              {/* CONTENT */}
-              <div className="p-6">
+              <div className="p-4">
 
                 <div className="flex items-center justify-between">
 
-                  <span className="text-slate-500 font-medium">
+                  <span className="text-slate-500 text-xs">
                     PDF • 24 MB
                   </span>
 
-                  <button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:scale-110 text-white w-12 h-12 rounded-2xl font-black shadow-xl transition">
-
+                  <button className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white w-9 h-9 rounded-xl font-black">
                     ↓
-
                   </button>
 
                 </div>

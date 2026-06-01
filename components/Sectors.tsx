@@ -27,82 +27,68 @@ const sectors = [
 
 export default function Sectors() {
   return (
-    <section className="py-6">
+    <section className="py-4">
 
-      <div className="bg-white rounded-[32px] border border-slate-200 shadow-sm overflow-hidden">
+      <div className="bg-white rounded-[24px] border border-slate-200 shadow-sm overflow-hidden">
 
         {/* HEADER */}
-        <div className="p-6 border-b border-slate-200">
+        <div className="p-4 border-b border-slate-200">
 
-          <p className="text-sm font-black tracking-[0.3em] text-cyan-600 uppercase">
+          <p className="text-xs font-black tracking-[0.2em] text-cyan-600 uppercase">
             Secteurs
           </p>
 
-          <h2 className="text-4xl font-black text-[#062b57] mt-4 leading-tight">
+          <h2 className="text-2xl lg:text-3xl font-black text-[#062b57] mt-2">
             Secteurs extractifs
           </h2>
 
-          <p className="text-slate-500 text-lg mt-5 leading-relaxed max-w-3xl">
-            Découvrez les principaux secteurs suivis par ITIE Congo
-            et les indicateurs associés à la transparence extractive.
+          <p className="text-slate-500 text-sm mt-3 max-w-2xl">
+            Découvrez les principaux secteurs suivis par ITIE Congo.
           </p>
 
         </div>
 
         {/* GRID */}
-        <div className="grid md:grid-cols-2 gap-6 p-8">
+        <div className="grid md:grid-cols-2 gap-4 p-4">
 
           {sectors.map((item, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-[32px] bg-[#f4f8fb] border border-slate-200 p-8 hover:-translate-y-3 hover:shadow-2xl transition-all duration-500"
+              className="group relative overflow-hidden rounded-[20px] bg-[#f4f8fb] border border-slate-200 p-5 hover:shadow-lg transition-all duration-300"
             >
 
-              {/* GLOW */}
               <div
-                className={`absolute top-0 right-0 w-[180px] h-[180px] bg-gradient-to-br ${item.color} opacity-10 blur-3xl rounded-full`}
+                className={`absolute top-0 right-0 w-[100px] h-[100px] bg-gradient-to-br ${item.color} opacity-10 blur-2xl rounded-full`}
               />
 
               <div className="relative z-10">
 
-                {/* TOP */}
                 <div className="flex items-center justify-between">
 
                   <div
-                    className={`w-20 h-20 rounded-[26px] bg-gradient-to-br ${item.color} text-white flex items-center justify-center text-4xl shadow-2xl group-hover:scale-110 transition`}
+                    className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.color} text-white flex items-center justify-center text-2xl`}
                   >
-
                     {item.icon}
-
                   </div>
 
-                  <span className="bg-white text-[#062b57] px-4 py-2 rounded-full text-sm font-black shadow-sm">
+                  <span className="bg-white text-[#062b57] px-2 py-1 rounded-full text-xs font-black">
                     Actif
                   </span>
 
                 </div>
 
-                {/* TITLE */}
-                <h3 className="text-4xl font-black text-[#062b57] mt-8">
-
+                <h3 className="text-xl font-black text-[#062b57] mt-4">
                   {item.title}
-
                 </h3>
 
-                {/* DESC */}
-                <p className="text-slate-600 leading-relaxed text-lg mt-5">
-
+                <p className="text-slate-600 text-sm mt-2 leading-relaxed">
                   {item.desc}
-
                 </p>
 
-                {/* BUTTON */}
                 <button
-                  className={`mt-8 bg-gradient-to-r ${item.color} hover:scale-105 text-white px-6 py-4 rounded-2xl font-black shadow-xl transition`}
+                  className={`mt-4 bg-gradient-to-r ${item.color} text-white px-4 py-2 rounded-xl text-sm font-black`}
                 >
-
                   Explorer
-
                 </button>
 
               </div>
