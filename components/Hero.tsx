@@ -1,8 +1,8 @@
 export default function Hero() {
   return (
-    <section className="relative min-h-[60vh] flex items-center overflow-hidden py-10">
+    <section className="relative min-h-[45vh] flex items-center overflow-hidden py-6">
 
-      {/* IMAGE DE FOND */}
+      {/* IMAGE */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
@@ -11,33 +11,33 @@ export default function Hero() {
       />
 
       {/* OVERLAY */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#031b34]/90 via-[#031b34]/60 to-[#031b34]/20" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#031b34]/90 via-[#031b34]/70 to-[#031b34]/30" />
 
       {/* GLOW */}
-      <div className="absolute top-0 left-0 w-[350px] h-[350px] bg-cyan-400/20 blur-3xl rounded-full" />
-      <div className="absolute bottom-0 right-0 w-[350px] h-[350px] bg-blue-500/20 blur-3xl rounded-full" />
+      <div className="absolute top-0 left-0 w-52 h-52 bg-cyan-400/10 blur-3xl rounded-full" />
+      <div className="absolute bottom-0 right-0 w-52 h-52 bg-blue-500/10 blur-3xl rounded-full" />
 
-      {/* CONTENT */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 w-full">
 
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
+        <div className="grid lg:grid-cols-2 gap-6 items-center">
 
           {/* LEFT */}
           <div>
 
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-xl border border-white/20 px-4 py-2 rounded-full mb-5">
+            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3 py-1.5 rounded-full mb-4">
 
               <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
 
-              <span className="text-cyan-300 text-xs font-black tracking-wider uppercase">
-                Plateforme officielle ITIE Congo
+              <span className="text-cyan-300 text-[10px] font-black uppercase">
+                Plateforme officielle
               </span>
 
             </div>
 
-            <h1 className="text-2xl lg:text-3xl font-black text-white leading-tight">
+            <h1 className="text-2xl lg:text-4xl font-black text-white leading-tight">
 
               Comité National
+
               <br />
 
               <span className="text-cyan-400">
@@ -46,27 +46,22 @@ export default function Hero() {
 
             </h1>
 
-            <p className="text-slate-200 text-base leading-relaxed mt-5 max-w-lg">
+            <p className="text-slate-200 text-sm mt-4 max-w-lg leading-relaxed">
 
-              Transparence et gouvernance des industries extractives
-              en République du Congo. Accédez aux données ouvertes,
-              rapports ITIE, contrats, revenus extractifs et
-              informations stratégiques du secteur.
+              Transparence des revenus extractifs,
+              rapports ITIE, données ouvertes et
+              gouvernance du secteur extractif.
 
             </p>
 
-            <div className="flex flex-wrap gap-3 mt-6">
+            <div className="flex flex-wrap gap-3 mt-5">
 
-              <button className="bg-cyan-500 hover:bg-cyan-600 text-white px-5 py-3 rounded-xl font-black shadow-xl transition-all duration-300">
-
-                Explorer les données
-
+              <button className="bg-cyan-500 text-white px-4 py-2.5 rounded-xl font-black text-sm">
+                Open Data
               </button>
 
-              <button className="bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-white/20 text-white px-5 py-3 rounded-xl font-black transition-all duration-300">
-
-                Voir les rapports
-
+              <button className="bg-white/10 border border-white/20 text-white px-4 py-2.5 rounded-xl font-black text-sm">
+                Rapports
               </button>
 
             </div>
@@ -76,48 +71,43 @@ export default function Hero() {
           {/* RIGHT */}
           <div className="flex justify-end">
 
-            <div className="w-full max-w-md bg-white/10 backdrop-blur-2xl border border-white/20 rounded-[28px] p-6 shadow-2xl">
+            <div className="w-full max-w-sm bg-white/10 backdrop-blur-xl border border-white/10 rounded-[22px] p-4">
 
-              <p className="text-cyan-300 uppercase tracking-[0.2em] text-xs font-black">
-                Engagement pour la transparence
+              <p className="text-cyan-300 uppercase text-[10px] font-black">
+                Transparence
               </p>
 
-              <h3 className="text-2xl font-black text-white mt-3 leading-tight">
-
-                Une gestion responsable des ressources naturelles
-
+              <h3 className="text-xl font-black text-white mt-2">
+                Gouvernance responsable
               </h3>
 
-              <p className="text-slate-200 mt-3 leading-relaxed text-sm">
-
-                L'ITIE Congo s'engage à promouvoir une gouvernance
-                transparente, responsable et participative des revenus
-                issus des industries extractives au bénéfice de tous.
-
+              <p className="text-slate-300 text-xs mt-3 leading-relaxed">
+                Une gestion transparente des ressources
+                naturelles au bénéfice de tous.
               </p>
 
-              <div className="grid grid-cols-2 gap-3 mt-6">
+              <div className="grid grid-cols-2 gap-2 mt-4">
 
-                <div className="bg-white/10 rounded-xl p-3 text-center border border-white/10">
-                  <p className="text-cyan-300 font-black text-sm">
+                <div className="bg-white/10 rounded-lg p-2 text-center">
+                  <p className="text-cyan-300 text-xs font-black">
                     Transparence
                   </p>
                 </div>
 
-                <div className="bg-white/10 rounded-xl p-3 text-center border border-white/10">
-                  <p className="text-cyan-300 font-black text-sm">
+                <div className="bg-white/10 rounded-lg p-2 text-center">
+                  <p className="text-cyan-300 text-xs font-black">
                     Redevabilité
                   </p>
                 </div>
 
-                <div className="bg-white/10 rounded-xl p-3 text-center border border-white/10">
-                  <p className="text-cyan-300 font-black text-sm">
+                <div className="bg-white/10 rounded-lg p-2 text-center">
+                  <p className="text-cyan-300 text-xs font-black">
                     Participation
                   </p>
                 </div>
 
-                <div className="bg-white/10 rounded-xl p-3 text-center border border-white/10">
-                  <p className="text-cyan-300 font-black text-sm">
+                <div className="bg-white/10 rounded-lg p-2 text-center">
+                  <p className="text-cyan-300 text-xs font-black">
                     Impact
                   </p>
                 </div>
@@ -131,35 +121,35 @@ export default function Hero() {
         </div>
 
         {/* STATS */}
-        <div className="mt-6">
+        <div className="mt-5">
 
-          <div className="grid md:grid-cols-4 gap-4 bg-white/10 backdrop-blur-2xl border border-white/10 rounded-[24px] p-5">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 bg-white/10 backdrop-blur-xl border border-white/10 rounded-[18px] p-3">
 
             <div className="text-center">
-              <h3 className="text-2xl font-black text-white">24</h3>
-              <p className="text-slate-300 text-sm mt-1">
-                Rapports publiés
+              <h3 className="text-lg font-black text-white">24</h3>
+              <p className="text-slate-300 text-xs">
+                Rapports
               </p>
             </div>
 
             <div className="text-center">
-              <h3 className="text-2xl font-black text-white">98%</h3>
-              <p className="text-slate-300 text-sm mt-1">
+              <h3 className="text-lg font-black text-white">98%</h3>
+              <p className="text-slate-300 text-xs">
                 Open Data
               </p>
             </div>
 
             <div className="text-center">
-              <h3 className="text-2xl font-black text-white">89</h3>
-              <p className="text-slate-300 text-sm mt-1">
+              <h3 className="text-lg font-black text-white">89</h3>
+              <p className="text-slate-300 text-xs">
                 Entreprises
               </p>
             </div>
 
             <div className="text-center">
-              <h3 className="text-2xl font-black text-white">327</h3>
-              <p className="text-slate-300 text-sm mt-1">
-                Permis actifs
+              <h3 className="text-lg font-black text-white">327</h3>
+              <p className="text-slate-300 text-xs">
+                Permis
               </p>
             </div>
 
