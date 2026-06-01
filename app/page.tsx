@@ -39,7 +39,7 @@ export default function Home() {
 
       <Hero />
 
-      <StrategicData />
+      {/* <StrategicData /> */}
 
       <Stats />
 
