@@ -45,12 +45,20 @@ export default function Home() {
 
       <KeyFigures />
 
-      <section className="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-6">
-        <InteractiveMap />
-        <News />
-      </section>
-
       <OpenData />
+
+      <Governance />
+
+      <Reports />
+
+      <DashboardPremium />
+
+      <LiveStats />
+
+      <section className="max-w-6xl mx-auto px-4 py-8 grid md:grid-cols-2 gap-6">
+        <News />
+        <InteractiveMap />
+      </section>
 
       <div className="max-w-6xl mx-auto px-4">
         <Sectors />
@@ -58,18 +66,9 @@ export default function Home() {
 
       <Analytics />
 
-      <DashboardPremium />
-
-      <section className="max-w-6xl mx-auto px-4 py-10 grid lg:grid-cols-2 gap-6">
-        <Reports />
-        <Governance />
-      </section>
-
       <Media />
 
       <Partners />
-
-      <LiveStats />
 
       <BigCTA />
 
