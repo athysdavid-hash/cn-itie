@@ -29,10 +29,10 @@ export default function News() {
   return (
     <section className="h-full">
 
-      <div className="bg-white rounded-[36px] border border-slate-200 overflow-hidden shadow-xl h-full">
+      <div className="bg-white rounded-[24px] border border-slate-200 overflow-hidden shadow-lg h-full">
 
         {/* FEATURED */}
-        <div className="relative h-[320px] overflow-hidden">
+        <div className="relative h-[220px] overflow-hidden">
 
           <img
             src={news[0].image}
@@ -42,17 +42,17 @@ export default function News() {
 
           <div className="absolute inset-0 bg-gradient-to-t from-[#031b34] via-[#031b34]/60 to-transparent" />
 
-          <div className="absolute bottom-0 left-0 p-8">
+          <div className="absolute bottom-0 left-0 p-5">
 
-            <span className="bg-cyan-500 text-white text-xs font-black uppercase px-4 py-2 rounded-full">
+            <span className="bg-cyan-500 text-white text-[10px] font-black uppercase px-3 py-1 rounded-full">
               {news[0].category}
             </span>
 
-            <h2 className="text-3xl font-black text-white mt-4 max-w-xl">
+            <h2 className="text-xl font-black text-white mt-3 max-w-md">
               {news[0].title}
             </h2>
 
-            <p className="text-slate-300 mt-3">
+            <p className="text-slate-300 text-sm mt-2">
               {news[0].date}
             </p>
 
@@ -61,52 +61,44 @@ export default function News() {
         </div>
 
         {/* LIST */}
-        <div className="p-8">
+        <div className="p-5">
 
-          <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center justify-between mb-5">
 
-            <h3 className="text-2xl font-black text-[#062b57]">
+            <h3 className="text-xl font-black text-[#062b57]">
               Dernières actualités
             </h3>
 
-            <button className="text-cyan-600 font-black">
+            <button className="text-cyan-600 text-sm font-black">
               Voir tout →
             </button>
 
           </div>
 
-          <div className="space-y-5">
+          <div className="space-y-3">
 
             {news.slice(1).map((item, index) => (
               <div
                 key={index}
-                className="group flex items-center gap-5 border-b border-slate-100 pb-5 hover:translate-x-2 transition-all duration-300"
+                className="group flex items-center gap-3 border-b border-slate-100 pb-3 hover:translate-x-1 transition-all duration-300"
               >
 
-                <div className="w-14 h-14 rounded-2xl bg-cyan-50 flex items-center justify-center">
-
+                <div className="w-10 h-10 rounded-xl bg-cyan-50 flex items-center justify-center text-sm">
                   📰
-
                 </div>
 
                 <div className="flex-1">
 
-                  <p className="text-xs uppercase font-black text-cyan-600">
-
+                  <p className="text-[10px] uppercase font-black text-cyan-600">
                     {item.category}
-
                   </p>
 
-                  <h4 className="font-black text-[#062b57] mt-1 group-hover:text-cyan-600 transition">
-
+                  <h4 className="font-black text-sm text-[#062b57] mt-1 group-hover:text-cyan-600 transition">
                     {item.title}
-
                   </h4>
 
-                  <p className="text-slate-400 text-sm mt-1">
-
+                  <p className="text-slate-400 text-xs mt-1">
                     {item.date}
-
                   </p>
 
                 </div>

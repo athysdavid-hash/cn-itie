@@ -5,23 +5,25 @@ import Image from "next/image"
 
 export default function Navbar() {
   return (
-    <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-2xl bg-[#041c3c]/75 border-b border-white/10">
+    <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-2xl bg-[#041c3c]/80 border-b border-white/10">
 
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 py-2 flex items-center justify-between">
 
         {/* LOGO */}
-        <div className="bg-white p-2 rounded-2xl shadow-2xl flex items-center justify-center">
+        <div className="bg-white p-1.5 rounded-xl shadow-lg flex items-center justify-center">
+
           <Image
             src="/logo.png"
             alt="ITIE Congo"
-            width={70}
-            height={70}
+            width={48}
+            height={48}
             priority
           />
+
         </div>
 
         {/* NAVIGATION */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
+        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
 
           <Link href="/" className="text-white hover:text-cyan-300 transition">
             Accueil
@@ -48,7 +50,7 @@ export default function Navbar() {
         {/* BUTTON */}
         <Link
           href="/opendata"
-          className="hidden lg:flex px-6 py-3 rounded-2xl bg-cyan-500 hover:bg-cyan-400 text-white font-bold shadow-xl hover:scale-105 transition"
+          className="hidden lg:flex px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-white text-sm font-bold shadow-lg transition"
         >
           Explorer
         </Link>
