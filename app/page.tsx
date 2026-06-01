@@ -33,77 +33,56 @@ import Footer from "@/components/Footer"
 
 export default function Home() {
   return (
-    <main className="pt-32">
+    <main className="pt-24">
 
-      {/* NAVBAR */}
       <Navbar />
 
-      {/* HERO */}
       <Hero />
 
-      {/* STRATEGIC DATA */}
       <StrategicData />
 
-      {/* STATS */}
       <Stats />
 
-      {/* KEY FIGURES */}
       <KeyFigures />
 
-      {/* MAP + NEWS */}
-      <section className="max-w-7xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-8">
+      <section className="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-6">
         <InteractiveMap />
         <News />
       </section>
 
-      {/* OPEN DATA */}
       <OpenData />
 
-      {/* SECTORS */}
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4">
         <Sectors />
       </div>
 
-      {/* ANALYTICS */}
       <Analytics />
 
-      {/* DASHBOARD */}
       <DashboardPremium />
 
-      {/* REPORTS + GOVERNANCE */}
-      <section className="max-w-7xl mx-auto px-4 py-16 grid lg:grid-cols-2 gap-8">
+      <section className="max-w-6xl mx-auto px-4 py-10 grid lg:grid-cols-2 gap-6">
         <Reports />
         <Governance />
       </section>
 
-      {/* MEDIA */}
       <Media />
 
-      {/* PARTNERS */}
       <Partners />
 
-      {/* LIVE STATS */}
       <LiveStats />
 
-      {/* BIG CTA */}
       <BigCTA />
 
-      {/* DOCUMENTS */}
       <Documents />
 
-      {/* CONTACT */}
       <ContactSection />
 
-      {/* FAQ */}
       <FAQ />
 
-      {/* CTA */}
       <CTA />
 
-      {/* NEWSLETTER */}
       <Newsletter />
 
-      {/* FOOTER */}
       <Footer />
 
     </main>
