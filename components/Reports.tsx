@@ -1,25 +1,25 @@
 const reports = [
   {
     year: "2025",
-    title: "Rapport ITIE Congo 2025",
+    title: "Rapport ITIE 2025",
     image:
       "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
   },
   {
     year: "2024",
-    title: "Rapport ITIE Congo 2024",
+    title: "Rapport ITIE 2024",
     image:
       "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop",
   },
   {
     year: "2023",
-    title: "Rapport ITIE Congo 2023",
+    title: "Rapport ITIE 2023",
     image:
       "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop",
   },
   {
     year: "2022",
-    title: "Rapport ITIE Congo 2022",
+    title: "Rapport ITIE 2022",
     image:
       "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1200&auto=format&fit=crop",
   },
@@ -27,51 +27,48 @@ const reports = [
 
 export default function Reports() {
   return (
-    <section className="py-10 px-4 bg-[#f4f8fb]">
+    <section className="py-6 px-4 bg-[#f4f8fb]">
 
       <div className="max-w-6xl mx-auto">
 
         {/* HEADER */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-6">
 
           <div>
 
-            <p className="text-xs font-black tracking-[0.2em] text-cyan-600 uppercase">
+            <p className="text-[10px] font-black tracking-[0.2em] text-cyan-600 uppercase">
               Publications
             </p>
 
-            <h2 className="text-2xl lg:text-4xl font-black text-[#062b57] mt-2">
+            <h2 className="text-xl lg:text-2xl font-black text-[#062b57] mt-1">
               Rapports ITIE
             </h2>
 
-            <p className="text-slate-500 text-sm max-w-2xl mt-3">
-              Consultez les rapports et publications officielles.
+            <p className="text-slate-500 text-xs mt-2">
+              Rapports et publications officielles.
             </p>
 
           </div>
 
-          <select className="bg-white border border-slate-200 px-4 py-2 rounded-xl font-bold text-[#062b57] shadow-sm outline-none">
-
+          <select className="bg-white border border-slate-200 px-3 py-2 rounded-lg text-sm font-bold text-[#062b57]">
             <option>Toutes les années</option>
             <option>2025</option>
             <option>2024</option>
             <option>2023</option>
-
           </select>
 
         </div>
 
         {/* GRID */}
-        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
 
           {reports.map((report, index) => (
             <div
               key={index}
-              className="group bg-white rounded-[20px] overflow-hidden border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300"
+              className="group bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition"
             >
 
-              {/* IMAGE */}
-              <div className="relative h-[180px] overflow-hidden">
+              <div className="relative h-[120px] overflow-hidden">
 
                 <img
                   src={report.image}
@@ -81,29 +78,25 @@ export default function Reports() {
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
 
-                <div className="absolute top-3 left-3 bg-white px-3 py-1 rounded-full text-xs font-black text-[#062b57]">
+                <div className="absolute top-2 left-2 bg-white px-2 py-1 rounded-full text-[10px] font-black text-[#062b57]">
                   {report.year}
-                </div>
-
-                <div className="absolute bottom-3 left-3 right-3">
-
-                  <h3 className="text-lg font-black text-white">
-                    {report.title}
-                  </h3>
-
                 </div>
 
               </div>
 
-              <div className="p-4">
+              <div className="p-3">
 
-                <div className="flex items-center justify-between">
+                <h3 className="text-sm font-black text-[#062b57] leading-tight min-h-[40px]">
+                  {report.title}
+                </h3>
 
-                  <span className="text-slate-500 text-xs">
-                    PDF • 24 MB
+                <div className="flex items-center justify-between mt-3">
+
+                  <span className="text-[10px] text-slate-500">
+                    PDF
                   </span>
 
-                  <button className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white w-9 h-9 rounded-xl font-black">
+                  <button className="bg-[#062b57] text-white w-7 h-7 rounded-lg text-xs">
                     ↓
                   </button>
 
