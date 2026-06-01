@@ -171,4 +171,4 @@ export default function Hero() {
 
     </section>
   )
-} je veux remettre ce hero.tsx maintenant donne moi le bash pour vercel
+} 
