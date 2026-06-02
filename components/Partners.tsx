@@ -1,3 +1,5 @@
+"use client"
+
 const partners = [
   {
     name: "ITIE International",
@@ -23,14 +25,14 @@ const partners = [
 
 export default function Partners() {
   return (
-    <section className="py-12 px-4 bg-white">
+    <section className="py-12 px-4 bg-white overflow-hidden">
 
       <div className="max-w-6xl mx-auto">
 
         {/* HEADER */}
         <div className="text-center max-w-2xl mx-auto mb-10">
 
-          <p className="text-xs font-black tracking-[0.25em] text-cyan-600 uppercase">
+          <p className="text-xs font-black tracking-[0.25em] text-cyan-600 uppercase animate-pulse">
             Partenaires
           </p>
 
@@ -51,10 +53,36 @@ export default function Partners() {
           {partners.map((partner, index) => (
             <div
               key={index}
-              className="bg-white border border-slate-200 rounded-[18px] p-4 text-center hover:shadow-lg transition"
+              className="
+                group
+                bg-white
+                border
+                border-slate-200
+                rounded-[18px]
+                p-4
+                text-center
+                shadow-sm
+                hover:shadow-2xl
+                hover:-translate-y-3
+                hover:scale-105
+                transition-all
+                duration-500
+              "
             >
 
-              <div className="w-14 h-14 mx-auto rounded-xl bg-[#f4f8fb] flex items-center justify-center text-3xl">
+              <div
+                className="
+                  w-14 h-14 mx-auto
+                  rounded-xl
+                  bg-[#f4f8fb]
+                  flex items-center justify-center
+                  text-3xl
+                  group-hover:rotate-12
+                  group-hover:scale-125
+                  transition-all
+                  duration-500
+                "
+              >
                 {partner.icon}
               </div>
 
@@ -68,7 +96,22 @@ export default function Partners() {
         </div>
 
         {/* BOTTOM */}
-        <div className="mt-8 bg-gradient-to-r from-[#062b57] to-[#0b4d91] rounded-[20px] p-5 text-center text-white">
+        <div
+          className="
+            mt-8
+            bg-gradient-to-r
+            from-[#062b57]
+            to-[#0b4d91]
+            rounded-[20px]
+            p-5
+            text-center
+            text-white
+            hover:scale-[1.02]
+            transition-all
+            duration-500
+            shadow-xl
+          "
+        >
 
           <h3 className="text-xl font-black">
             Collaboration multipartite

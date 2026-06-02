@@ -1,3 +1,5 @@
+"use client"
+
 const datasets = [
   {
     title: "Revenus extractifs",
@@ -27,14 +29,14 @@ const datasets = [
 
 export default function OpenData() {
   return (
-    <section className="py-12 px-4 bg-white">
+    <section className="py-12 px-4 bg-white overflow-hidden">
 
       <div className="max-w-6xl mx-auto">
 
         {/* HEADER */}
         <div className="text-center mb-8">
 
-          <p className="text-xs font-black tracking-[0.25em] text-cyan-600 uppercase">
+          <p className="text-xs font-black tracking-[0.25em] text-cyan-600 uppercase animate-pulse">
             Open Data
           </p>
 
@@ -51,9 +53,9 @@ export default function OpenData() {
         <div className="grid lg:grid-cols-[260px_1fr] gap-5">
 
           {/* LEFT */}
-          <div className="bg-gradient-to-br from-[#062b57] to-[#0b4d91] rounded-2xl p-5 text-white">
+          <div className="bg-gradient-to-br from-[#062b57] to-[#0b4d91] rounded-2xl p-5 text-white hover:scale-105 transition-all duration-500 shadow-xl">
 
-            <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-xl mb-4">
+            <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-xl mb-4 animate-bounce">
               📊
             </div>
 
@@ -83,7 +85,7 @@ export default function OpenData() {
 
             </div>
 
-            <button className="w-full bg-cyan-500 mt-5 py-2 rounded-xl text-sm font-black">
+            <button className="w-full bg-cyan-500 hover:bg-cyan-400 hover:scale-105 mt-5 py-2 rounded-xl text-sm font-black transition-all duration-300">
               Explorer
             </button>
 
@@ -95,20 +97,20 @@ export default function OpenData() {
             {datasets.map((item, index) => (
               <div
                 key={index}
-                className="bg-[#f8fbfd] border border-slate-200 rounded-2xl p-4"
+                className="group bg-[#f8fbfd] border border-slate-200 rounded-2xl p-4 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer"
               >
 
                 <div className="flex items-center justify-between">
 
                   <div className="flex items-center gap-3">
 
-                    <div className="w-10 h-10 rounded-xl bg-cyan-50 flex items-center justify-center text-lg">
+                    <div className="w-10 h-10 rounded-xl bg-cyan-50 flex items-center justify-center text-lg group-hover:scale-125 transition-all duration-500">
                       {item.icon}
                     </div>
 
                     <div>
 
-                      <h3 className="text-base font-black text-[#062b57]">
+                      <h3 className="text-base font-black text-[#062b57] group-hover:text-cyan-600 transition">
                         {item.title}
                       </h3>
 
@@ -126,7 +128,7 @@ export default function OpenData() {
                       {item.files}
                     </p>
 
-                    <button className="mt-1 w-8 h-8 rounded-lg bg-[#062b57] text-white">
+                    <button className="mt-1 w-8 h-8 rounded-lg bg-[#062b57] text-white group-hover:bg-cyan-500 group-hover:rotate-45 transition-all duration-500">
                       →
                     </button>
 

@@ -1,4 +1,5 @@
-import { motion } from "framer-motion"
+"use client"
+
 export default function Hero() {
   return (
     <section className="relative min-h-[60vh] flex items-center overflow-hidden py-10">
@@ -19,7 +20,7 @@ export default function Hero() {
       <div className="absolute bottom-0 right-0 w-[350px] h-[350px] bg-blue-500/20 blur-3xl rounded-full" />
 
       {/* CONTENT */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 w-full">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 w-full animate-fadeIn">
 
         <div className="grid lg:grid-cols-2 gap-8 items-center">
 
@@ -58,13 +59,13 @@ export default function Hero() {
 
             <div className="flex flex-wrap gap-3 mt-6">
 
-              <button className="bg-cyan-500 hover:bg-cyan-600 text-white px-5 py-3 rounded-xl font-black shadow-xl transition-all duration-300">
+              <button className="bg-cyan-500 hover:bg-cyan-600 hover:scale-105 hover:-translate-y-1 text-white px-5 py-3 rounded-xl font-black shadow-xl transition-all duration-300">
 
                 Explorer les données
 
               </button>
 
-              <button className="bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-white/20 text-white px-5 py-3 rounded-xl font-black transition-all duration-300">
+              <button className="bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-white/20 hover:scale-105 hover:-translate-y-1 text-white px-5 py-3 rounded-xl font-black transition-all duration-300">
 
                 Voir les rapports
 
@@ -77,14 +78,13 @@ export default function Hero() {
           {/* RIGHT */}
           <div className="flex justify-end">
 
-            <div className="w-full max-w-md bg-white/10 backdrop-blur-2xl border border-white/20 rounded-[28px] p-6 shadow-2xl">
+            <div className="w-full max-w-md bg-white/10 backdrop-blur-2xl border border-white/20 rounded-[28px] p-6 shadow-2xl animate-float">
 
               <p className="text-cyan-300 uppercase tracking-[0.2em] text-xs font-black">
                 Engagement pour la transparence
               </p>
 
               <h3 className="text-2xl font-black text-white mt-3 leading-tight">
-
                 Une gestion responsable des ressources naturelles
 
               </h3>
@@ -99,25 +99,25 @@ export default function Hero() {
 
               <div className="grid grid-cols-2 gap-3 mt-6">
 
-                <div className="bg-white/10 rounded-xl p-3 text-center border border-white/10">
+                <div className="bg-white/10 rounded-xl p-3 text-center border border-white/10 hover:bg-cyan-500/20 hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-pointer">
                   <p className="text-cyan-300 font-black text-sm">
                     Transparence
                   </p>
                 </div>
 
-                <div className="bg-white/10 rounded-xl p-3 text-center border border-white/10">
+                <div className="bg-white/10 rounded-xl p-3 text-center border border-white/10 hover:bg-cyan-500/20 hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-pointer">
                   <p className="text-cyan-300 font-black text-sm">
                     Redevabilité
                   </p>
                 </div>
 
-                <div className="bg-white/10 rounded-xl p-3 text-center border border-white/10">
+                <div className="bg-white/10 rounded-xl p-3 text-center border border-white/10 hover:bg-cyan-500/20 hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-pointer">
                   <p className="text-cyan-300 font-black text-sm">
                     Participation
                   </p>
                 </div>
 
-                <div className="bg-white/10 rounded-xl p-3 text-center border border-white/10">
+                <div className="bg-white/10 rounded-xl p-3 text-center border border-white/10 hover:bg-cyan-500/20 hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-pointer">
                   <p className="text-cyan-300 font-black text-sm">
                     Impact
                   </p>
@@ -134,30 +134,30 @@ export default function Hero() {
         {/* STATS */}
         <div className="mt-6">
 
-          <div className="grid md:grid-cols-4 gap-4 bg-white/10 backdrop-blur-2xl border border-white/10 rounded-[24px] p-5">
+          <div className="grid md:grid-cols-4 gap-4 bg-white/10 backdrop-blur-2xl border border-white/10 rounded-[24px] p-5 hover:border-cyan-400/30 transition-all duration-500">
 
-            <div className="text-center">
+            <div className="text-center hover:scale-110 transition-all duration-300 cursor-pointer">
               <h3 className="text-2xl font-black text-white">24</h3>
               <p className="text-slate-300 text-sm mt-1">
                 Rapports publiés
               </p>
             </div>
 
-            <div className="text-center">
+            <div className="text-center hover:scale-110 transition-all duration-300 cursor-pointer">
               <h3 className="text-2xl font-black text-white">98%</h3>
               <p className="text-slate-300 text-sm mt-1">
                 Open Data
               </p>
             </div>
 
-            <div className="text-center">
+            <div className="text-center hover:scale-110 transition-all duration-300 cursor-pointer">
               <h3 className="text-2xl font-black text-white">89</h3>
               <p className="text-slate-300 text-sm mt-1">
                 Entreprises
               </p>
             </div>
 
-            <div className="text-center">
+            <div className="text-center hover:scale-110 transition-all duration-300 cursor-pointer">
               <h3 className="text-2xl font-black text-white">327</h3>
               <p className="text-slate-300 text-sm mt-1">
                 Permis actifs
@@ -173,10 +173,3 @@ export default function Hero() {
     </section>
   )
 } 
-<motion.div
-  initial={{ opacity: 0, y: 40 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8 }}
->
-  ...
-</motion.div>

@@ -57,14 +57,14 @@ export default function DashboardPremium() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
 
           {cards.map((card, index) => (
-            <div
-              key={index}
-              className="relative bg-white/10 border border-white/10 rounded-xl p-3 backdrop-blur-lg"
-            >
+           <div
+  key={index}
+  className="group relative bg-white/10 border border-white/10 rounded-xl p-3 backdrop-blur-lg hover:-translate-y-2 hover:scale-105 hover:border-cyan-400/40 hover:shadow-[0_0_30px_rgba(34,211,238,0.25)] transition-all duration-500 cursor-pointer"
+>
 
               <div className="flex items-center justify-between">
 
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-lg">
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-lg transition-transform duration-500 group-hover:rotate-12">  
                   {card.icon}
                 </div>
 

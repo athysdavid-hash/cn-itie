@@ -18,7 +18,7 @@ export default function Footer() {
 
             <div className="flex items-center gap-3">
 
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-sm font-black shadow-xl">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-sm font-black shadow-xl hover:rotate-6 hover:scale-110 transition-all duration-500 cursor-pointer">
                 IT
               </div>
 
@@ -51,11 +51,25 @@ export default function Footer() {
 
             <div className="space-y-2 text-sm text-slate-300">
 
-              <p>Accueil</p>
-              <p>Open Data</p>
-              <p>Rapports ITIE</p>
-              <p>Actualités</p>
-              <p>Données publiques</p>
+              <p className="hover:text-cyan-300 hover:translate-x-2 transition-all duration-300 cursor-pointer">
+                Accueil
+              </p>
+
+              <p className="hover:text-cyan-300 hover:translate-x-2 transition-all duration-300 cursor-pointer">
+                Open Data
+              </p>
+
+              <p className="hover:text-cyan-300 hover:translate-x-2 transition-all duration-300 cursor-pointer">
+                Rapports ITIE
+              </p>
+
+              <p className="hover:text-cyan-300 hover:translate-x-2 transition-all duration-300 cursor-pointer">
+                Actualités
+              </p>
+
+              <p className="hover:text-cyan-300 hover:translate-x-2 transition-all duration-300 cursor-pointer">
+                Données publiques
+              </p>
 
             </div>
 
@@ -70,10 +84,21 @@ export default function Footer() {
 
             <div className="space-y-2 text-sm text-slate-300">
 
-              <p>📍 Brazzaville, Congo</p>
-              <p>📧 contact@itie-congo.cg</p>
-              <p>☎️ +242 06 676 64 44</p>
-              <p>🌐 www.itie-congo.cg</p>
+              <p className="hover:text-cyan-300 transition cursor-pointer">
+                📍 Brazzaville, Congo
+              </p>
+
+              <p className="hover:text-cyan-300 transition cursor-pointer">
+                📧 contact@itie-congo.cg
+              </p>
+
+              <p className="hover:text-cyan-300 transition cursor-pointer">
+                ☎️ +242 06 676 64 44
+              </p>
+
+              <p className="hover:text-cyan-300 transition cursor-pointer">
+                🌐 www.itie-congo.cg
+              </p>
 
             </div>
 
@@ -82,7 +107,7 @@ export default function Footer() {
           {/* ENGAGEMENT */}
           <div>
 
-            <div className="rounded-2xl bg-white/10 backdrop-blur-xl p-5 border border-white/10">
+            <div className="rounded-2xl bg-white/10 backdrop-blur-xl p-5 border border-white/10 hover:scale-105 hover:bg-white/15 transition-all duration-500">
 
               <p className="text-cyan-300 uppercase tracking-[0.2em] text-xs font-black">
                 Engagement
@@ -102,6 +127,9 @@ export default function Footer() {
 
         </div>
 
+        {/* LIGNE PREMIUM */}
+        <div className="my-6 h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
+
         {/* SOCIALS */}
         <div className="flex flex-col lg:flex-row items-center justify-between gap-4 py-5 border-b border-white/10">
 
@@ -111,19 +139,19 @@ export default function Footer() {
 
           <div className="flex items-center gap-3">
 
-            <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-white/10 hover:bg-cyan-500 hover:scale-110 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center cursor-pointer">
               f
             </div>
 
-            <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-white/10 hover:bg-cyan-500 hover:scale-110 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center cursor-pointer">
               X
             </div>
 
-            <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-white/10 hover:bg-cyan-500 hover:scale-110 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center cursor-pointer">
               in
             </div>
 
-            <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-white/10 hover:bg-cyan-500 hover:scale-110 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center cursor-pointer">
               ▶
             </div>
 
@@ -140,8 +168,13 @@ export default function Footer() {
 
           <div className="flex items-center gap-4 text-xs text-slate-400">
 
-            <p>Confidentialité</p>
-            <p>Mentions légales</p>
+            <p className="hover:text-cyan-300 transition cursor-pointer">
+              Confidentialité
+            </p>
+
+            <p className="hover:text-cyan-300 transition cursor-pointer">
+              Mentions légales
+            </p>
 
           </div>
 
