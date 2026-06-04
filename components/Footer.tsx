@@ -143,9 +143,21 @@ export default function Footer() {
               f
             </div>
 
-           <div className="w-12 h-12 rounded-xl bg-white/10 hover:bg-cyan-500 transition-all duration-300 flex items-center justify-center cursor-pointer">
-              X
-            </div>
+           <a
+
+  href="https://x.com/Cnitiecg"
+
+  target="_blank"
+
+  rel="noopener noreferrer"
+
+  className="w-12 h-12 rounded-xl bg-white/10 hover:bg-cyan-500 transition-all duration-300 flex items-center justify-center cursor-pointer"
+
+>
+
+  X
+
+</a>
 
            <div className="w-12 h-12 rounded-xl bg-white/10 hover:bg-cyan-500 transition-all duration-300 flex items-center justify-center cursor-pointer">
             </div>
