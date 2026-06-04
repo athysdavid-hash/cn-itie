@@ -12,12 +12,9 @@ export default function Hero() {
   const [currentImage, setCurrentImage] = useState(0)
 console.log("RENDER HERO", currentImage)
 useEffect(() => {
-  console.log("USEEFFECT LANCE")
-
   const interval = setInterval(() => {
-    console.log("TICK")
-    setCurrentImage((prev) => prev + 1)
-  }, 1000)
+    setCurrentImage((prev) => (prev + 1) % images.length)
+  }, 5000)
 
   return () => clearInterval(interval)
 }, [])
