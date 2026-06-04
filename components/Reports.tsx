@@ -4,22 +4,22 @@ const reports = [
   {
     year: "2025",
     title: "Rapport ITIE Congo 2025",
-    image: "/reports/rapport-2023.jpg",
+    image: "/reports/rapport-2025.jpg",
   },
   {
     year: "2024",
-    title: "Réconciliation des revenus pétroliers",
-    image: "/reports/petrole-congo.jpg",
+    title: "Réunion du CN-ITIE",
+    image: "/reports/reunion-cnitie.jpg",
   },
   {
     year: "2023",
-    title: "Gouvernance des ressources extractives",
-    image: "/reports/gouvernance.jpg",
+    title: "Plateforme offshore",
+    image: "/reports/plateforme-offshore.jpg",
   },
   {
     year: "2022",
     title: "Secteur extractif congolais",
-    image: "/congo-extractif.jpg",
+    image: "/reports/secteur-extractif-congo.jpg",
   },
 ]
 

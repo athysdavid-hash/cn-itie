@@ -6,7 +6,7 @@ export default function DataSection() {
       <div className="grid md:grid-cols-2 gap-10">
         
         {/* CARD 1 */}
-        <div className="bg-white rounded-[40px] p-10 shadow-xl border border-slate-100">
+        <div className="bg-white rounded-[32px] p-10 shadow-xl border border-slate-100">
           <h2 className="text-4xl font-black text-slate-900 mb-4">
             Revenus extractifs
           </h2>
@@ -15,7 +15,7 @@ export default function DataSection() {
             Revenus annuels générés par le secteur extractif.
           </p>
 
-          <div className="h-[300px] rounded-3xl bg-gradient-to-br from-cyan-100 to-blue-100 flex items-end justify-around p-8">
+          <div className="h-[300px] rounded-3xl bg-gradient-to-br from-cyan-100 to-blue-100 flex items-end justify-around p-6">
             
             <div className="w-16 bg-cyan-400 rounded-t-2xl h-32" />
             <div className="w-16 bg-cyan-500 rounded-t-2xl h-44" />
