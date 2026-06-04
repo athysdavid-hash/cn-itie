@@ -33,7 +33,7 @@ const docs = [
 
 export default function Documents() {
   return (
-    <section className="py-12 px-4 bg-white">
+    <section className="py-16 px-4 bg-white">
 
       <div className="max-w-6xl mx-auto">
 

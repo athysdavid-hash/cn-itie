@@ -1,27 +1,24 @@
 const media = [
   {
-    title: "Forum national ITIE Congo",
-    category: "Conférence",
-    image:
-      "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop",
+    title: "Atelier de dissémination du Rapport ITIE à Pointe-Noire",
+    category: "Événement",
+    image: "/media/pointe-noire.jpg",
   },
   {
-    title: "Publication du rapport 2025",
-    category: "Rapport",
-    image:
-      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop",
+    title: "Réunion du Groupe Multipartite du CN-ITIE",
+    category: "Gouvernance",
+    image: "/media/groupe-multipartite.jpg",
   },
   {
-    title: "Open Data & Transparence",
-    category: "Open Data",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
+    title: "Secteur pétrolier offshore du Congo",
+    category: "Hydrocarbures",
+    image: "/media/offshore-congo.jpg",
   },
 ]
 
 export default function Media() {
   return (
-    <section className="py-12 px-4 bg-[#031b34]">
+    <section className="py-16 px-4 bg-[#031b34]">
 
       <div className="max-w-6xl mx-auto">
 
@@ -31,21 +28,22 @@ export default function Media() {
           <div>
 
             <p className="text-xs font-black tracking-[0.25em] text-cyan-400 uppercase">
-              Média
+              CN-ITIE Congo
             </p>
 
             <h2 className="text-3xl lg:text-4xl font-black text-white mt-2">
-              Galerie & vidéos
+              Actualités & Médias
             </h2>
 
             <p className="text-slate-300 text-sm max-w-2xl mt-3">
-              Conférences, publications et événements du CN-ITIE Congo.
+              Activités du Comité National ITIE, ateliers de dissémination,
+              gouvernance extractive et transparence des revenus.
             </p>
 
           </div>
 
-          <button className="bg-cyan-500 text-white px-5 py-2 rounded-xl font-bold text-sm">
-            Voir la galerie
+          <button className="bg-cyan-500 hover:bg-cyan-400 transition px-5 py-2 rounded-xl font-black text-white text-sm">
+            Voir toutes les publications
           </button>
 
         </div>
@@ -56,34 +54,30 @@ export default function Media() {
           {media.map((item, index) => (
             <div
               key={index}
-              className="overflow-hidden rounded-[22px] bg-white/5 border border-white/10"
+              className="group overflow-hidden rounded-[24px] bg-white/5 border border-white/10 hover:border-cyan-500/30 transition-all duration-500"
             >
 
-              <div className="relative h-[240px]">
+              <div className="relative h-[260px] overflow-hidden">
 
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
 
-                <div className="absolute inset-0 flex items-center justify-center">
+                <div className="absolute top-4 left-4">
 
-                  <button className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-lg text-white text-xl">
-                    ▶
-                  </button>
-
-                </div>
-
-                <div className="absolute bottom-4 left-4 right-4">
-
-                  <span className="inline-flex bg-cyan-500 text-white px-3 py-1 rounded-full text-xs font-black mb-2">
+                  <span className="bg-cyan-500 text-white px-3 py-1 rounded-full text-xs font-black">
                     {item.category}
                   </span>
 
-                  <h3 className="text-xl font-black text-white leading-tight">
+                </div>
+
+                <div className="absolute bottom-5 left-5 right-5">
+
+                  <h3 className="text-white text-xl font-black leading-tight">
                     {item.title}
                   </h3>
 

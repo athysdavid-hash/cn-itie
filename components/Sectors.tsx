@@ -1,26 +1,26 @@
 const sectors = [
   {
     title: "Hydrocarbures",
-    desc: "Production pétrolière et revenus énergétiques.",
+    desc: "Production pétrolière onshore et offshore, principale source de revenus d’exportation du Congo.",
     icon: "🛢️",
     color: "from-cyan-500 to-blue-600",
   },
   {
     title: "Mines",
-    desc: "Exploitation et gestion des ressources minières.",
+    desc: "Potasse, fer, polymétaux et autres ressources minières stratégiques.",
     icon: "⛏️",
     color: "from-yellow-500 to-orange-500",
   },
   {
-    title: "Foresterie",
-    desc: "Suivi des activités forestières.",
-    icon: "🌳",
+    title: "Revenus extractifs",
+    desc: "Suivi des paiements des entreprises et des recettes perçues par l’État.",
+    icon: "💰",
     color: "from-green-500 to-emerald-600",
   },
   {
-    title: "Open Data",
-    desc: "Données extractives et transparence.",
-    icon: "📊",
+    title: "Transparence ITIE",
+    desc: "Publication des données ouvertes conformément à la Norme ITIE.",
+    icon: "🌍",
     color: "from-indigo-500 to-purple-600",
   },
 ]
@@ -35,15 +35,15 @@ export default function Sectors() {
         <div className="p-3 border-b border-slate-200">
 
           <p className="text-[10px] font-black tracking-[0.15em] text-cyan-600 uppercase">
-            Secteurs
+            République du Congo
           </p>
 
           <h2 className="text-xl lg:text-2xl font-black text-[#062b57] mt-1">
-            Secteurs extractifs
+            Secteur extractif congolais
           </h2>
 
           <p className="text-slate-500 text-xs mt-2">
-            Principaux secteurs suivis par l'ITIE Congo.
+            Hydrocarbures, mines, revenus publics et transparence des ressources naturelles.
           </p>
 
         </div>
@@ -54,7 +54,7 @@ export default function Sectors() {
           {sectors.map((item, index) => (
             <div
               key={index}
-              className="relative overflow-hidden rounded-[16px] bg-[#f4f8fb] border border-slate-200 p-4 hover:shadow-md transition"
+              className="relative overflow-hidden rounded-[16px] bg-[#f4f8fb] border border-slate-200 p-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
             >
 
               <div
@@ -72,7 +72,7 @@ export default function Sectors() {
                   </div>
 
                   <span className="bg-white text-[#062b57] px-2 py-1 rounded-full text-[10px] font-black">
-                    Actif
+                    CN-ITIE
                   </span>
 
                 </div>
@@ -86,7 +86,7 @@ export default function Sectors() {
                 </p>
 
                 <button
-                  className={`mt-3 bg-gradient-to-r ${item.color} text-white px-3 py-1.5 rounded-lg text-xs font-black`}
+                  className={`mt-3 bg-gradient-to-r ${item.color} text-white px-3 py-1.5 rounded-lg text-xs font-black hover:scale-105 transition-all duration-300`}
                 >
                   Explorer
                 </button>

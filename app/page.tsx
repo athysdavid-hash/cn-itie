@@ -27,7 +27,6 @@ import Documents from "@/components/Documents"
 import FAQ from "@/components/FAQ"
 import ContactSection from "@/components/ContactSection"
 
-import CTA from "@/components/CTA"
 import Newsletter from "@/components/Newsletter"
 import Footer from "@/components/Footer"
 
@@ -55,10 +54,10 @@ export default function Home() {
 
       <LiveStats />
 
-      <section className="max-w-6xl mx-auto px-4 py-8 grid md:grid-cols-2 gap-6">
-        <News />
-        <InteractiveMap />
-      </section>
+    <section className="max-w-6xl mx-auto px-4 py-8 grid md:grid-cols-2 gap-6">
+  <News />
+  <InteractiveMap />
+</section>
 
       <div className="max-w-6xl mx-auto px-4">
         <Sectors />
@@ -77,8 +76,6 @@ export default function Home() {
       <ContactSection />
 
       <FAQ />
-
-      <CTA />
 
       <Newsletter />
 

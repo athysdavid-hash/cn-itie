@@ -10,7 +10,7 @@ export default function KeyFigures() {
   ]
 
   return (
-    <section className="relative bg-[#061f3a] py-14 overflow-hidden">
+    <section className="relative bg-[#061f3a] py-16 overflow-hidden">
 
       {/* BACKGROUND GLOW */}
       <div className="absolute top-0 left-0 w-[350px] h-[350px] bg-cyan-500/10 blur-3xl rounded-full" />

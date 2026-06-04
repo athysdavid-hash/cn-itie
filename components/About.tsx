@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section className="py-6 px-4">
+    <section className="py-16 px-4">
 
       <div className="max-w-7xl mx-auto">
 
@@ -15,12 +15,12 @@ export default function About() {
                 À propos
               </p>
 
-              <h2 className="text-4xl font-black text-[#062b57] mt-4 leading-tight">
+              <h2 className="text-2xl lg:text-3xl font-black text-[#062b57] mt-4 leading-tight">
                 Initiative pour la Transparence
                 dans les Industries Extractives
               </h2>
 
-              <p className="text-slate-600 text-lg leading-relaxed mt-8">
+              <p className="text-slate-600 text-sm leading-relaxed mt-5">
                 L’ITIE Congo œuvre pour une gestion transparente
                 et responsable des revenus issus des ressources
                 naturelles grâce à la publication des données
@@ -30,13 +30,13 @@ export default function About() {
               {/* STATS */}
               <div className="grid grid-cols-2 gap-5 mt-6">
 
-                <div className="bg-slate-50 rounded-[24px] p-6 border border-slate-200">
+                <div className="bg-slate-50 rounded-[20px] p-4 border border-slate-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
 
-                  <div className="text-5xl mb-4">
+                  <div className="text-3xl mb-2">
                     📘
                   </div>
 
-                  <h3 className="text-4xl font-black text-[#062b57]">
+                  <h3 className="text-2xl font-black text-[#062b57]">
                     12
                   </h3>
 
@@ -80,7 +80,7 @@ export default function About() {
                 Vision stratégique
               </p>
 
-              <h2 className="text-5xl font-black mt-4 leading-tight">
+              <h2 className="text-2xl lg:text-3xl font-black mt-4 leading-tight">
                 Gouvernance responsable des ressources
               </h2>
 
@@ -138,13 +138,13 @@ export default function About() {
 
                   <div className="flex items-center gap-4">
 
-                    <div className="w-16 h-16 rounded-2xl bg-cyan-500 flex items-center justify-center text-3xl">
+                    <div className="w-12 h-12rounded-2xl bg-cyan-500 flex items-center justify-center text-3xl">
                       🤝
                     </div>
 
                     <div>
 
-                      <h3 className="text-2xl font-black">
+                      <h3 className="text-lg font-black">
                         Participation
                       </h3>
 

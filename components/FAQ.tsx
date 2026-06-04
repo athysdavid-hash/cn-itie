@@ -29,7 +29,7 @@ export default function FAQ() {
   const [active, setActive] = useState<number | null>(0)
 
   return (
-    <section className="py-12 px-4 bg-gradient-to-b from-white to-[#f4f8fb]">
+    <section className="py-16 px-4 bg-gradient-to-b from-white to-[#f4f8fb]">
 
       <div className="max-w-4xl mx-auto">
 

@@ -1,175 +1,80 @@
 "use client"
 
+import { useEffect, useState } from "react"
+
 export default function Hero() {
+  const images = [
+    "/hero/hero1.jpg",
+    "/hero/hero2.jpg",
+    "/hero/hero3.jpg",
+  ]
+
+  const [currentImage, setCurrentImage] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % images.length)
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [images.length])
+
   return (
-    <section className="relative min-h-[60vh] flex items-center overflow-hidden py-10">
+    <section className="relative h-[700px] overflow-hidden">
 
-      {/* IMAGE DE FOND */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/congo-extractif.jpg')",
-        }}
-      />
+      {/* Images */}
+      {images.map((img, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 bg-cover bg-center transition-opacity duration-[2000ms] ${
+            index === currentImage ? "opacity-100" : "opacity-0"
+          }`}
+          style={{
+            backgroundImage: `url(${img})`,
+          }}
+        />
+      ))}
 
-      {/* OVERLAY */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#031b34]/90 via-[#031b34]/60 to-[#031b34]/20" />
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/50" />
 
-      {/* GLOW */}
-      <div className="absolute top-0 left-0 w-[350px] h-[350px] bg-cyan-400/20 blur-3xl rounded-full" />
-      <div className="absolute bottom-0 right-0 w-[350px] h-[350px] bg-blue-500/20 blur-3xl rounded-full" />
+      {/* Compteur TEST */}
+      <div className="absolute top-10 right-10 z-50 bg-red-600 text-white text-4xl font-black px-6 py-3 rounded-xl">
+        {currentImage}
+      </div>
 
-      {/* CONTENT */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 w-full animate-fadeIn">
+      {/* Contenu */}
+      <div className="relative z-10 h-full flex items-center justify-center text-center">
 
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
+        <div>
 
-          {/* LEFT */}
-          <div>
+          <h1 className="text-6xl font-black text-white">
+            ITIE Congo
+          </h1>
 
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-xl border border-white/20 px-4 py-2 rounded-full mb-5">
-
-              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-
-              <span className="text-cyan-300 text-xs font-black tracking-wider uppercase">
-                Plateforme officielle ITIE Congo
-              </span>
-
-            </div>
-
-            <h1 className="text-2xl lg:text-3xl font-black text-white leading-tight">
-
-              Comité National
-              <br />
-
-              <span className="text-cyan-400">
-                ITIE Congo
-              </span>
-
-            </h1>
-
-            <p className="text-slate-200 text-base leading-relaxed mt-5 max-w-lg">
-
-              Transparence et gouvernance des industries extractives
-              en République du Congo. Accédez aux données ouvertes,
-              rapports ITIE, contrats, revenus extractifs et
-              informations stratégiques du secteur.
-
-            </p>
-
-            <div className="flex flex-wrap gap-3 mt-6">
-
-              <button className="bg-cyan-500 hover:bg-cyan-600 hover:scale-105 hover:-translate-y-1 text-white px-5 py-3 rounded-xl font-black shadow-xl transition-all duration-300">
-
-                Explorer les données
-
-              </button>
-
-              <button className="bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-white/20 hover:scale-105 hover:-translate-y-1 text-white px-5 py-3 rounded-xl font-black transition-all duration-300">
-
-                Voir les rapports
-
-              </button>
-
-            </div>
-
-          </div>
-
-          {/* RIGHT */}
-          <div className="flex justify-end">
-
-            <div className="w-full max-w-md bg-white/10 backdrop-blur-2xl border border-white/20 rounded-[28px] p-6 shadow-2xl animate-float">
-
-              <p className="text-cyan-300 uppercase tracking-[0.2em] text-xs font-black">
-                Engagement pour la transparence
-              </p>
-
-              <h3 className="text-2xl font-black text-white mt-3 leading-tight">
-                Une gestion responsable des ressources naturelles
-
-              </h3>
-
-              <p className="text-slate-200 mt-3 leading-relaxed text-sm">
-
-                L'ITIE Congo s'engage à promouvoir une gouvernance
-                transparente, responsable et participative des revenus
-                issus des industries extractives au bénéfice de tous.
-
-              </p>
-
-              <div className="grid grid-cols-2 gap-3 mt-6">
-
-                <div className="bg-white/10 rounded-xl p-3 text-center border border-white/10 hover:bg-cyan-500/20 hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-pointer">
-                  <p className="text-cyan-300 font-black text-sm">
-                    Transparence
-                  </p>
-                </div>
-
-                <div className="bg-white/10 rounded-xl p-3 text-center border border-white/10 hover:bg-cyan-500/20 hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-pointer">
-                  <p className="text-cyan-300 font-black text-sm">
-                    Redevabilité
-                  </p>
-                </div>
-
-                <div className="bg-white/10 rounded-xl p-3 text-center border border-white/10 hover:bg-cyan-500/20 hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-pointer">
-                  <p className="text-cyan-300 font-black text-sm">
-                    Participation
-                  </p>
-                </div>
-
-                <div className="bg-white/10 rounded-xl p-3 text-center border border-white/10 hover:bg-cyan-500/20 hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-pointer">
-                  <p className="text-cyan-300 font-black text-sm">
-                    Impact
-                  </p>
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        {/* STATS */}
-        <div className="mt-6">
-
-          <div className="grid md:grid-cols-4 gap-4 bg-white/10 backdrop-blur-2xl border border-white/10 rounded-[24px] p-5 hover:border-cyan-400/30 transition-all duration-500">
-
-            <div className="text-center hover:scale-110 transition-all duration-300 cursor-pointer">
-              <h3 className="text-2xl font-black text-white">24</h3>
-              <p className="text-slate-300 text-sm mt-1">
-                Rapports publiés
-              </p>
-            </div>
-
-            <div className="text-center hover:scale-110 transition-all duration-300 cursor-pointer">
-              <h3 className="text-2xl font-black text-white">98%</h3>
-              <p className="text-slate-300 text-sm mt-1">
-                Open Data
-              </p>
-            </div>
-
-            <div className="text-center hover:scale-110 transition-all duration-300 cursor-pointer">
-              <h3 className="text-2xl font-black text-white">89</h3>
-              <p className="text-slate-300 text-sm mt-1">
-                Entreprises
-              </p>
-            </div>
-
-            <div className="text-center hover:scale-110 transition-all duration-300 cursor-pointer">
-              <h3 className="text-2xl font-black text-white">327</h3>
-              <p className="text-slate-300 text-sm mt-1">
-                Permis actifs
-              </p>
-            </div>
-
-          </div>
+          <p className="text-xl text-white mt-4">
+            Test du défilement automatique
+          </p>
 
         </div>
 
       </div>
+{/* INDICATEURS DU SLIDER */}
+<div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-20">
 
+  {images.map((_, index) => (
+    <button
+      key={index}
+      onClick={() => setCurrentImage(index)}
+      className={`transition-all duration-500 rounded-full ${
+        currentImage === index
+          ? "w-10 h-3 bg-cyan-400"
+          : "w-3 h-3 bg-white/50 hover:bg-white"
+      }`}
+    />
+  ))}
+
+</div>
     </section>
   )
-} 
+}

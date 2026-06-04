@@ -2,7 +2,7 @@
 
 const datasets = [
   {
-    title: "Revenus extractifs",
+    title: "Revenus pétroliers",
     description: "Hydrocarbures et mines",
     icon: "💰",
     files: "XLSX • CSV",
@@ -25,11 +25,17 @@ const datasets = [
     icon: "📘",
     files: "PDF",
   },
+  {
+ title: "Production nationale d'hydrocarbures",
+ description: "Données consolidées",
+ icon: "🛢️",
+ files: "CSV • XLSX",
+}
 ]
 
 export default function OpenData() {
   return (
-    <section className="py-12 px-4 bg-white overflow-hidden">
+    <section className="py-16 px-4 bg-white overflow-hidden">
 
       <div className="max-w-6xl mx-auto">
 

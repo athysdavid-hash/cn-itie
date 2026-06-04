@@ -1,33 +1,31 @@
+"use client"
+
 const reports = [
   {
     year: "2025",
     title: "Rapport ITIE Congo 2025",
-    image:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
+    image: "/reports/rapport-2023.jpg",
   },
   {
     year: "2024",
-    title: "Rapport ITIE Congo 2024",
-    image:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop",
+    title: "Réconciliation des revenus pétroliers",
+    image: "/reports/petrole-congo.jpg",
   },
   {
     year: "2023",
-    title: "Rapport ITIE Congo 2023",
-    image:
-      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop",
+    title: "Gouvernance des ressources extractives",
+    image: "/reports/gouvernance.jpg",
   },
   {
     year: "2022",
-    title: "Rapport ITIE Congo 2022",
-    image:
-      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1200&auto=format&fit=crop",
+    title: "Secteur extractif congolais",
+    image: "/congo-extractif.jpg",
   },
 ]
 
 export default function Reports() {
   return (
-    <section className="py-10 px-4 bg-[#f4f8fb]">
+    <section className="py-8 px-4 bg-[#f4f8fb]">
 
       <div className="max-w-6xl mx-auto">
 
@@ -45,7 +43,8 @@ export default function Reports() {
             </h2>
 
             <p className="text-slate-500 text-sm max-w-2xl mt-3">
-              Consultez les rapports et publications officielles.
+              Rapports ITIE, études sectorielles, documents de gouvernance
+              et publications officielles du Comité National ITIE Congo.
             </p>
 
           </div>
@@ -56,6 +55,7 @@ export default function Reports() {
             <option>2025</option>
             <option>2024</option>
             <option>2023</option>
+            <option>2022</option>
 
           </select>
 
@@ -67,11 +67,11 @@ export default function Reports() {
           {reports.map((report, index) => (
             <div
               key={index}
-        
-            className="group bg-white rounded-[20px] overflow-hidden border border-slate-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+              className="group bg-white rounded-[20px] overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            >
 
               {/* IMAGE */}
-              <div className="relative h-[180px] overflow-hidden">
+              <div className="relative h-[160px] overflow-hidden">
 
                 <img
                   src={report.image}
@@ -87,7 +87,7 @@ export default function Reports() {
 
                 <div className="absolute bottom-3 left-3 right-3">
 
-                  <h3 className="text-lg font-black text-white group-hover:text-cyan-300 transition duration-300">
+                  <h3 className="text-base font-black text-white group-hover:text-cyan-300 transition duration-300 leading-tight">
                     {report.title}
                   </h3>
 
@@ -95,15 +95,16 @@ export default function Reports() {
 
               </div>
 
+              {/* CONTENT */}
               <div className="p-4">
 
                 <div className="flex items-center justify-between">
 
-                  <span className="text-slate-500 text-xs">
-                    PDF • 24 MB
+                  <span className="text-slate-500 text-xs font-semibold">
+                    Publication officielle
                   </span>
 
-                  <button className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white w-9 h-9 rounded-xl font-black hover:scale-105 transition-all duration-300">
+                  <button className="w-10 h-10 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-black hover:scale-110 transition-all duration-300">
                     ↓
                   </button>
 

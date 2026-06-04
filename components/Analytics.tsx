@@ -27,7 +27,7 @@ const analytics = [
 
 export default function Analytics() {
   return (
-    <section className="py-6 px-4 bg-[#031b34] relative overflow-hidden">
+    <section className="py-16 px-4 bg-[#031b34] relative overflow-hidden">
 
       <div className="absolute top-0 left-0 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-0 w-40 h-40 bg-blue-600/10 rounded-full blur-3xl" />

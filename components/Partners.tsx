@@ -2,91 +2,69 @@
 
 const partners = [
   {
-    name: "ITIE International",
-    icon: "🌍",
+    name: "Banque mondiale",
+    logo: "/partenaires/banque-mondiale.png",
+  },
+  {
+    name: "PAGIR",
+    logo: "/partenaires/pagir.png",
+  },
+  {
+    name: "Ministère des Finances",
+    logo: "/partenaires/finances.png",
   },
   {
     name: "Ministère des Hydrocarbures",
-    icon: "🏛️",
+    logo: "/partenaires/hydrocarbures.png",
   },
   {
-    name: "Banque Mondiale",
-    icon: "💼",
-  },
-  {
-    name: "Société Civile",
-    icon: "🤝",
-  },
-  {
-    name: "Open Data Congo",
-    icon: "📊",
+    name: "ITIE International",
+    logo: "/partenaires/itie.png",
   },
 ]
 
 export default function Partners() {
   return (
-    <section className="py-12 px-4 bg-white overflow-hidden">
+    <section className="py-14 px-4 bg-white">
 
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
 
-        {/* HEADER */}
-        <div className="text-center max-w-2xl mx-auto mb-10">
+        <div className="text-center max-w-3xl mx-auto mb-10">
 
-          <p className="text-xs font-black tracking-[0.25em] text-cyan-600 uppercase animate-pulse">
+          <p className="text-xs font-black tracking-[0.25em] text-cyan-600 uppercase">
             Partenaires
           </p>
 
           <h2 className="text-3xl lg:text-4xl font-black text-[#062b57] mt-3">
-            Institutions partenaires
+            Partenaires techniques et institutionnels
           </h2>
 
           <p className="text-slate-500 text-sm mt-3">
-            Collaboration avec les acteurs nationaux et internationaux
-            de la transparence extractive.
+            Les partenaires qui accompagnent le Comité National ITIE Congo
+            dans la promotion de la transparence et de la bonne gouvernance.
           </p>
 
         </div>
 
-        {/* GRID */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
 
           {partners.map((partner, index) => (
             <div
               key={index}
-              className="
-                group
-                bg-white
-                border
-                border-slate-200
-                rounded-[18px]
-                p-4
-                text-center
-                shadow-sm
-                hover:shadow-2xl
-                hover:-translate-y-3
-                hover:scale-105
-                transition-all
-                duration-500
-              "
+              className="bg-white border border-slate-200 rounded-[20px] p-5 hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
             >
 
-              <div
-                className="
-                  w-14 h-14 mx-auto
-                  rounded-xl
-                  bg-[#f4f8fb]
-                  flex items-center justify-center
-                  text-3xl
-                  group-hover:rotate-12
-                  group-hover:scale-125
-                  transition-all
-                  duration-500
-                "
-              >
-                {partner.icon}
+              <div className="h-20 flex items-center justify-center">
+
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  className="max-h-14 object-contain"
+                />
+
               </div>
 
-              <h3 className="mt-3 text-sm font-bold text-[#062b57] leading-snug">
+              <h3 className="mt-4 text-sm font-bold text-center text-[#062b57]">
                 {partner.name}
               </h3>
 
@@ -95,31 +73,17 @@ export default function Partners() {
 
         </div>
 
-        {/* BOTTOM */}
-        <div
-          className="
-            mt-8
-            bg-gradient-to-r
-            from-[#062b57]
-            to-[#0b4d91]
-            rounded-[20px]
-            p-5
-            text-center
-            text-white
-            hover:scale-[1.02]
-            transition-all
-            duration-500
-            shadow-xl
-          "
-        >
+        <div className="mt-10 bg-gradient-to-r from-[#062b57] to-[#0b4d91] rounded-[24px] p-6 text-center text-white">
 
-          <h3 className="text-xl font-black">
-            Collaboration multipartite
+          <h3 className="text-2xl font-black">
+            Collaboration pour la transparence
           </h3>
 
-          <p className="text-sm text-slate-200 mt-2 max-w-2xl mx-auto">
-            Gouvernement, entreprises, société civile et partenaires
-            techniques œuvrent ensemble pour renforcer la transparence.
+          <p className="text-slate-200 text-sm mt-3 max-w-3xl mx-auto">
+            Le Comité National ITIE Congo travaille en partenariat avec les
+            institutions publiques, les partenaires techniques et financiers
+            ainsi que les organisations internationales afin de renforcer la
+            gouvernance du secteur extractif.
           </p>
 
         </div>

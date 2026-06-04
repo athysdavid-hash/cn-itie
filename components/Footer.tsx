@@ -2,7 +2,7 @@
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-br from-[#02152d] via-[#062b57] to-[#0b4f91] text-white pt-14 pb-6 px-4">
+    <footer className="relative min-h-[500px] overflow-hidden bg-gradient-to-br from-[#02152d] via-[#062b57] to-[#0b4f91] text-white pt-20 pb-10 px-4">
 
       {/* GLOW */}
       <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-cyan-400/10 rounded-full blur-[120px]" />
@@ -139,19 +139,18 @@ export default function Footer() {
 
           <div className="flex items-center gap-3">
 
-            <div className="w-10 h-10 rounded-xl bg-white/10 hover:bg-cyan-500 hover:scale-110 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center cursor-pointer">
+           <div className="w-12 h-12 rounded-xl bg-white/10 hover:bg-cyan-500 transition-all duration-300 flex items-center justify-center cursor-pointer">
               f
             </div>
 
-            <div className="w-10 h-10 rounded-xl bg-white/10 hover:bg-cyan-500 hover:scale-110 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center cursor-pointer">
+           <div className="w-12 h-12 rounded-xl bg-white/10 hover:bg-cyan-500 transition-all duration-300 flex items-center justify-center cursor-pointer">
               X
             </div>
 
-            <div className="w-10 h-10 rounded-xl bg-white/10 hover:bg-cyan-500 hover:scale-110 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center cursor-pointer">
-              in
+           <div className="w-12 h-12 rounded-xl bg-white/10 hover:bg-cyan-500 transition-all duration-300 flex items-center justify-center cursor-pointer">
             </div>
 
-            <div className="w-10 h-10 rounded-xl bg-white/10 hover:bg-cyan-500 hover:scale-110 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center cursor-pointer">
+            <div className="w-12 h-12 rounded-xl bg-white/10 hover:bg-cyan-500 transition-all duration-300 flex items-center justify-center cursor-pointer">
               ▶
             </div>
 
