@@ -25,66 +25,113 @@ const partners = [
 
 export default function Partners() {
   return (
-    <section className="py-14 px-4 bg-white">
+    <section className="py-20 px-4 bg-gradient-to-b from-white to-slate-50">
 
       <div className="max-w-7xl mx-auto">
 
-        <div className="text-center max-w-3xl mx-auto mb-10">
+        {/* HEADER */}
+        <div className="text-center max-w-3xl mx-auto mb-12">
 
           <p className="text-xs font-black tracking-[0.25em] text-cyan-600 uppercase">
             Partenaires
           </p>
 
-          <h2 className="text-3xl lg:text-4xl font-black text-[#062b57] mt-3">
-            Partenaires techniques et institutionnels
+          <h2 className="text-3xl lg:text-5xl font-black text-[#062b57] mt-3">
+            Partenaires Stratégiques
           </h2>
 
-          <p className="text-slate-500 text-sm mt-3">
-            Les partenaires qui accompagnent le Comité National ITIE Congo
-            dans la promotion de la transparence et de la bonne gouvernance.
+          <p className="text-slate-500 mt-4">
+            Institutions nationales, partenaires techniques et financiers
+            accompagnant le Comité National ITIE Congo dans la promotion
+            de la transparence et de la bonne gouvernance.
           </p>
 
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+        {/* STATS */}
+        <div className="grid md:grid-cols-3 gap-4 mb-12">
+
+          <div className="bg-white rounded-3xl p-6 border border-slate-100 shadow-lg text-center">
+            <h3 className="text-4xl font-black text-[#062b57]">5</h3>
+            <p className="text-slate-500 mt-2">
+              Partenaires stratégiques
+            </p>
+          </div>
+
+          <div className="bg-white rounded-3xl p-6 border border-slate-100 shadow-lg text-center">
+            <h3 className="text-4xl font-black text-[#062b57]">100%</h3>
+            <p className="text-slate-500 mt-2">
+              Coopération institutionnelle
+            </p>
+          </div>
+
+          <div className="bg-white rounded-3xl p-6 border border-slate-100 shadow-lg text-center">
+            <h3 className="text-4xl font-black text-[#062b57]">🇨🇬</h3>
+            <p className="text-slate-500 mt-2">
+              République du Congo
+            </p>
+          </div>
+
+        </div>
+
+        {/* PARTNERS */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
 
           {partners.map((partner, index) => (
             <div
               key={index}
-              className="bg-white border border-slate-200 rounded-[20px] p-5 hover:shadow-xl hover:-translate-y-2 transition-all duration-500"
+              className="group bg-white rounded-[28px] border border-slate-100 shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 overflow-hidden"
             >
 
-              <div className="h-20 flex items-center justify-center">
+              <div className="h-2 bg-gradient-to-r from-green-500 via-yellow-400 to-red-500" />
 
-                <img
-                  src={partner.logo}
-                  alt={partner.name}
-                  className="max-h-14 object-contain"
-                />
+              <div className="p-6">
+
+                <div className="h-24 flex items-center justify-center">
+
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    className="max-h-16 object-contain group-hover:scale-110 transition-all duration-500"
+                  />
+
+                </div>
+
+                <h3 className="mt-5 text-center text-[#062b57] font-black text-sm leading-snug">
+                  {partner.name}
+                </h3>
 
               </div>
-
-              <h3 className="mt-4 text-sm font-bold text-center text-[#062b57]">
-                {partner.name}
-              </h3>
 
             </div>
           ))}
 
         </div>
 
-        <div className="mt-10 bg-gradient-to-r from-[#062b57] to-[#0b4d91] rounded-[24px] p-6 text-center text-white">
+        {/* BLOC INSTITUTIONNEL */}
+        <div className="mt-14 rounded-[32px] overflow-hidden">
 
-          <h3 className="text-2xl font-black">
-            Collaboration pour la transparence
-          </h3>
+          <div className="h-2 bg-gradient-to-r from-green-500 via-yellow-400 to-red-500" />
 
-          <p className="text-slate-200 text-sm mt-3 max-w-3xl mx-auto">
-            Le Comité National ITIE Congo travaille en partenariat avec les
-            institutions publiques, les partenaires techniques et financiers
-            ainsi que les organisations internationales afin de renforcer la
-            gouvernance du secteur extractif.
-          </p>
+          <div className="bg-gradient-to-r from-[#062b57] to-[#0b4f91] p-10 text-center text-white">
+
+            <p className="text-cyan-300 uppercase tracking-[0.25em] text-xs font-black">
+              Coopération
+            </p>
+
+            <h3 className="text-3xl lg:text-4xl font-black mt-4">
+              Ensemble pour une gouvernance transparente
+            </h3>
+
+            <p className="text-slate-200 max-w-4xl mx-auto mt-5 leading-relaxed">
+              Le Comité National ITIE Congo collabore avec les institutions
+              publiques, les partenaires techniques et financiers ainsi que
+              les organisations internationales afin de renforcer la transparence,
+              la redevabilité et la gestion responsable des ressources naturelles
+              de la République du Congo.
+            </p>
+
+          </div>
 
         </div>
 
