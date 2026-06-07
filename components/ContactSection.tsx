@@ -48,8 +48,9 @@ export default function ContactSection() {
                     </h3>
 
                     <p className="text-slate-400 text-sm">
-                      Brazzaville, République du Congo
-                    </p>
+  Avenue Amilcar Cabral, Immeuble de l'ARC, 7ème étage,
+  Brazzaville, République du Congo
+</p>
                   </div>
 
                 </div>
@@ -68,8 +69,8 @@ export default function ContactSection() {
                     </h3>
 
                     <p className="text-slate-400 text-sm">
-                      contact@itiecongo.cg
-                    </p>
+  itiecg1@gmail.com
+</p>
                   </div>
 
                 </div>

@@ -25,9 +25,10 @@ export default async function ArticlePage({
         {article.category}
       </p>
 
-      <h1 className="text-5xl font-black text-red-600 mt-4">
-  JE SUIS DANS LE BON FICHIER
-</h1>
+      <h1 className="text-5xl font-black text-[#062b57] mt-4">
+        {article.title}
+      </h1>
+
       <p className="text-slate-500 mt-2">
         {article.date}
       </p>

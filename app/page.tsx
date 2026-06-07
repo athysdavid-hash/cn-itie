@@ -29,7 +29,7 @@ import ContactSection from "@/components/ContactSection"
 
 import Newsletter from "@/components/Newsletter"
 import Footer from "@/components/Footer"
-
+import ContractsPage from "@/components/ContractsPage"
 export default function Home() {
   return (
     <main className="pt-24">
@@ -37,16 +37,16 @@ export default function Home() {
       <Navbar />
 
       <Hero />
+      <Sectors />
 
       {/* <StrategicData /> */}
 
-      <Stats />
+      
 
       <KeyFigures />
 
       <OpenData />
-
-      <Governance />
+<ContractsPage />
 
       <Reports />
 
@@ -54,13 +54,11 @@ export default function Home() {
 
       <LiveStats />
 
-    <section className="max-w-6xl mx-auto px-4 py-8 grid md:grid-cols-2 gap-6">
-  <News />
-  <InteractiveMap />
+    <section className="max-w-6xl mx-auto px-4 py-8">
+  <Documents />
 </section>
-
       <div className="max-w-6xl mx-auto px-4">
-        <Sectors />
+        
       </div>
 
       <Analytics />
@@ -71,7 +69,7 @@ export default function Home() {
 
       <BigCTA />
 
-      <Documents />
+      
 
       <ContactSection />
 

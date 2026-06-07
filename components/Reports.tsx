@@ -1,29 +1,35 @@
 "use client"
 
+import Link from "next/link"
+
 const reports = [
   {
-    year: "2025",
-    category: "ITIE",
-    title: "Rapport ITIE Congo 2025",
-    image: "/reports/rapport-2025.jpg",
-  },
-  {
-    year: "2024",
-    category: "Gouvernance",
-    title: "Réunion du CN-ITIE",
-    image: "/reports/reunion-cnitie.jpg",
-  },
-  {
+    slug: "rapport-itie-2023",
     year: "2023",
-    category: "Pétrole",
-    title: "Plateforme offshore",
-    image: "/reports/plateforme-offshore.jpg",
+    category: "ITIE",
+    title: "Rapport ITIE 2023",
+    image: "/reports/rapport-2023.jpg",
   },
   {
+    slug: "rapport-itie-2022",
     year: "2022",
-    category: "Industries Extractives",
-    title: "Secteur extractif congolais",
-    image: "/reports/secteur-extractif-congo.jpg",
+    category: "ITIE",
+    title: "Rapport ITIE 2022",
+    image: "/reports/rapport-2022.jpg",
+  },
+  {
+    slug: "rapport-itie-2021",
+    year: "2021",
+    category: "ITIE",
+    title: "Rapport ITIE 2021",
+    image: "/reports/rapport-2021.jpg",
+  },
+  {
+    slug: "rapport-itie-2020",
+    year: "2020",
+    category: "Archives",
+    title: "Rapport ITIE 2020",
+    image: "/reports/rapport-2020.jpg",
   },
 ]
 
@@ -81,7 +87,6 @@ export default function Reports() {
               className="group bg-white rounded-[28px] overflow-hidden border border-slate-100 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
             >
 
-              {/* IMAGE */}
               <div className="relative h-[240px] overflow-hidden">
 
                 <img
@@ -92,17 +97,14 @@ export default function Reports() {
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
 
-                {/* YEAR */}
                 <div className="absolute top-4 left-4 bg-white text-[#062b57] px-3 py-1 rounded-full text-xs font-black shadow-lg">
                   {report.year}
                 </div>
 
-                {/* CATEGORY */}
                 <div className="absolute top-4 right-4 bg-cyan-500 text-white px-3 py-1 rounded-full text-[10px] font-black uppercase">
                   {report.category}
                 </div>
 
-                {/* TITLE */}
                 <div className="absolute bottom-4 left-4 right-4">
 
                   <h3 className="text-white text-lg font-black leading-tight">
@@ -113,23 +115,27 @@ export default function Reports() {
 
               </div>
 
-              {/* CONTENT */}
               <div className="p-5">
 
                 <p className="text-slate-500 text-sm leading-relaxed">
                   Publication officielle du Comité National ITIE Congo.
                 </p>
 
-                {/* BUTTONS */}
                 <div className="flex gap-2 mt-5">
 
-                  <button className="flex-1 bg-gradient-to-r from-cyan-500 to-blue-600 text-white py-3 rounded-xl font-black text-sm hover:scale-105 transition-all duration-300">
+                  <Link
+                    href={`/rapport/${report.slug}`}
+                    className="flex-1 bg-gradient-to-r from-cyan-500 to-blue-600 text-white py-3 rounded-xl font-black text-sm hover:scale-105 transition-all duration-300 text-center flex items-center justify-center"
+                  >
                     Consulter
-                  </button>
+                  </Link>
 
-                  <button className="w-12 h-12 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 font-black text-[#062b57] hover:scale-105 transition-all duration-300">
+                  <Link
+                    href={`/rapport/${report.slug}`}
+                    className="w-12 h-12 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 font-black text-[#062b57] hover:scale-105 transition-all duration-300 flex items-center justify-center"
+                  >
                     ↓
-                  </button>
+                  </Link>
 
                 </div>
 

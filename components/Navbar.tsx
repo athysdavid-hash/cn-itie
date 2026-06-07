@@ -23,37 +23,112 @@ export default function Navbar() {
         </div>
 
         {/* NAVIGATION */}
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+ <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
 
-          <Link href="/" className="text-white hover:text-cyan-300 transition">
-            Accueil
-          </Link>
+  <Link href="/" className="text-white hover:text-cyan-300 transition">
+    Accueil
+  </Link>
 
-          <Link href="/rapports" className="text-white hover:text-cyan-300 transition">
-            Rapports
-          </Link>
+  <Link href="/apropos" className="text-white hover:text-cyan-300 transition">
+    À propos
+  </Link>
 
-          <Link href="/opendata" className="text-white hover:text-cyan-300 transition">
-            Open Data
-          </Link>
+  <Link href="/rapport" className="text-white hover:text-cyan-300 transition">
+    Rapport
+  </Link>
 
-          <Link href="/actualites" className="text-white hover:text-cyan-300 transition">
-            Actualités
-          </Link>
+  {/* DOCUMENTATION MENU */}
+  <div className="relative group">
 
-          <Link href="/contact" className="text-white hover:text-cyan-300 transition">
-            Contact
-          </Link>
+    <Link href="/documentation" className="text-white hover:text-cyan-300 transition">
+      Documentation ▾
+    </Link>
 
-        </nav>
+   {/* DROPDOWN */}
+<div className="absolute top-8 left-0 hidden group-hover:block bg-[#062b57] border border-white/10 rounded-xl shadow-xl w-64">
 
-        {/* BUTTON */}
-        <Link
-          href="/opendata"
-          className="hidden lg:flex px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-white text-sm font-bold shadow-lg transition"
-        >
-          Explorer
-        </Link>
+  <Link
+    href="/documentation/hydrocarbures"
+    className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition"
+  >
+    🛢️ Hydrocarbures
+  </Link>
+
+  <Link
+    href="/documentation/mines"
+    className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition"
+  >
+    ⛏️ Mines
+  </Link>
+
+  <Link
+    href="/documentation/actes"
+    className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition"
+  >
+    📄 Actes organisationnels et constitutifs
+    <p className="text-[10px] text-slate-300">
+      Règlement intérieur, statuts, décisions officielles
+    </p>
+  </Link>
+
+  <Link
+    href="/documentation/decrets"
+    className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition"
+  >
+    ⚖️ Décrets
+  </Link>
+
+  <Link
+    href="/documentation/norme-itie"
+    className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition"
+  >
+    🌍 Norme ITIE
+  </Link>
+
+</div>
+  </div>
+
+  <Link href="/opendata" className="text-white hover:text-cyan-300 transition">
+    Open Data
+  </Link>
+
+  <Link href="/actualites" className="text-white hover:text-cyan-300 transition">
+    Actualités
+  </Link>
+
+  <Link href="/contact" className="text-white hover:text-cyan-300 transition">
+    Contact
+  </Link>
+
+</nav>
+
+       {/* RECHERCHE */}
+<div className="hidden lg:flex items-center relative">
+
+  <span className="absolute left-3 text-slate-300">
+    🔍
+  </span>
+
+ <input
+  type="text"
+  placeholder="Rapports, contrats, données..."
+  className="
+    w-72
+    pl-10
+    pr-4
+    py-2
+    rounded-xl
+    bg-white/10
+    border
+    border-white/20
+    text-white
+    placeholder:text-slate-300
+    outline-none
+    focus:border-cyan-400
+    backdrop-blur-xl
+  "
+/>
+</div>
 
       </div>
 

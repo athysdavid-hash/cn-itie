@@ -1,151 +1,177 @@
 "use client"
 
+import { useState } from "react"
+
 const datasets = [
   {
-    title: "Revenus pétroliers",
-    description: "Hydrocarbures et mines",
+    title: "Recettes extractives 2023",
+    description: "925,35 milliards FCFA encaissés par l'État",
     icon: "💰",
     files: "XLSX • CSV",
+    type: "data",
   },
   {
-    title: "Permis miniers",
-    description: "Permis et zones",
-    icon: "📄",
-    files: "GeoJSON",
-  },
-  {
-    title: "Production pétrolière",
-    description: "Volumes nationaux",
+    title: "Production pétrolière 2023",
+    description: "95,65 millions de barils produits",
     icon: "🛢️",
-    files: "CSV • API",
+    files: "CSV • XLSX",
+    type: "data",
   },
   {
-    title: "Contrats publiés",
-    description: "Documents officiels",
-    icon: "📘",
+    title: "Exportations pétrolières",
+    description: "90,56 millions de barils exportés",
+    icon: "🚢",
+    files: "CSV",
+    type: "data",
+  },
+  {
+    title: "Production minière 2023",
+    description: "Cuivre, zinc, diamant et quartz",
+    icon: "⛏️",
+    files: "XLSX",
+    type: "data",
+  },
+  {
+    title: "Contrats PNGF",
+    description: "Bloc offshore majeur de production pétrolière",
+    icon: "🛢️",
+    files: "PDF • CSV",
+    status: "ACTIF",
+    type: "contracts",
+  },
+  {
+    title: "Contrat TCHIBELI-LITANZI II",
+    description: "Exploration et production hydrocarbures",
+    icon: "🛢️",
     files: "PDF",
+    status: "ACTIF",
+    type: "contracts",
   },
   {
- title: "Production nationale d'hydrocarbures",
- description: "Données consolidées",
- icon: "🛢️",
- files: "CSV • XLSX",
-}
+    title: "Contrat KOMBI-LIKALALA-LIBONDO",
+    description: "Bloc offshore stratégique",
+    icon: "🛢️",
+    files: "PDF • XLSX",
+    status: "ACTIF",
+    type: "contracts",
+  },
 ]
 
 export default function OpenData() {
+  const [filter, setFilter] = useState("all")
+
+  const filteredData = datasets.filter((item) => {
+    if (filter === "all") return true
+    return item.type === filter
+  })
+
   return (
-    <section className="py-16 px-4 bg-white overflow-hidden">
+    <section className="py-16 px-4 bg-white">
 
       <div className="max-w-6xl mx-auto">
 
         {/* HEADER */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-6">
 
-          <p className="text-xs font-black tracking-[0.25em] text-cyan-600 uppercase animate-pulse">
+          <p className="text-xs font-black tracking-[0.25em] text-cyan-600 uppercase">
             Open Data
           </p>
 
-          <h2 className="text-2xl lg:text-3xl font-black text-[#062b57] mt-2">
+          <h2 className="text-3xl font-black text-[#062b57] mt-2">
             Centre des données ouvertes
           </h2>
 
-          <p className="text-slate-500 text-sm max-w-2xl mx-auto mt-3">
-            Rapports, statistiques, permis et contrats.
+          <p className="text-slate-500 text-sm mt-2">
+            Données extractives et contrats pétroliers du Congo
           </p>
 
         </div>
 
-        <div className="grid lg:grid-cols-[260px_1fr] gap-5">
+        {/* FILTERS */}
+        <div className="flex justify-center gap-2 mb-8">
 
-          {/* LEFT */}
-          <div className="bg-gradient-to-br from-[#062b57] to-[#0b4d91] rounded-2xl p-5 text-white hover:scale-105 transition-all duration-500 shadow-xl">
+          <button
+            onClick={() => setFilter("all")}
+            className={`px-4 py-2 rounded-xl text-sm font-black transition ${
+              filter === "all"
+                ? "bg-[#062b57] text-white"
+                : "bg-slate-100 text-slate-600"
+            }`}
+          >
+            Tous
+          </button>
 
-            <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-xl mb-4 animate-bounce">
-              📊
-            </div>
+          <button
+            onClick={() => setFilter("data")}
+            className={`px-4 py-2 rounded-xl text-sm font-black transition ${
+              filter === "data"
+                ? "bg-cyan-600 text-white"
+                : "bg-slate-100 text-slate-600"
+            }`}
+          >
+            Données
+          </button>
 
-            <h3 className="text-xl font-black">
-              Open Data
-            </h3>
+          <button
+            onClick={() => setFilter("contracts")}
+            className={`px-4 py-2 rounded-xl text-sm font-black transition ${
+              filter === "contracts"
+                ? "bg-green-600 text-white"
+                : "bg-slate-100 text-slate-600"
+            }`}
+          >
+            Contrats
+          </button>
 
-            <p className="text-sm text-slate-300 mt-2">
-              Données publiques extractives.
-            </p>
+        </div>
 
-            <div className="grid grid-cols-2 gap-3 mt-5">
+        {/* LIST */}
+        <div className="space-y-3">
 
-              <div>
-                <h4 className="text-xl font-black">24+</h4>
-                <p className="text-xs text-slate-300">
-                  Jeux
-                </p>
-              </div>
+          {filteredData.map((item, index) => (
+            <div
+              key={index}
+              className="group bg-[#f8fbfd] border border-slate-200 rounded-2xl p-4 hover:shadow-2xl transition"
+            >
 
-              <div>
-                <h4 className="text-xl font-black">98%</h4>
-                <p className="text-xs text-slate-300">
-                  Ouvertes
-                </p>
-              </div>
+              <div className="flex items-center justify-between">
 
-            </div>
+                <div className="flex items-center gap-3">
 
-            <button className="w-full bg-cyan-500 hover:bg-cyan-400 hover:scale-105 mt-5 py-2 rounded-xl text-sm font-black transition-all duration-300">
-              Explorer
-            </button>
-
-          </div>
-
-          {/* RIGHT */}
-          <div className="space-y-3">
-
-            {datasets.map((item, index) => (
-              <div
-                key={index}
-                className="group bg-[#f8fbfd] border border-slate-200 rounded-2xl p-4 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer"
-              >
-
-                <div className="flex items-center justify-between">
-
-                  <div className="flex items-center gap-3">
-
-                    <div className="w-10 h-10 rounded-xl bg-cyan-50 flex items-center justify-center text-lg group-hover:scale-125 transition-all duration-500">
-                      {item.icon}
-                    </div>
-
-                    <div>
-
-                      <h3 className="text-base font-black text-[#062b57] group-hover:text-cyan-600 transition">
-                        {item.title}
-                      </h3>
-
-                      <p className="text-xs text-slate-500">
-                        {item.description}
-                      </p>
-
-                    </div>
-
+                  <div className="w-10 h-10 rounded-xl bg-cyan-50 flex items-center justify-center text-lg">
+                    {item.icon}
                   </div>
 
-                  <div className="text-right">
+                  <div>
+                    <h3 className="font-black text-[#062b57] group-hover:text-cyan-600">
+                      {item.title}
+                    </h3>
 
-                    <p className="text-xs font-bold text-cyan-600">
-                      {item.files}
+                    <p className="text-xs text-slate-500">
+                      {item.description}
                     </p>
-
-                    <button className="mt-1 w-8 h-8 rounded-lg bg-[#062b57] text-white group-hover:bg-cyan-500 group-hover:rotate-45 transition-all duration-500">
-                      →
-                    </button>
-
                   </div>
 
                 </div>
 
-              </div>
-            ))}
+                <div className="text-right">
 
-          </div>
+                  <p className="text-xs font-bold text-cyan-600">
+                    {item.files}
+                  </p>
+
+                  {item.type === "contracts" && (
+                    <span className="text-[10px] px-2 py-1 rounded-full bg-green-100 text-green-700 font-black">
+                      ACTIF
+                    </span>
+                  )}
+
+                </div>
+
+              </div>
+
+            </div>
+          ))}
 
         </div>
 

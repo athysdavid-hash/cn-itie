@@ -1,7 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react"
-
+import { motion } from "framer-motion"
+import CountUp from "react-countup"
 export default function Hero() {
   const images = [
     "/hero/hero1.jpg",
@@ -39,14 +40,35 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-[#031b34]/90 via-[#031b34]/70 to-[#031b34]/30" />
 
       {/* GLOW */}
-      <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-cyan-400/20 blur-3xl rounded-full" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-500/20 blur-3xl rounded-full" />
+<motion.div
+  className="absolute top-0 left-0 w-[400px] h-[400px] bg-cyan-400/20 blur-3xl rounded-full"
+  animate={{
+    scale: [1, 1.2, 1],
+    opacity: [0.2, 0.4, 0.2],
+  }}
+  transition={{
+    duration: 8,
+    repeat: Infinity,
+  }}
+/>
 
+<motion.div
+  className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-500/20 blur-3xl rounded-full"
+  animate={{
+    scale: [1.2, 1, 1.2],
+    opacity: [0.2, 0.4, 0.2],
+  }}
+  transition={{
+    duration: 10,
+    repeat: Infinity,
+  }}
+/>
       {/* CONTENT */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 w-full">
 
         <div className="grid lg:grid-cols-2 gap-10 items-center">
 
+          {/* LEFT TEXT */}
           <div>
 
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-xl border border-white/20 px-4 py-2 rounded-full mb-6">
@@ -66,9 +88,7 @@ export default function Hero() {
 
             <p className="text-slate-200 text-lg leading-relaxed mt-6 max-w-2xl">
               Transparence des revenus pétroliers, miniers et gaziers en République du Congo.
-              Consultez les rapports ITIE, les données ouvertes, les revenus issus du pétrole,
-              du gaz et des mines ainsi que les informations relatives à la gouvernance des
-              ressources naturelles du Congo.
+              Accédez aux données officielles issues du rapport ITIE 2023.
             </p>
 
             <div className="flex flex-wrap gap-4 mt-8">
@@ -85,40 +105,43 @@ export default function Hero() {
 
           </div>
 
+          {/* RIGHT PANEL */}
           <div className="flex justify-end">
 
             <div className="w-full max-w-lg bg-white/10 backdrop-blur-2xl border border-white/20 rounded-[30px] p-8 shadow-2xl">
 
               <p className="text-cyan-300 uppercase tracking-[0.2em] text-xs font-black">
-                Engagement pour la transparence
+                Données ITIE 2023
               </p>
 
               <h3 className="text-3xl font-black text-white mt-4 leading-tight">
-                Une gestion responsable des ressources naturelles
+                Aperçu du secteur extractif
               </h3>
 
               <p className="text-slate-200 mt-4 leading-relaxed">
-                L'ITIE Congo s'engage à promouvoir une gouvernance transparente,
-                responsable et participative des revenus issus des industries
-                extractives au bénéfice de tous les citoyens.
+                Données officielles issues du rapport ITIE Congo 2023 sur la production et les revenus pétroliers.
               </p>
 
               <div className="grid grid-cols-2 gap-3 mt-8">
 
                 <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
-                  <p className="text-cyan-300 font-black">Transparence</p>
+                  <p className="text-white font-black text-lg">925 Mds</p>
+                  <p className="text-xs text-slate-300">FCFA revenus</p>
                 </div>
 
                 <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
-                  <p className="text-cyan-300 font-black">Redevabilité</p>
+                  <p className="text-white font-black text-lg">95,65M</p>
+                  <p className="text-xs text-slate-300">Barils produits</p>
                 </div>
 
                 <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
-                  <p className="text-cyan-300 font-black">Participation</p>
+                  <p className="text-white font-black text-lg">90,56M</p>
+                  <p className="text-xs text-slate-300">Barils exportés</p>
                 </div>
 
                 <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
-                  <p className="text-cyan-300 font-black">Impact</p>
+                  <p className="text-white font-black text-lg">53,26%</p>
+                  <p className="text-xs text-slate-300">PIB extractif</p>
                 </div>
 
               </div>
@@ -129,34 +152,60 @@ export default function Hero() {
 
         </div>
 
+        {/* GLOBAL STATS BAR */}
         <div className="mt-12">
+  <div className="grid md:grid-cols-4 gap-4 bg-white/10 backdrop-blur-2xl border border-white/10 rounded-[24px] p-6">
 
-          <div className="grid md:grid-cols-4 gap-4 bg-white/10 backdrop-blur-2xl border border-white/10 rounded-[24px] p-6">
+    <motion.div
+      whileHover={{ scale: 1.05, y: -5 }}
+      className="text-center"
+    >
+      <h3 className="text-3xl font-black text-white">
+        <CountUp end={925} duration={3} />
+      </h3>
+      <p className="text-slate-300 mt-2">
+        Mds FCFA revenus
+      </p>
+    </motion.div>
 
-            <div className="text-center">
-              <h3 className="text-3xl font-black text-white">24</h3>
-              <p className="text-slate-300 mt-2">Rapports publiés</p>
-            </div>
+    <motion.div
+      whileHover={{ scale: 1.05, y: -5 }}
+      className="text-center"
+    >
+      <h3 className="text-3xl font-black text-white">
+        <CountUp end={95.65} decimals={2} duration={3} />
+      </h3>
+      <p className="text-slate-300 mt-2">
+        Millions de barils
+      </p>
+    </motion.div>
 
-            <div className="text-center">
-              <h3 className="text-3xl font-black text-white">98%</h3>
-              <p className="text-slate-300 mt-2">Open Data</p>
-            </div>
+    <motion.div
+      whileHover={{ scale: 1.05, y: -5 }}
+      className="text-center"
+    >
+      <h3 className="text-3xl font-black text-white">
+        <CountUp end={90.56} decimals={2} duration={3} />
+      </h3>
+      <p className="text-slate-300 mt-2">
+        Barils exportés
+      </p>
+    </motion.div>
 
-            <div className="text-center">
-              <h3 className="text-3xl font-black text-white">89</h3>
-              <p className="text-slate-300 mt-2">Entreprises</p>
-            </div>
+    <motion.div
+      whileHover={{ scale: 1.05, y: -5 }}
+      className="text-center"
+    >
+      <h3 className="text-3xl font-black text-white">
+        <CountUp end={53.26} decimals={2} duration={3} />
+      </h3>
+      <p className="text-slate-300 mt-2">
+        Contribution au PIB
+      </p>
+    </motion.div>
 
-            <div className="text-center">
-              <h3 className="text-3xl font-black text-white">327</h3>
-              <p className="text-slate-300 mt-2">Permis actifs</p>
-            </div>
-
-          </div>
-
-        </div>
-
+  </div>
+</div>
       </div>
 
       {/* INDICATEURS */}

@@ -1,99 +1,103 @@
-export default function KeyFigures() {
+export default function ItieDashboardAdvanced() {
 
-  const data = [
-    { label: "Hydrocarbures", value: 82 },
-    { label: "Mines", value: 64 },
-    { label: "Exportations", value: 91 },
-    { label: "Recettes publiques", value: 74 },
-    { label: "Investissements", value: 58 },
-    { label: "Contribution PIB", value: 77 },
+  const kpis = [
+    {
+      label: "Contribution au PIB",
+      value: 53.26,
+      suffix: "%",
+      note: "Part du secteur extractif dans l'économie nationale (ITIE 2023)"
+    },
+    {
+      label: "Revenus budgétaires",
+      value: 66.41,
+      suffix: "%",
+      note: "Part des revenus de l'État issus des industries extractives"
+    },
+    {
+      label: "Exportations",
+      value: 72.42,
+      suffix: "%",
+      note: "Poids des hydrocarbures et minerais dans les exportations"
+    },
+    {
+      label: "Emploi direct",
+      value: 0.50,
+      suffix: "%",
+      note: "Faible part due au caractère capitalistique du secteur"
+    }
   ]
 
   return (
-    <section className="relative bg-[#061f3a] py-16 overflow-hidden">
+    <section className="bg-[#061f3a] py-20 relative overflow-hidden">
 
       {/* BACKGROUND GLOW */}
-      <div className="absolute top-0 left-0 w-[350px] h-[350px] bg-cyan-500/10 blur-3xl rounded-full" />
-      <div className="absolute bottom-0 right-0 w-[350px] h-[350px] bg-blue-500/10 blur-3xl rounded-full" />
+      <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-cyan-500/10 blur-3xl rounded-full" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-500/10 blur-3xl rounded-full" />
 
-      <div className="relative max-w-6xl mx-auto px-4">
+      <div className="relative max-w-7xl mx-auto px-6">
 
         {/* HEADER */}
-        <div className="mb-8">
-          <h2 className="text-white text-2xl lg:text-3xl font-black">
-            Key Indicators
+        <div className="mb-12">
+          <p className="text-cyan-300 uppercase tracking-[0.3em] text-xs font-black">
+            ITIE Congo • Rapport 2023
+          </p>
+
+          <h2 className="text-white text-3xl lg:text-5xl font-black mt-4">
+            Dashboard des indicateurs macroéconomiques extractifs
           </h2>
 
-          <p className="text-slate-300 mt-3 max-w-xl text-sm">
-            Tableau de bord synthétique du secteur extractif en République du Congo.
+          <p className="text-slate-300 mt-4 max-w-3xl leading-7">
+            Synthèse des principaux indicateurs macroéconomiques issus du rapport ITIE 2023,
+            couvrant l’impact du secteur pétrolier, gazier, minier et forestier sur l’économie nationale.
           </p>
         </div>
 
-        {/* KPI CARDS */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        {/* KPI GRID */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-          <div className="bg-white/5 border border-white/10 rounded-xl p-4">
-            <p className="text-slate-400 text-xs">Performance globale</p>
-            <h3 className="text-2xl font-black text-white mt-1">78%</h3>
-          </div>
-
-          <div className="bg-white/5 border border-white/10 rounded-xl p-4">
-            <p className="text-slate-400 text-xs">Secteurs actifs</p>
-            <h3 className="text-2xl font-black text-white mt-1">5</h3>
-          </div>
-
-          <div className="bg-white/5 border border-white/10 rounded-xl p-4">
-            <p className="text-slate-400 text-xs">Données ouvertes</p>
-            <h3 className="text-2xl font-black text-white mt-1">98%</h3>
-          </div>
-
-          <div className="bg-white/5 border border-white/10 rounded-xl p-4">
-            <p className="text-slate-400 text-xs">Impact économique</p>
-            <h3 className="text-2xl font-black text-white mt-1">A+</h3>
-          </div>
-
-        </div>
-
-        {/* CHART GRID */}
-        <div className="grid lg:grid-cols-2 gap-4">
-
-          {data.map((item, index) => (
+          {kpis.map((kpi, i) => (
             <div
-              key={index}
-              className="bg-white/5 border border-white/10 rounded-xl p-4"
+              key={i}
+              className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur"
             >
 
-              <div className="flex justify-between mb-2">
-                <span className="text-white text-sm font-semibold">
-                  {item.label}
-                </span>
+              <p className="text-slate-300 text-sm">
+                {kpi.label}
+              </p>
 
-                <span className="text-cyan-300 text-sm font-bold">
-                  {item.value}%
-                </span>
+              <h3 className="text-3xl font-black text-white mt-3">
+                {kpi.value}{kpi.suffix}
+              </h3>
+
+              {/* PROGRESS BAR */}
+              <div className="mt-4 w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"
+                  style={{ width: `${kpi.value}%` }}
+                />
               </div>
 
-              <div className="relative w-full h-3 bg-white/10 rounded-full overflow-hidden">
-
-                <div
-                  className="absolute inset-0 opacity-10"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(90deg, rgba(255,255,255,0.25) 1px, transparent 1px)",
-                    backgroundSize: "25px 100%",
-                  }}
-                />
-
-                <div
-                  className="h-full bg-gradient-to-r from-cyan-400 via-cyan-300 to-blue-500 rounded-full"
-                  style={{ width: `${item.value}%` }}
-                />
-
-              </div>
+              <p className="text-slate-400 text-xs mt-3 leading-5">
+                {kpi.note}
+              </p>
 
             </div>
           ))}
 
+        </div>
+
+        {/* INSIGHT BLOCK */}
+        <div className="mt-14 bg-white/5 border border-white/10 rounded-3xl p-8">
+          <h3 className="text-white text-xl font-black">
+            Analyse institutionnelle
+          </h3>
+
+          <p className="text-slate-300 mt-4 leading-8">
+            Le rapport ITIE 2023 confirme la forte dépendance de l’économie congolaise
+            aux industries extractives, avec une contribution dominante aux exportations
+            et aux recettes publiques. Toutefois, l’impact sur l’emploi reste limité,
+            reflétant le caractère fortement capitalistique du secteur.
+          </p>
         </div>
 
       </div>

@@ -152,3 +152,7 @@ section {
 .animate-fadeIn {
   animation: fadeIn 1s ease-out;
 }
+.leaflet-container {
+  height: 500px;
+  width: 100%;
+}

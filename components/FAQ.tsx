@@ -6,22 +6,32 @@ const faqs = [
   {
     question: "Qu’est-ce que l’ITIE ?",
     answer:
-      "Initiative internationale visant à renforcer la transparence dans les industries extractives.",
+      "L’Initiative pour la Transparence dans les Industries Extractives (ITIE) est une norme internationale qui impose la publication et la vérification des revenus issus du pétrole, du gaz et des mines afin de renforcer la transparence et la redevabilité.",
   },
   {
-    question: "Quels secteurs sont couverts ?",
+    question: "Quel est le rôle du Comité National ITIE Congo ?",
     answer:
-      "Hydrocarbures, mines, forêts et autres ressources extractives.",
+      "Le Comité National ITIE Congo est l’organe tripartite chargé de la mise en œuvre de la norme ITIE. Il regroupe l’État, les entreprises extractives et la société civile pour superviser la production et la publication des rapports.",
   },
   {
-    question: "Où télécharger les rapports ?",
+    question: "Quels secteurs sont couverts par l’ITIE au Congo ?",
     answer:
-      "Dans les sections Rapports et Open Data du portail.",
+      "Le périmètre couvre principalement les hydrocarbures (pétrole et gaz) et les industries minières, incluant la production, les exportations et les revenus fiscaux associés.",
   },
   {
-    question: "Comment accéder aux données ouvertes ?",
+    question: "Où consulter les données et rapports ITIE ?",
     answer:
-      "Via la plateforme Open Data du Comité National ITIE Congo.",
+      "Les rapports ITIE et les jeux de données ouverts sont disponibles dans les sections 'Rapports' et 'Open Data' du portail officiel du Comité National ITIE Congo.",
+  },
+  {
+    question: "À quoi servent les données publiées par l’ITIE ?",
+    answer:
+      "Elles permettent de comparer les paiements des entreprises et les recettes perçues par l’État afin de garantir la transparence, réduire les écarts et renforcer la gouvernance du secteur extractif.",
+  },
+  {
+    question: "Qui valide les rapports ITIE ?",
+    answer:
+      "Les rapports sont validés par le Comité National ITIE après production par un administrateur indépendant et vérification des données fournies par les parties prenantes.",
   },
 ]
 
