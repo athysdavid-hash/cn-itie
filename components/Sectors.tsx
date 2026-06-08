@@ -1,6 +1,6 @@
 
 import Link from "next/link"
-import { permits } from "@/data/permits"
+import { permits } from "../data/permits"
 const sectors = [
   {
     slug: "hydrocarbures",
