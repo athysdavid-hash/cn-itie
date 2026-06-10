@@ -4,70 +4,149 @@ import { useMemo, useState } from "react"
 
 const datasets = [
   {
-    title: "Production pétrolière nationale (2023)",
+    title: "Rapport ITIE Congo 2023",
     description:
-      "≈ 262 047 barils/jour produits (offshore profond, onshore et conventionnel)",
-    icon: "🛢️",
-    files: "ITIE 2023 • MINISTÈRE DES HYDROCARBURES",
+      "Rapport annuel présentant les paiements des entreprises extractives et les revenus perçus par l'État.",
+    icon: "📘",
+    files: "PDF",
     type: "data",
-    source: "ITIE Congo 2023",
+    source: "ITIE Congo",
   },
+
   {
-    title: "Principaux opérateurs pétroliers",
+    title: "Recettes extractives 2023",
     description:
-      "TotalEnergies EP Congo, Perenco Congo, ENI Congo (majorité de la production nationale)",
-    icon: "🏭",
-    files: "ITIE 2023",
-    type: "data",
-    source: "ITIE Congo 2023",
-  },
-  {
-    title: "Cadre institutionnel hydrocarbures",
-    description:
-      "Ministère des Hydrocarbures : politique, attribution des titres, supervision de la production",
-    icon: "🏛️",
-    files: "Rapport ITIE 2023",
-    type: "data",
-    source: "ITIE Congo 2023",
-  },
-  {
-    title: "Recettes extractives de l’État",
-    description:
-      "Secteur pétrolier = principale source des revenus publics du Congo (~majorité des recettes fiscales)",
+      "925,35 milliards FCFA de recettes générées par le secteur extractif.",
     icon: "💰",
-    files: "ITIE 2023 • Trésor Public",
+    files: "XLSX • CSV",
     type: "data",
-    source: "ITIE Congo 2023",
+    source: "Rapport ITIE 2023",
   },
+
   {
-    title: "Contrat PNGF (Bloc offshore)",
+    title: "Production pétrolière 2023",
     description:
-      "Bloc stratégique offshore lié à la production pétrolière nationale",
+      "95,65 millions de barils de pétrole produits sur l'ensemble du territoire national.",
     icon: "🛢️",
-    files: "ITIE 2023",
-    status: "ACTIF",
-    type: "contracts",
+    files: "XLSX • CSV",
+    type: "data",
     source: "Ministère des Hydrocarbures",
   },
+
   {
-    title: "Tchibeli-Litanzi II",
+    title: "Production gazière 2023",
     description:
-      "Exploration et production d’hydrocarbures en zone offshore",
-    icon: "🛢️",
-    files: "ITIE 2023",
-    status: "ACTIF",
-    type: "contracts",
+      "43 milliards de pieds cubes de gaz naturel produits.",
+    icon: "🔥",
+    files: "XLSX • CSV",
+    type: "data",
     source: "ITIE Congo 2023",
   },
+
   {
-    title: "Kombi-Likalala-Libondo",
+    title: "Exportations extractives",
     description:
-      "Permis stratégique d’exploitation pétrolière offshore",
-    icon: "🛢️",
-    files: "ITIE 2023",
+      "Le secteur extractif représente environ 82 % des exportations nationales.",
+    icon: "🚢",
+    files: "CSV",
+    type: "data",
+    source: "Banque des États de l'Afrique Centrale",
+  },
+
+  {
+    title: "Registre des permis pétroliers",
+    description:
+      "Liste des blocs, permis d'exploration et permis d'exploitation en vigueur.",
+    icon: "📍",
+    files: "XLSX",
+    type: "data",
+    source: "Ministère des Hydrocarbures",
+  },
+
+  {
+    title: "Contrat Marine XII",
+    description:
+      "Contrat de partage de production entre ENI Congo et la SNPC.",
+    icon: "📄",
+    files: "PDF",
     status: "ACTIF",
     type: "contracts",
-    source: "ITIE Congo 2023",
+    source: "ITIE Congo",
+  },
+
+  {
+    title: "Contrat Marine XX",
+    description:
+      "Contrat de partage de production du bloc offshore Marine XX.",
+    icon: "📄",
+    files: "PDF",
+    status: "ACTIF",
+    type: "contracts",
+    source: "ITIE Congo",
+  },
+
+  {
+    title: "Contrat Moho-Bilondo",
+    description:
+      "Projet offshore majeur exploité par TotalEnergies EP Congo.",
+    icon: "📄",
+    files: "PDF",
+    status: "ACTIF",
+    type: "contracts",
+    source: "ITIE Congo",
+  },
+
+  {
+    title: "Contrat Nkossa",
+    description:
+      "Convention pétrolière et documents contractuels associés.",
+    icon: "📄",
+    files: "PDF",
+    status: "ACTIF",
+    type: "contracts",
+    source: "ITIE Congo",
+  },
+
+  {
+    title: "Projet Kola Potash",
+    description:
+      "Projet minier de potasse situé dans le Kouilou.",
+    icon: "⛏️",
+    files: "PDF",
+    status: "PROJET",
+    type: "contracts",
+    source: "Ministère des Mines",
+  },
+
+  {
+    title: "Projet Zanaga Iron Ore",
+    description:
+      "Projet de développement du minerai de fer dans le département de la Lékoumou.",
+    icon: "⛏️",
+    files: "PDF",
+    status: "PROJET",
+    type: "contracts",
+    source: "Ministère des Mines",
+  },
+
+  {
+    title: "Concessions forestières",
+    description:
+      "Liste des concessions forestières attribuées et exploitées.",
+    icon: "🌳",
+    files: "XLSX",
+    type: "data",
+    source: "Ministère de l'Économie Forestière",
+  },
+
+  {
+    title: "Production forestière",
+    description:
+      "Volumes de bois exploités et exportés par essence forestière.",
+    icon: "🪵",
+    files: "CSV",
+    type: "data",
+    source: "Direction Générale de l'Économie Forestière",
   },
 ]
 

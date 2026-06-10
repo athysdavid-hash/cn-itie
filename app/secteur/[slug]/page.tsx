@@ -1,18 +1,20 @@
+"use client"
+
+import { use } from "react"
 import { sectors } from "@/data/sectors"
 
-export default async function SectorPage({
+export default function SectorPage({
   params,
 }: {
   params: Promise<{ slug: string }>
 }) {
-  const { slug } = await params
+  const { slug } = use(params)
 
-  const sector =
-    sectors[slug as keyof typeof sectors]
+  const sector = sectors[slug as keyof typeof sectors]
 
   if (!sector) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-4xl font-black">
+      <div className="min-h-screen flex items-center justify-center text-3xl font-black">
         Secteur introuvable
       </div>
     )
@@ -22,141 +24,283 @@ export default async function SectorPage({
     <main className="bg-[#f4f8fb] min-h-screen">
 
       {/* HERO */}
-      <section className="relative h-[500px] overflow-hidden">
+      <section
+        className={`relative h-[350px] flex items-end bg-gradient-to-r ${sector.color}`}
+      >
+        <div className="absolute inset-0 bg-black/40" />
 
-        <img
-          src={sector.image}
-          alt={sector.title}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-
-        <div className="absolute inset-0 bg-gradient-to-t from-[#02152d] via-[#02152d]/70 to-transparent" />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 h-full flex flex-col justify-end pb-16">
-
-          <p className="text-cyan-300 uppercase tracking-[0.25em] font-black text-sm">
-            République du Congo
-          </p>
-
-          <h1 className="text-5xl lg:text-7xl font-black text-white mt-4">
+        <div className="relative z-10 max-w-7xl mx-auto w-full px-6 pb-12">
+          <h1 className="text-5xl lg:text-6xl font-black text-white">
             {sector.title}
           </h1>
 
-          <p className="text-slate-200 mt-4 max-w-3xl text-lg">
-            Secteur stratégique des industries extractives de la République du Congo.
+          <p className="text-slate-200 mt-3 max-w-3xl">
+            {sector.desc}
           </p>
-
         </div>
-
       </section>
 
-      {/* STATS */}
-      <section className="max-w-7xl mx-auto px-4 -mt-16 relative z-20">
+      {/* CONTENU */}
+      <section className="max-w-7xl mx-auto px-4 py-10">
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid lg:grid-cols-2 gap-6">
 
-          <div className="bg-white rounded-3xl p-6 shadow-xl">
-            <p className="text-slate-500 text-sm">
-              Transparence
-            </p>
+          {/* CONTRATS */}
+          <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
 
-            <h3 className="text-3xl font-black text-[#062b57] mt-2">
-              ITIE
-            </h3>
-          </div>
-
-          <div className="bg-white rounded-3xl p-6 shadow-xl">
-            <p className="text-slate-500 text-sm">
-              Données
-            </p>
-
-            <h3 className="text-3xl font-black text-[#062b57] mt-2">
-              Open Data
-            </h3>
-          </div>
-
-          <div className="bg-white rounded-3xl p-6 shadow-xl">
-            <p className="text-slate-500 text-sm">
-              Gouvernance
-            </p>
-
-            <h3 className="text-3xl font-black text-[#062b57] mt-2">
-              3 Collèges
-            </h3>
-          </div>
-
-          <div className="bg-white rounded-3xl p-6 shadow-xl">
-            <p className="text-slate-500 text-sm">
-              Pays
-            </p>
-
-            <h3 className="text-3xl font-black text-[#062b57] mt-2">
-              🇨🇬 Congo
-            </h3>
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* ARTICLE */}
-      <section className="max-w-7xl mx-auto px-4 py-12">
-
-        <div className="bg-white rounded-[32px] shadow-xl border border-slate-200 overflow-hidden">
-
-          <div className="p-8 lg:p-14">
-
-            <div className="flex items-center gap-3 mb-6">
-
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white font-black">
-                CN
-              </div>
-
-              <div>
-                <p className="font-black text-[#062b57]">
-                  CN-ITIE Congo
-                </p>
-
-                <p className="text-slate-500 text-sm">
-                  Comité National ITIE
-                </p>
-              </div>
-
-            </div>
-
-            <h2 className="text-3xl font-black text-[#062b57] mb-8">
-              Présentation du secteur
+            <h2 className="text-2xl font-black text-[#062b57] mb-4">
+              📄 Contrats
             </h2>
 
-            <div className="text-slate-700 text-lg leading-9 whitespace-pre-line">
-              {sector.content}
+            <div className="space-y-3">
+
+              {sector.contracts?.map((contract: any, i: number) => (
+
+                <a
+                  key={i}
+                  href={contract.pdf || "#"}
+                  target="_blank"
+                  className="block bg-slate-50 border border-slate-200 rounded-xl p-4 hover:border-cyan-500 hover:bg-cyan-50 transition"
+                >
+
+                  <h3 className="font-black text-[#062b57]">
+                    {typeof contract === "string"
+                      ? contract
+                      : contract.name}
+                  </h3>
+
+                  {typeof contract !== "string" && (
+                    <>
+                      <p className="text-sm text-slate-500 mt-1">
+                        {contract.operator}
+                      </p>
+
+                      <span className="text-cyan-600 text-sm font-bold">
+                        Ouvrir le contrat →
+                      </span>
+                    </>
+                  )}
+
+                </a>
+
+              ))}
+
+            </div>
+
+          </div>
+
+       {/* PERMIS */}
+<div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm lg:col-span-2">
+
+  <div className="flex items-center justify-between mb-6">
+
+    <div>
+      <h2 className="text-2xl font-black text-[#062b57]">
+        📍 Registre des permis
+      </h2>
+
+      <p className="text-sm text-slate-500 mt-1">
+        Registre des titres extractifs, permis d'exploration et d'exploitation.
+      </p>
+    </div>
+
+    <span className="px-4 py-2 rounded-xl bg-cyan-50 text-cyan-700 text-sm font-black">
+      {sector.permits?.length} permis
+    </span>
+
+  </div>
+
+  <div className="overflow-x-auto">
+
+    <table className="w-full">
+
+      <thead>
+
+        <tr className="border-b border-slate-200 text-left">
+
+          <th className="pb-3 font-black text-[#062b57]">
+            Permis
+          </th>
+
+          <th className="pb-3 font-black text-[#062b57]">
+            Opérateur
+          </th>
+
+          <th className="pb-3 font-black text-[#062b57]">
+            Type
+          </th>
+
+          <th className="pb-3 font-black text-[#062b57]">
+            Année
+          </th>
+
+          <th className="pb-3 font-black text-[#062b57]">
+            Statut
+          </th>
+
+          <th className="pb-3 font-black text-[#062b57]">
+            Documents
+          </th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        {sector.permits?.map((permit: any, i: number) => (
+
+          <tr
+            key={i}
+            className="border-b border-slate-100 hover:bg-slate-50 transition"
+          >
+
+            <td className="py-4">
+
+              <div className="font-black text-[#062b57]">
+                {permit.name}
+              </div>
+
+              <div className="text-xs text-slate-500 mt-1">
+                {permit.decree}
+              </div>
+
+            </td>
+
+            <td className="py-4 text-slate-700">
+              {permit.operator}
+            </td>
+
+            <td className="py-4 text-slate-700">
+              {permit.type}
+            </td>
+
+            <td className="py-4 text-slate-700">
+              {permit.year}
+            </td>
+
+            <td className="py-4">
+
+              <span className="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-black">
+                {permit.status}
+              </span>
+
+            </td>
+
+            <td className="py-4">
+
+              <div className="flex gap-2">
+
+                <button
+                  className="px-3 py-2 rounded-lg border border-slate-200 text-sm hover:bg-slate-50"
+                >
+                  Loi
+                </button>
+
+                <a
+                  href={permit.pdf || "#"}
+                  target="_blank"
+                  className="px-3 py-2 rounded-lg bg-cyan-600 text-white text-sm font-bold hover:bg-cyan-700"
+                >
+                  PDF
+                </a>
+
+              </div>
+
+            </td>
+
+          </tr>
+
+        ))}
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+          {/* LOIS */}
+          <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
+
+            <h2 className="text-2xl font-black text-[#062b57] mb-4">
+              ⚖️ Cadre juridique
+            </h2>
+
+            <div className="space-y-3">
+
+              {sector.laws?.map((item, i) => (
+                <div
+                  key={i}
+                  className="bg-slate-50 border border-slate-200 rounded-xl p-3"
+                >
+                  {item}
+                </div>
+              ))}
+
+            </div>
+
+          </div>
+
+          {/* PRODUCTION */}
+          <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
+
+            <h2 className="text-2xl font-black text-[#062b57] mb-4">
+              📊 Production
+            </h2>
+
+            <div className="space-y-3">
+
+              {sector.production &&
+                Object.entries(sector.production).map(([key, value]) => (
+                  <div
+                    key={key}
+                    className="flex justify-between bg-slate-50 border border-slate-200 rounded-xl p-3"
+                  >
+                    <span className="capitalize font-medium">
+                      {key}
+                    </span>
+
+                    <span className="font-black text-[#062b57]">
+                      {String(value)}
+                    </span>
+                  </div>
+                ))}
+
             </div>
 
           </div>
 
         </div>
 
-      </section>
+        {"revenues" in sector && sector.revenues && (
+          <div className="mt-6 bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
 
-      {/* CTA */}
-      <section className="max-w-7xl mx-auto px-4 pb-16">
+            <h2 className="text-2xl font-black text-[#062b57] mb-4">
+              💰 Revenus extractifs
+            </h2>
 
-        <div className="rounded-[32px] bg-gradient-to-r from-[#062b57] to-[#0b4d91] p-10 text-center text-white">
+            <div className="grid md:grid-cols-3 gap-4">
 
-          <p className="uppercase tracking-[0.25em] text-cyan-300 text-xs font-black">
-            CN-ITIE Congo
-          </p>
+              {Object.entries(sector.revenues).map(([key, value]) => (
+                <div
+                  key={key}
+                  className="bg-slate-50 border border-slate-200 rounded-xl p-4"
+                >
+                  <p className="text-slate-500 text-sm capitalize">
+                    {key.replace("_", " ")}
+                  </p>
 
-          <h2 className="text-3xl lg:text-4xl font-black mt-4">
-            Transparence des industries extractives
-          </h2>
+                  <p className="font-black text-[#062b57] mt-2">
+                    {String(value)}
+                  </p>
+                </div>
+              ))}
 
-          <p className="text-slate-200 mt-4 max-w-3xl mx-auto">
-            Le Comité National ITIE Congo œuvre pour une gestion transparente,
-            responsable et durable des ressources naturelles de la République du Congo.
-          </p>
+            </div>
 
-        </div>
+          </div>
+        )}
 
       </section>
 

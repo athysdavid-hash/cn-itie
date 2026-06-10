@@ -1,73 +1,305 @@
 export const sectors = {
   hydrocarbures: {
     title: "Hydrocarbures",
-    image: "/reports/plateforme-offshore.jpg",
-   content: `
-Le secteur des hydrocarbures constitue le pilier de l'économie de la République du Congo. Grâce à ses importantes réserves pétrolières offshore et onshore, le pays figure parmi les principaux producteurs de pétrole d'Afrique centrale. Les activités pétrolières sont principalement concentrées dans le bassin côtier de Pointe-Noire, dans le département du Kouilou ainsi que dans les zones maritimes offshore.
+    desc:
+      "Pétrole et gaz naturel : principal secteur extractif de la République du Congo.",
 
-Depuis plusieurs décennies, les revenus issus des hydrocarbures représentent une part significative des recettes publiques, des exportations nationales et des investissements stratégiques. Les entreprises opérant dans le secteur contribuent au financement de l'économie nationale à travers les impôts, les redevances, les dividendes et les autres paiements effectués à l'État.
+    color: "from-cyan-500 to-blue-600",
 
-Le développement du secteur pétrolier s'accompagne d'importants défis liés à la gouvernance, à la transparence des revenus, à la protection de l'environnement et à la diversification économique. C'est dans ce contexte que le Comité National ITIE Congo joue un rôle essentiel en favorisant la publication régulière des données relatives aux revenus extractifs.
+    contracts: [
+      {
+        name: "Marine XII",
+        operator: "ENI Congo / SNPC",
+        pdf: "#",
+      },
 
-La mise en œuvre de la Norme ITIE permet aux citoyens, aux administrations publiques, aux entreprises et aux organisations de la société civile d'accéder à des informations fiables concernant la gestion des ressources naturelles du pays. Cette démarche contribue à renforcer la confiance, la redevabilité et la bonne gouvernance du secteur extractif.
+      {
+        name: "Marine XX",
+        operator: "Woodside Energy / SNPC",
+        pdf: "#",
+      },
 
-Parallèlement à la production pétrolière, la République du Congo poursuit le développement de ses ressources gazières afin d'accroître la valeur ajoutée locale, de soutenir la transition énergétique et de renforcer la sécurité énergétique nationale. Plusieurs projets visent notamment la valorisation du gaz associé et le développement d'infrastructures adaptées aux besoins futurs du pays.
+      {
+        name: "Moho-Bilondo",
+        operator: "TotalEnergies EP Congo / SNPC",
+        pdf: "#",
+      },
 
-À travers ses actions de suivi, de divulgation et de concertation multipartite, le CN-ITIE Congo contribue à promouvoir une gestion transparente et durable des ressources hydrocarbures au bénéfice de l'ensemble de la population congolaise.
-`,
+      {
+        name: "Nkossa",
+        operator: "TotalEnergies EP Congo / SNPC",
+        pdf: "#",
+      },
+    ],
+
+    permits: [
+    {
+  name: "Marine III",
+  operator: "SNPC",
+  type: "Exploration / Production",
+  decree: "Décret n°2005-294 du 18/07/2005",
+  law: "Loi n°10-2006 du 30/03/2006",
+  year: "2005",
+  status: "Actif",
+    pdf: "/documents/permis/marine-iii.pdf",
+},
+
+      {
+        name: "Kayo",
+        operator: "Wing Wah",
+        type: "Exploration",
+        decree: "Décret n°2006-173 du 14/04/2006",
+        law: "Loi n°07-2008 du 07/04/2008",
+        status: "Actif",
+        pdf: "#",
+      },
+
+      {
+        name: "Ngoki",
+        operator: "SNPC",
+        type: "Exploration",
+        decree: "Décret n°2006-427 du 31/07/2006",
+        law: "Loi n°29-06 du 05/10/2006",
+        status: "Actif",
+        pdf: "#",
+      },
+
+      {
+        name: "Mayombe",
+        operator: "SNPC / PP",
+        type: "Exploration",
+        decree: "Décret n°2006-426 du 31/07/2006",
+        law: "-",
+        status: "Actif",
+        pdf: "#",
+      },
+
+      {
+        name: "Marine XIII",
+        operator: "SNPC",
+        type: "Exploration / Production",
+        decree: "Décret n°2008-54 du 28/03/2008",
+        law: "Loi n°33-2008 du 12/11/2008",
+        status: "Actif",
+        pdf: "#",
+      },
+
+      {
+        name: "Haute Mer A",
+        operator: "SNPC",
+        type: "Offshore",
+        decree: "Décret n°2009-228 du 30/07/2009",
+        law: "Loi n°03-2009 du 22/09/2009",
+        status: "Actif",
+        pdf: "#",
+      },
+
+      {
+        name: "Haute Mer B",
+        operator: "SNPC",
+        type: "Offshore",
+        decree: "Décret n°2013-382 du 19/07/2013",
+        law: "Loi n°22-2014 du 13/06/2014",
+        status: "Actif",
+        pdf: "#",
+      },
+
+      {
+        name: "Mopongo",
+        operator: "SNPC",
+        type: "Exploration",
+        decree: "Décret n°2013-378 du 19/07/2013",
+        law: "-",
+        status: "Actif",
+        pdf: "#",
+      },
+
+      {
+        name: "Ngolo",
+        operator: "SNPC",
+        type: "Exploration",
+        decree: "Décret n°2013-379 du 19/07/2013",
+        law: "-",
+        status: "Actif",
+        pdf: "#",
+      },
+
+      {
+        name: "Marine XXI",
+        operator: "SNPC",
+        type: "Exploration",
+        decree: "Décret n°2018-485 du 26/12/2018",
+        law: "-",
+        status: "Actif",
+        pdf: "#",
+      },
+
+      {
+        name: "Marine XXVII",
+        operator: "SNPC",
+        type: "Exploration",
+        decree: "Décret n°2018-486 du 26/12/2018",
+        law: "Loi n°50-2019",
+        status: "Actif",
+        pdf: "#",
+      },
+
+      {
+        name: "Marine XXVIII",
+        operator: "SNPC",
+        type: "Exploration",
+        decree: "Décret n°2018-487 du 26/12/2018",
+        law: "Loi n°51-2019",
+        status: "Actif",
+        pdf: "#",
+      },
+
+      {
+        name: "Marine XX",
+        operator: "TotalEnergies / SNPC",
+        type: "Exploration",
+        decree: "Décret n°2019-355 du 30/11/2019",
+        law: "Loi n°45-2019",
+        status: "Actif",
+        pdf: "#",
+      },
+
+      {
+        name: "Nanga I",
+        operator: "SNPC",
+        type: "Exploration",
+        decree: "Décret n°2019-356 du 30/11/2019",
+        law: "Loi n°47-2019",
+        status: "Actif",
+        pdf: "#",
+      },
+
+      {
+        name: "Mokélémbémbé",
+        operator: "SNPC",
+        type: "Exploration",
+        decree: "Décret n°2015-93 du 13/01/2015",
+        law: "Loi n°48-2019",
+        status: "Actif",
+        pdf: "#",
+      },
+    ],
+
+    laws: [
+      "Loi n°24-2016 portant Code des hydrocarbures",
+      "Loi n°28-2019 relative au régime fiscal pétrolier",
+      "Contrats de Partage de Production (CPP)",
+      "Participation obligatoire de la SNPC dans les titres pétroliers",
+    ],
+
+    production: {
+      pétrole: "95,65 millions de barils (2023)",
+      gaz: "43 milliards de pieds cubes",
+      exportations: "≈ 82 % des exportations nationales",
+    },
+
+    revenues: {
+      recettes: "925,35 milliards FCFA (2023)",
+      budget: "≈ 60 % des recettes de l'État",
+      source: "Rapport ITIE Congo 2023",
+    },
   },
 
-  gaz: {
-    title: "Gaz naturel",
-    image: "/reports/plateforme-offshore.jpg",
-   content: `
-Le gaz naturel constitue une ressource stratégique pour l'avenir énergétique de la République du Congo. Longtemps considéré comme un sous-produit de l'exploitation pétrolière, il occupe aujourd'hui une place croissante dans les politiques nationales de développement économique et industriel.
+  foret: {
+    title: "Forêt",
+    desc:
+      "Exploitation durable des ressources forestières et valorisation du bois tropical.",
 
-Le Congo dispose d'importantes ressources gazières associées aux activités offshore et onshore. La valorisation de ces ressources permet non seulement d'accroître les revenus du secteur extractif mais également de soutenir le développement des infrastructures énergétiques du pays.
+    color: "from-green-500 to-emerald-600",
 
-Le développement de l'industrie gazière contribue à améliorer l'approvisionnement en énergie des ménages, des entreprises et des industries. Il favorise également la création de nouvelles opportunités économiques dans les domaines de la transformation, du transport et de la production d'électricité.
+    contracts: [
+       {
+    name: "Convention d'Aménagement et de Transformation (CAT)",
+    operator: "CIB",
+    pdf: "#",
+  },
+        {
+    name: "Convention forestière UFA Kabo",
+    operator: "CIB",
+    pdf: "#",
+  },
+  {
+    name: "Convention forestière Pokola",
+    operator: "CIB",
+    pdf: "#",
+  },
+     {
+    name: "Convention forestière Ngombe",
+    operator: "IFO",
+    pdf: "#",
+  },
+    ],
 
-La réduction du torchage du gaz constitue également un objectif majeur. Cette démarche vise à limiter les impacts environnementaux liés aux émissions de gaz à effet de serre tout en valorisant davantage les ressources disponibles.
+    permits: [
+      "Permis d'exploitation forestière",
+      "Titres forestiers",
+      "Concessions forestières",
+    ],
 
-Le gouvernement de la République du Congo encourage les investissements destinés à développer les infrastructures de collecte, de traitement et de transport du gaz naturel. Ces projets participent à la diversification du secteur énergétique national et renforcent la compétitivité de l'économie congolaise.
+    laws: [
+      "Code forestier 2020",
+      "Réglementation sur la gestion durable",
+    ],
 
-À travers la transparence des données et le suivi des revenus générés par les activités gazières, le CN-ITIE Congo contribue à une meilleure gouvernance des ressources naturelles et à une gestion durable du patrimoine énergétique national.
-`,
+    production: {
+      bois: "Bois tropicaux certifiés",
+      essences: "Okoumé, Sapelli, Sipo",
+    },
   },
 
   mines: {
     title: "Mines",
-    image: "/reports/secteur-extractif-congo.jpg",
-   content: `
-Le secteur minier représente l'un des principaux axes de diversification économique de la République du Congo. En complément des hydrocarbures, le développement des ressources minières constitue une priorité nationale afin de renforcer la croissance économique et de créer de nouvelles opportunités d'investissement.
+    desc:
+      "Secteur minier comprenant le fer, la potasse, l'or et les polymétaux.",
 
-Le Congo dispose d'importants gisements de potasse, de minerai de fer, de polymétaux et d'autres ressources minérales stratégiques. Ces ressources sont réparties dans plusieurs départements du pays et présentent un potentiel significatif pour le développement industriel et l'exportation.
+    color: "from-yellow-500 to-orange-500",
 
-Parmi les projets les plus importants figure l'exploitation de la potasse dans la région du Kouilou ainsi que les projets liés au minerai de fer dans les départements du Niari et de la Lékoumou. Ces investissements contribuent à renforcer l'attractivité du Congo auprès des investisseurs nationaux et internationaux.
-
-Le développement du secteur minier nécessite toutefois une gouvernance efficace, une gestion transparente des revenus et un cadre réglementaire stable. Dans ce contexte, la mise en œuvre de la Norme ITIE contribue à améliorer la divulgation des informations relatives aux paiements effectués par les entreprises minières et aux recettes perçues par l'État.
-
-Les activités minières doivent également prendre en compte les enjeux environnementaux, sociaux et communautaires afin d'assurer une exploitation responsable des ressources naturelles. La participation des populations locales constitue un élément essentiel pour garantir un développement durable du secteur.
-
-Grâce à ses importantes réserves minérales et aux investissements en cours, le secteur minier congolais dispose d'un potentiel considérable pour soutenir la diversification économique et renforcer la contribution des industries extractives au développement national.
-`,
+    contracts: [
+      {
+        name: "Projet Kola Potash",
+        operator: "Kore Potash",
+        pdf: "#",
+      },
+ {
+    name: "Convention minière Dougou",
+    operator: "Kore Potash",
+    pdf: "#",
   },
+      {
+        name: "Projet Zanaga Iron Ore",
+        operator: "ZIOC",
+        pdf: "#",
+      },
+        {
+    name: "Convention minière Zanaga",
+    operator: "Zanaga Iron Ore Company",
+    pdf: "#",
+  },
+        {
+    name: "Convention minière Sounda",
+    operator: "Sapro Mayoko",
+    pdf: "#",
+  },
+    ],
 
-  transparence: {
-    title: "Transparence & Revenus",
-    image: "/reports/reunion-cnitie.jpg",
-  content: `
-La transparence constitue le fondement de l'Initiative pour la Transparence dans les Industries Extractives (ITIE). En République du Congo, le Comité National ITIE œuvre pour la publication régulière des informations relatives à la gestion des ressources naturelles.
+    permits: [
+      "Permis de recherche Zanaga",
+      "Permis d'exploitation Potasse",
+    ],
 
-Le processus ITIE repose sur une gouvernance multipartite associant l'État, les entreprises extractives et les organisations de la société civile. Cette approche favorise le dialogue, la redevabilité et la confiance entre les différents acteurs du secteur.
+    laws: [
+      "Code minier",
+      "Régime fiscal minier",
+    ],
 
-Les rapports ITIE permettent de comparer les paiements effectués par les entreprises extractives avec les revenus déclarés par les administrations publiques. Cette démarche contribue à renforcer la fiabilité des informations financières relatives au secteur extractif.
-
-Le CN-ITIE Congo publie également des données ouvertes destinées à améliorer l'accès à l'information pour les citoyens, les chercheurs, les investisseurs et les partenaires techniques et financiers.
-
-La transparence des revenus extractifs favorise une meilleure gouvernance économique et contribue à la lutte contre la corruption. Elle permet également de renforcer le contrôle citoyen sur l'utilisation des ressources naturelles du pays.
-
-À travers la mise en œuvre de la Norme ITIE, la République du Congo réaffirme son engagement en faveur de la bonne gouvernance, de la participation citoyenne et du développement durable des industries extractives.
-`,
+    production: {
+      minerais: "Fer, Potasse, Or",
+      potentiel: "Fort potentiel d'exportation",
+    },
   },
 }
