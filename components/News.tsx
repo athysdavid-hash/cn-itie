@@ -68,9 +68,9 @@ export default function News() {
 
         {news.map((item, index) => (
           <Link
-            href={`/actualites/${item.slug}`}
-            key={index}
-          >
+  href="/actualites/test"
+  key={index}
+>
             <div className="border-b border-slate-100 pb-4 last:border-b-0 hover:translate-x-1 transition-all duration-300 cursor-pointer">
 
               <span className="inline-block bg-cyan-50 text-cyan-700 px-2 py-1 rounded-full text-[10px] uppercase font-black">

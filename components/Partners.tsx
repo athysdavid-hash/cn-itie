@@ -1,5 +1,7 @@
 "use client"
 
+import Image from "next/image";
+
 const partners = [
   {
     name: "Banque mondiale",
@@ -89,11 +91,13 @@ export default function Partners() {
 
                 <div className="h-24 flex items-center justify-center">
 
-                  <img
-                    src={partner.logo}
-                    alt={partner.name}
-                    className="max-h-16 object-contain group-hover:scale-110 transition-all duration-500"
-                  />
+                 <img
+  src={partner.logo}
+  alt={partner.name}
+  width={120}
+  height={80}
+  className="max-h-16 w-auto object-contain group-hover:scale-110 transition-all duration-500"
+/>
 
                 </div>
 

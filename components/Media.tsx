@@ -18,77 +18,72 @@ const media = [
 
 export default function Media() {
   return (
-    <section className="py-16 px-4 bg-[#031b34]">
+    <section className="py-10">
 
-      <div className="max-w-6xl mx-auto">
+      {/* HEADER */}
 
-        {/* HEADER */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
 
-          <div>
+        <div>
 
-            <p className="text-xs font-black tracking-[0.25em] text-cyan-400 uppercase">
-              CN-ITIE Congo
-            </p>
+          <p className="text-xs font-black tracking-[0.25em] text-cyan-600 uppercase">
+            CN-ITIE Congo
+          </p>
 
-            <h2 className="text-3xl lg:text-4xl font-black text-white mt-2">
-              Actualités & Médias
-            </h2>
+          <h2 className="text-3xl font-black text-[#062b57] mt-2">
+            Actualités & Médias
+          </h2>
 
-            <p className="text-slate-300 text-sm max-w-2xl mt-3">
-              Activités du Comité National ITIE, ateliers de dissémination,
-              gouvernance extractive et transparence des revenus.
-            </p>
-
-          </div>
-
-          <button className="bg-cyan-500 hover:bg-cyan-400 transition px-5 py-2 rounded-xl font-black text-white text-sm">
-            Voir toutes les publications
-          </button>
+          <p className="text-slate-500 text-sm mt-2">
+            Activités, ateliers, gouvernance extractive et transparence.
+          </p>
 
         </div>
 
-        {/* GRID */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <button className="bg-[#062b57] hover:bg-[#0b4d91] text-white px-5 py-3 rounded-xl font-black transition">
+          Voir toutes les publications
+        </button>
 
-          {media.map((item, index) => (
-            <div
-              key={index}
-              className="group overflow-hidden rounded-[24px] bg-white/5 border border-white/10 hover:border-cyan-500/30 transition-all duration-500"
-            >
+      </div>
 
-              <div className="relative h-[260px] overflow-hidden">
+      {/* CARTES */}
 
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+        {media.map((item, index) => (
 
-                <div className="absolute top-4 left-4">
+          <article
+            key={index}
+            className="group overflow-hidden rounded-[24px] bg-white border border-slate-200 shadow-lg hover:shadow-2xl transition-all duration-500"
+          >
 
-                  <span className="bg-cyan-500 text-white px-3 py-1 rounded-full text-xs font-black">
-                    {item.category}
-                  </span>
+            <div className="relative h-[240px] overflow-hidden">
 
-                </div>
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
 
-                <div className="absolute bottom-5 left-5 right-5">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
 
-                  <h3 className="text-white text-xl font-black leading-tight">
-                    {item.title}
-                  </h3>
-
-                </div>
-
-              </div>
+              <span className="absolute top-4 left-4 bg-cyan-600 text-white px-3 py-1 rounded-full text-xs font-black">
+                {item.category}
+              </span>
 
             </div>
-          ))}
 
-        </div>
+            <div className="p-5">
+
+              <h3 className="text-[#062b57] text-lg font-black leading-snug">
+                {item.title}
+              </h3>
+
+            </div>
+
+          </article>
+
+        ))}
 
       </div>
 

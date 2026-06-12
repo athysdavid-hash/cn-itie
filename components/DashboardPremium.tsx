@@ -27,7 +27,7 @@ const cards = [
 
 export default function DashboardPremium() {
   return (
-    <section className="py-16 px-4 bg-[#031b34] relative overflow-hidden">
+    <section className="bg-[#031b34] rounded-[28px] p-6 relative overflow-hidden">
 
       {/* Glow */}
       <div className="absolute inset-0 opacity-10">
@@ -35,16 +35,16 @@ export default function DashboardPremium() {
         <div className="absolute bottom-0 right-0 w-60 h-60 bg-blue-700 rounded-full blur-3xl" />
       </div>
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="relative z-10">
 
         {/* HEADER */}
-        <div className="text-center max-w-3xl mx-auto mb-10">
+        <div className="mb-6">
 
           <p className="text-cyan-400 uppercase tracking-[0.25em] font-black text-[10px]">
             CN-ITIE CONGO
           </p>
 
-          <h2 className="text-2xl lg:text-3xl font-black text-white mt-3">
+          <h2 className="text-xl font-black text-white mt-2">
             Tableau de bord du secteur extractif
           </h2>
 
@@ -57,7 +57,7 @@ export default function DashboardPremium() {
         </div>
 
         {/* CARDS */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 gap-3">
 
           {cards.map((card, index) => (
             <div

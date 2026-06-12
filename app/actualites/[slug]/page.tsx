@@ -5,6 +5,7 @@ export default async function ArticlePage({
 }: {
   params: Promise<{ slug: string }>
 }) {
+
   const { slug } = await params
 
   const article =
@@ -12,8 +13,14 @@ export default async function ArticlePage({
 
   if (!article) {
     return (
-      <div className="p-20 text-4xl font-black">
-        Article introuvable
+      <div className="p-20">
+        <h1 className="text-4xl font-black text-red-600">
+          Article introuvable
+        </h1>
+
+        <p className="mt-4">
+          Slug reçu : {slug}
+        </p>
       </div>
     )
   }

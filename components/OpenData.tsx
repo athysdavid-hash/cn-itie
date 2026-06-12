@@ -172,23 +172,29 @@ export default function OpenData() {
   }
 
   return (
-    <section className="py-16 px-4 bg-white">
+    <section className="bg-white rounded-[28px] border border-slate-200 p-6 shadow-sm">
       <div className="max-w-6xl mx-auto">
 
         {/* HEADER */}
-        <div className="text-center mb-6">
-          <p className="text-xs font-black tracking-[0.25em] text-cyan-600 uppercase">
-            ITIE Congo • Open Data Officiel
-          </p>
+       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-6">
 
-          <h2 className="text-3xl font-black text-[#062b57] mt-2">
-            Données extractives et contrats pétroliers
-          </h2>
+  <div>
 
-          <p className="text-slate-500 text-sm mt-2">
-            Ministère des Hydrocarbures • Trésor Public • ITIE République du Congo
-          </p>
-        </div>
+    <p className="text-xs uppercase tracking-[0.25em] font-black text-cyan-600">
+      Open Data
+    </p>
+
+    <h2 className="text-2xl font-black text-[#062b57] mt-1">
+      Données extractives et contrats pétroliers
+    </h2>
+
+  </div>
+
+  <button className="bg-[#062b57] hover:bg-[#0b4d91] text-white px-4 py-2 rounded-xl font-bold transition">
+    Voir toutes les données
+  </button>
+
+</div>
 
         {/* SEARCH */}
         <div className="mb-6 flex justify-center">
@@ -196,7 +202,7 @@ export default function OpenData() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Rechercher production, contrats, opérateurs..."
-            className="w-full max-w-md px-4 py-2 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+            className="group bg-[#f8fbfd] border border-slate-200 rounded-2xl px-4 py-3 hover:shadow-lg transition"
           />
         </div>
 
@@ -241,7 +247,7 @@ export default function OpenData() {
           {filteredData.map((item, index) => (
             <div
               key={index}
-              className="group bg-[#f8fbfd] border border-slate-200 rounded-2xl p-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5"
+              className="group bg-[#f8fbfd] border border-slate-200 rounded-2xl px-4 py-3 hover:shadow-lg transition"
             >
               <div className="flex items-center justify-between">
 
