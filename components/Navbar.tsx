@@ -1,9 +1,25 @@
 "use client"
 
+import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { searchIndex } from "@/data/searchIndex"
 
 export default function Navbar() {
+
+  const [query, setQuery] = useState("")
+  const normalize = (text: string) =>
+  text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+
+  const results =
+  query.trim() === ""
+    ? []
+    : searchIndex.filter((item) =>
+        normalize(item.title).includes(normalize(query))
+      )
   return (
     <header className="fixed top-9 left-0 w-full z-50 backdrop-blur-2xl bg-[#041c3c]/80 border-b border-white/10">
 
@@ -139,35 +155,53 @@ export default function Navbar() {
 
         </nav>
 
-        {/* SEARCH */}
-        <div className="hidden lg:flex items-center relative">
+      {/* SEARCH */}
+<div className="hidden lg:flex relative">
 
-          <span className="absolute left-3 text-slate-300">
-            🔍
-          </span>
+  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-300 z-10">
+    🔍
+  </span>
 
-          <input
-            type="text"
-            placeholder="Rechercher rapports, données..."
-            className="
-              w-72
-              pl-10
-              pr-4
-              py-2
-              rounded-xl
-              bg-white/10
-              border
-              border-white/20
-              text-white
-              placeholder:text-slate-300
-              outline-none
-              focus:border-cyan-400
-              backdrop-blur-xl
-            "
-          />
+  <input
+    type="text"
+    value={query}
+    onChange={(e) => setQuery(e.target.value)}
+    placeholder="Rechercher rapports, données..."
+    className="
+      w-72
+      pl-10
+      pr-4
+      py-2
+      rounded-xl
+      bg-white/10
+      border
+      border-white/20
+      text-white
+      placeholder:text-slate-300
+      outline-none
+      focus:border-cyan-400
+      backdrop-blur-xl
+    "
+  />
 
-        </div>
+  {results.length > 0 && (
+    <div className="absolute top-12 left-0 w-full bg-[#062b57] border border-white/10 rounded-xl shadow-xl overflow-hidden z-50">
 
+      {results.map((item, index) => (
+        <Link
+          key={index}
+          href={item.href}
+          onClick={() => setQuery("")}
+          className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition"
+        >
+          {item.title}
+        </Link>
+      ))}
+
+    </div>
+  )}
+
+</div>
       </div>
 
     </header>
