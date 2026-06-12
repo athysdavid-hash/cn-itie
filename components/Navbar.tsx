@@ -11,124 +11,124 @@ export default function Navbar() {
 
         {/* LOGO */}
         <div className="bg-white p-1.5 rounded-xl shadow-lg flex items-center justify-center">
-
           <Image
             src="/logo.png"
-            alt="ITIE Congo"
+            alt="ITIE République du Congo"
             width={48}
             height={48}
             priority
           />
-
         </div>
 
         {/* NAVIGATION */}
- <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
 
-  <Link href="/" className="text-white hover:text-cyan-300 transition">
-    Accueil
-  </Link>
+          <Link href="/" className="text-white hover:text-cyan-300 transition">
+            Accueil
+          </Link>
 
-  <Link href="/apropos" className="text-white hover:text-cyan-300 transition">
-    À propos
-  </Link>
+          <Link href="/gouvernance" className="text-white hover:text-cyan-300 transition">
+            Gouvernance
+          </Link>
 
-  <Link href="/rapport" className="text-white hover:text-cyan-300 transition">
-    Rapport
-  </Link>
+          <Link href="/rapport" className="text-white hover:text-cyan-300 transition">
+            Rapports
+          </Link>
 
-  {/* DOCUMENTATION MENU */}
-  <div className="relative group">
+          {/* SECTEURS */}
+          <div className="relative group">
 
-    <Link href="/documentation" className="text-white hover:text-cyan-300 transition">
-      Documentation ▾
-    </Link>
+            <span className="text-white hover:text-cyan-300 cursor-pointer transition">
+              Secteurs ▾
+            </span>
 
-   {/* DROPDOWN */}
-<div className="absolute top-8 left-0 hidden group-hover:block bg-[#062b57] border border-white/10 rounded-xl shadow-xl w-64">
+            <div className="absolute top-8 left-0 hidden group-hover:block bg-[#062b57] border border-white/10 rounded-xl shadow-xl w-64">
 
-  <Link
-    href="/documentation/hydrocarbures"
-    className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition"
-  >
-    🛢️ Hydrocarbures
-  </Link>
+              <Link href="/secteur/petrole" className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition">
+                🛢️ Pétrole
+              </Link>
 
-  <Link
-    href="/documentation/mines"
-    className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition"
-  >
-    ⛏️ Mines
-  </Link>
+              <Link href="/secteur/mines" className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition">
+                ⛏️ Mines
+              </Link>
 
-  <Link
-    href="/documentation/actes"
-    className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition"
-  >
-    📄 Actes organisationnels et constitutifs
-    <p className="text-[10px] text-slate-300">
-      Règlement intérieur, statuts, décisions officielles
-    </p>
-  </Link>
+              <Link href="/secteur/foret" className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition">
+                🌳 Forêt
+              </Link>
 
-  <Link
-    href="/documentation/decrets"
-    className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition"
-  >
-    ⚖️ Décrets
-  </Link>
+            </div>
+          </div>
 
-  <Link
-    href="/documentation/norme-itie"
-    className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition"
-  >
-    🌍 Norme ITIE
-  </Link>
+          {/* DONNÉES & PUBLICATIONS (NOUVEAU MENU) */}
+          <div className="relative group">
 
-</div>
-  </div>
+            <span className="text-white hover:text-cyan-300 cursor-pointer transition">
+              Données & Publications ▾
+            </span>
 
-  <Link href="/opendata" className="text-white hover:text-cyan-300 transition">
-    Open Data
-  </Link>
+            <div className="absolute top-8 left-0 hidden group-hover:block bg-[#062b57] border border-white/10 rounded-xl shadow-xl w-72">
 
-  <Link href="/actualites" className="text-white hover:text-cyan-300 transition">
-    Actualités
-  </Link>
+              <Link href="/opendata" className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition">
+                📊 Open Data
+              </Link>
 
-  <Link href="/contact" className="text-white hover:text-cyan-300 transition">
-    Contact
-  </Link>
+              <Link href="/rapport" className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition">
+                📄 Rapports ITIE
+              </Link>
 
-</nav>
+              <Link href="/propriete-reelle" className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition">
+                🏢 Propriété réelle
+              </Link>
 
-       {/* RECHERCHE */}
-<div className="hidden lg:flex items-center relative">
+              <Link href="/documentation/decrets" className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition">
+                ⚖️ Textes légaux
+              </Link>
 
-  <span className="absolute left-3 text-slate-300">
-    🔍
-  </span>
+              <Link href="/documentation/norme-itie" className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition">
+                🌍 Norme ITIE
+              </Link>
 
- <input
-  type="text"
-  placeholder="Rapports, contrats, données..."
-  className="
-    w-72
-    pl-10
-    pr-4
-    py-2
-    rounded-xl
-    bg-white/10
-    border
-    border-white/20
-    text-white
-    placeholder:text-slate-300
-    outline-none
-    focus:border-cyan-400
-    backdrop-blur-xl
-  "
-/>
-</div>
+            </div>
+          </div>
+
+          <Link href="/actualites" className="text-white hover:text-cyan-300 transition">
+            Actualités
+          </Link>
+
+          <Link href="/contact" className="text-white hover:text-cyan-300 transition">
+            Contact
+          </Link>
+
+        </nav>
+
+        {/* SEARCH */}
+        <div className="hidden lg:flex items-center relative">
+
+          <span className="absolute left-3 text-slate-300">
+            🔍
+          </span>
+
+          <input
+            type="text"
+            placeholder="Rechercher rapports, données..."
+            className="
+              w-72
+              pl-10
+              pr-4
+              py-2
+              rounded-xl
+              bg-white/10
+              border
+              border-white/20
+              text-white
+              placeholder:text-slate-300
+              outline-none
+              focus:border-cyan-400
+              backdrop-blur-xl
+            "
+          />
+
+        </div>
 
       </div>
 
