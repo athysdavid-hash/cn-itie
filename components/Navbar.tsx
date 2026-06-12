@@ -59,7 +59,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* DONNÉES & PUBLICATIONS (NOUVEAU MENU) */}
+          {/* DONNÉES & PUBLICATIONS (MIS À JOUR) */}
           <div className="relative group">
 
             <span className="text-white hover:text-cyan-300 cursor-pointer transition">
@@ -72,8 +72,14 @@ export default function Navbar() {
                 📊 Open Data
               </Link>
 
-              <Link href="/rapport" className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition">
-                📄 Rapports ITIE
+              {/* ❌ RAPPORT ITIE SUPPRIMÉ */}
+
+              <Link href="/resultats-impacts" className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition">
+                📈 Résultats et impacts
+              </Link>
+
+              <Link href="/plan-travail" className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition">
+                🗂️ Plan de travail
               </Link>
 
               <Link href="/propriete-reelle" className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition">
