@@ -1,107 +1,114 @@
-export default function ItieDashboardAdvanced() {
+"use client"
 
-  const kpis = [
-    {
-      label: "Contribution au PIB",
-      value: 53.26,
-      suffix: "%",
-      note: "Part du secteur extractif dans l'économie nationale (ITIE 2023)"
-    },
-    {
-      label: "Revenus budgétaires",
-      value: 66.41,
-      suffix: "%",
-      note: "Part des revenus de l'État issus des industries extractives"
-    },
-    {
-      label: "Exportations",
-      value: 72.42,
-      suffix: "%",
-      note: "Poids des hydrocarbures et minerais dans les exportations"
-    },
-    {
-      label: "Emploi direct",
-      value: 0.50,
-      suffix: "%",
-      note: "Faible part due au caractère capitalistique du secteur"
-    }
+import {
+  LineChart,
+  Line,
+  ResponsiveContainer
+} from "recharts"
+
+export default function KeyFiguresV2() {
+
+  const data = [
+    { year: 2020, pib: 48, revenus: 55, export: 85, emploi: 0.4 },
+    { year: 2021, pib: 50, revenus: 60, export: 87, emploi: 0.45 },
+    { year: 2022, pib: 52, revenus: 63, export: 89, emploi: 0.48 },
+    { year: 2023, pib: 53.26, revenus: 66.41, export: 92, emploi: 0.5 }
   ]
 
-  return (
-    <section className="bg-[#061f3a] py-20 relative overflow-hidden">
+  const years = [2020, 2021, 2022, 2023]
 
-      {/* BACKGROUND GLOW */}
-      <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-cyan-500/10 blur-3xl rounded-full" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-500/10 blur-3xl rounded-full" />
+  const getYearData = (year: number) =>
+    data.filter(d => d.year === year)
 
-      <div className="relative max-w-7xl mx-auto px-6">
+  const MiniChart = ({ year }: { year: number }) => {
+    const d = getYearData(year)
 
-        {/* HEADER */}
-        <div className="mb-12">
-          <p className="text-cyan-300 uppercase tracking-[0.3em] text-xs font-black">
-            ITIE Congo • Rapport 2023
-          </p>
+    return (
+      <div
+        className="
+          bg-white/5
+          border border-white/10
+          rounded-xl
+          p-4
+          h-[180px]
+          transition-all duration-300
+          hover:scale-[1.02]
+          hover:bg-white/10
+        "
+      >
 
-          <h2 className="text-white text-3xl lg:text-5xl font-black mt-4">
-            Dashboard des indicateurs macroéconomiques extractifs
-          </h2>
+        {/* HEADER SMALL */}
+        <div className="flex justify-between mb-2">
+          <span className="text-white text-sm font-semibold">
+            {year}
+          </span>
 
-          <p className="text-slate-300 mt-4 max-w-3xl leading-7">
-            Synthèse des principaux indicateurs macroéconomiques issus du rapport ITIE 2023,
-            couvrant l’impact du secteur pétrolier, gazier, minier et forestier sur l’économie nationale.
-          </p>
+          <span className="text-cyan-300 text-xs">
+            ITIE
+          </span>
         </div>
 
-        {/* KPI GRID */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* MINI CHART */}
+        <div className="h-[120px]">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={d}>
 
-          {kpis.map((kpi, i) => (
-            <div
-              key={i}
-              className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur"
-            >
+              <Line
+                type="monotone"
+                dataKey="pib"
+                stroke="#22d3ee"
+                strokeWidth={2}
+                dot={false}
+              />
 
-              <p className="text-slate-300 text-sm">
-                {kpi.label}
-              </p>
+              <Line
+                type="monotone"
+                dataKey="revenus"
+                stroke="#60a5fa"
+                strokeWidth={2}
+                dot={false}
+              />
 
-              <h3 className="text-3xl font-black text-white mt-3">
-                {kpi.value}{kpi.suffix}
-              </h3>
+              <Line
+                type="monotone"
+                dataKey="export"
+                stroke="#34d399"
+                strokeWidth={2}
+                dot={false}
+              />
 
-              {/* PROGRESS BAR */}
-              <div className="mt-4 w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"
-                  style={{ width: `${kpi.value}%` }}
-                />
-              </div>
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
 
-              <p className="text-slate-400 text-xs mt-3 leading-5">
-                {kpi.note}
-              </p>
+      </div>
+    )
+  }
 
-            </div>
+  return (
+    <section className="bg-[#061f3a] py-16">
+
+      <div className="max-w-6xl mx-auto px-6">
+
+        {/* TITLE */}
+        <h2 className="text-white text-2xl font-bold">
+          ITIE Congo 2020–2023
+        </h2>
+
+        <p className="text-slate-400 text-sm mt-2 mb-8">
+          Évolution des indicateurs extractifs
+        </p>
+
+        {/* GRID SMALL CARDS */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+
+          {years.map(year => (
+            <MiniChart key={year} year={year} />
           ))}
 
         </div>
 
-        {/* INSIGHT BLOCK */}
-        <div className="mt-14 bg-white/5 border border-white/10 rounded-3xl p-8">
-          <h3 className="text-white text-xl font-black">
-            Analyse institutionnelle
-          </h3>
-
-          <p className="text-slate-300 mt-4 leading-8">
-            Le rapport ITIE 2023 confirme la forte dépendance de l’économie congolaise
-            aux industries extractives, avec une contribution dominante aux exportations
-            et aux recettes publiques. Toutefois, l’impact sur l’emploi reste limité,
-            reflétant le caractère fortement capitalistique du secteur.
-          </p>
-        </div>
-
       </div>
-
     </section>
   )
 }
