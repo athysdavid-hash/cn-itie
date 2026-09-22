@@ -17,14 +17,15 @@ export default function AdminPage() {
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const [loading, setLoading] = useState(false);
 
-  // États pour la gestion du taux de réduction (VIP / Gros clients)
+  // États pour la gestion du client (Nom + Remise VIP)
+  const [clientName, setClientName] = useState('');
   const [customDiscount, setCustomDiscount] = useState<number | ''>('');
-  const [updatingDiscount, setUpdatingDiscount] = useState(false);
+  const [updatingInfo, setUpdatingInfo] = useState(false);
 
   // État pour afficher/masquer le scanner QR
   const [showScanner, setShowScanner] = useState(false);
 
-  // Gestion de la connexion Administrateur
+  // Connexion Admin
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setAuthError('');
@@ -42,7 +43,7 @@ export default function AdminPage() {
     }
   };
 
-  // Fonction de recherche générique
+  // Recherche de la carte
   const searchCard = async (numberToSearch: string) => {
     setMessage(null);
     setLoading(true);
@@ -70,7 +71,8 @@ export default function AdminPage() {
       setCurrentCard(null);
     } else {
       setCurrentCard(foundCard);
-      setCustomDiscount(foundCard.discount_rate || foundCard.discountRate || 0);
+      setClientName(foundCard.client_name || '');
+      setCustomDiscount(foundCard.discount_rate || 0);
     }
 
     setLoading(false);
@@ -81,7 +83,6 @@ export default function AdminPage() {
     searchCard(cardNumber);
   };
 
-  // Callback quand un QR code est scanné
   const handleScanSuccess = (scannedCardNumber: string) => {
     setShowScanner(false);
     setCardNumber(scannedCardNumber);
@@ -119,38 +120,43 @@ export default function AdminPage() {
     setLoading(false);
   };
 
-  // Mettre à jour le taux de réduction VIP
-  const handleUpdateDiscount = async (e: React.FormEvent) => {
+  // Mettre à jour le Nom + Remise VIP du client
+  const handleUpdateClientInfo = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!currentCard || customDiscount === '') return;
+    if (!currentCard) return;
 
-    setUpdatingDiscount(true);
+    setUpdatingInfo(true);
     setMessage(null);
 
     const colName = currentCard.Card_number ? 'Card_number' : 'card_number';
     const cardId = currentCard.Card_number || currentCard.card_number;
-    const discountValue = Number(customDiscount);
+    const discountValue = Number(customDiscount || 0);
 
-    // Mise à jour directe dans Supabase
     const { error } = await supabase
       .from('cards')
-      .update({ discount_rate: discountValue })
+      .update({ 
+        client_name: clientName,
+        discount_rate: discountValue 
+      })
       .eq(colName, cardId);
 
     if (error) {
-      setMessage({ type: 'error', text: 'Erreur lors de la mise à jour du taux de réduction.' });
+      setMessage({ type: 'error', text: 'Erreur lors de la mise à jour des infos.' });
     } else {
       setMessage({
         type: 'success',
-        text: `Taux de remise mis à jour : -${discountValue}%`,
+        text: `Infos client mises à jour : ${clientName || 'Anonyme'} (-${discountValue}%)`,
       });
-      setCurrentCard({ ...currentCard, discount_rate: discountValue });
+      setCurrentCard({ 
+        ...currentCard, 
+        client_name: clientName, 
+        discount_rate: discountValue 
+      });
     }
 
-    setUpdatingDiscount(false);
+    setUpdatingInfo(false);
   };
 
-  // ÉCRAN 1 : FORMULAIRE DE CONNEXION
   if (!isAuthenticated) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 p-4 font-sans text-gray-900">
@@ -195,7 +201,6 @@ export default function AdminPage() {
     );
   }
 
-  // ÉCRAN 2 : INTERFACE CAISSE AVEC BOUTON SCANNER ET GESTION VIP
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 p-4 font-sans text-gray-900">
       {showScanner && (
@@ -213,7 +218,6 @@ export default function AdminPage() {
           Boucherie Poissonnerie du Rail
         </p>
 
-        {/* Message d'état */}
         {message && (
           <div
             className={`mb-4 p-3 rounded-lg text-sm font-medium text-center ${
@@ -226,7 +230,6 @@ export default function AdminPage() {
           </div>
         )}
 
-        {/* Bouton pour ouvrir la caméra */}
         <button
           type="button"
           onClick={() => setShowScanner(true)}
@@ -240,7 +243,6 @@ export default function AdminPage() {
           <span className="relative bg-white px-2 text-xs text-gray-400 uppercase">ou saisie manuelle</span>
         </div>
 
-        {/* Formulaire de recherche manuelle */}
         <form onSubmit={handleSearch} className="mb-6">
           <label className="block text-xs font-semibold text-gray-700 uppercase mb-1">
             N° de carte client
@@ -264,17 +266,20 @@ export default function AdminPage() {
           </div>
         </form>
 
-        {/* Détails de la carte et Ajout de points */}
         {currentCard && (
           <div className="border-t border-gray-200 pt-4 space-y-4">
             
-            {/* En-tête statut client */}
             <div className="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
               <div>
                 <span className="block text-xs text-gray-500">Carte sélectionnée</span>
                 <span className="font-mono font-bold text-gray-800">
                   {currentCard.Card_number || currentCard.card_number}
                 </span>
+                {currentCard.client_name && (
+                  <span className="block text-xs font-bold text-purple-900 mt-0.5">
+                    👤 {currentCard.client_name}
+                  </span>
+                )}
               </div>
               <div className="text-right">
                 <span className="block text-xs text-gray-500">Solde actuel</span>
@@ -284,10 +289,9 @@ export default function AdminPage() {
               </div>
             </div>
 
-            {/* Badge Taux de Remise VIP s'il existe */}
-            {(currentCard.discount_rate || currentCard.discountRate) > 0 ? (
+            {currentCard.discount_rate > 0 ? (
               <div className="p-3 bg-purple-50 border border-purple-200 rounded-lg text-purple-900 text-xs font-bold text-center">
-                ⭐ CLIENT VIP : Remise automatique de -{currentCard.discount_rate || currentCard.discountRate}% en caisse
+                ⭐ CLIENT VIP : Remise automatique de -{currentCard.discount_rate}%
               </div>
             ) : (
               <div className="p-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-500 text-xs text-center">
@@ -295,7 +299,7 @@ export default function AdminPage() {
               </div>
             )}
 
-            {/* Formulaire 1 : Ajouter / Enlever des Points */}
+            {/* Formulaire Points */}
             <form onSubmit={handleUpdatePoints} className="space-y-3 pt-2">
               <div>
                 <label className="block text-xs font-semibold text-gray-700 uppercase mb-1">
@@ -322,30 +326,45 @@ export default function AdminPage() {
               </button>
             </form>
 
-            {/* Formulaire 2 : Ajuster la Remise VIP (Gros Clients) */}
-            <form onSubmit={handleUpdateDiscount} className="border-t border-gray-200 pt-4 space-y-3">
-              <label className="block text-xs font-semibold text-purple-900 uppercase">
-                ⚙️ Ajuster Remise VIP (%)
-              </label>
-              <div className="flex gap-2">
+            {/* Formulaire Profil Client & Remise VIP */}
+            <form onSubmit={handleUpdateClientInfo} className="border-t border-gray-200 pt-4 space-y-3">
+              <div>
+                <label className="block text-xs font-semibold text-gray-700 uppercase mb-1">
+                  👤 Nom du client
+                </label>
                 <input
-                  type="number"
-                  min="0"
-                  max="100"
-                  placeholder="ex: 5, 10..."
-                  value={customDiscount}
-                  onChange={(e) =>
-                    setCustomDiscount(e.target.value === '' ? '' : Number(e.target.value))
-                  }
-                  className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-purple-500 focus:outline-none"
+                  type="text"
+                  placeholder="ex: Jean Dupont"
+                  value={clientName}
+                  onChange={(e) => setClientName(e.target.value)}
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-purple-500 focus:outline-none"
                 />
-                <button
-                  type="submit"
-                  disabled={updatingDiscount}
-                  className="rounded-lg bg-purple-700 px-4 py-2 text-sm font-bold text-white hover:bg-purple-800 disabled:opacity-50"
-                >
-                  {updatingDiscount ? '...' : 'Appliquer %'}
-                </button>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-purple-900 uppercase mb-1">
+                  ⚙️ Remise VIP (%)
+                </label>
+                <div className="flex gap-2">
+                  <input
+                    type="number"
+                    min="0"
+                    max="100"
+                    placeholder="ex: 5"
+                    value={customDiscount}
+                    onChange={(e) =>
+                      setCustomDiscount(e.target.value === '' ? '' : Number(e.target.value))
+                    }
+                    className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-purple-500 focus:outline-none"
+                  />
+                  <button
+                    type="submit"
+                    disabled={updatingInfo}
+                    className="rounded-lg bg-purple-700 px-4 py-2 text-sm font-bold text-white hover:bg-purple-800 disabled:opacity-50"
+                  >
+                    {updatingInfo ? '...' : 'Enregistrer'}
+                  </button>
+                </div>
               </div>
             </form>
 
