@@ -3,14 +3,12 @@ import Hero from "@/components/Hero"
 import Sectors from "@/components/Sectors"
 import KeyFigures from "@/components/KeyFigures"
 
-import OpenData from "@/components/OpenData"
 import News from "@/components/News"
 import DashboardPremium from "@/components/DashboardPremium"
 import Media from "@/components/Media"
 
 import Reports from "@/components/Reports"
 import LiveStats from "@/components/LiveStats"
-import Documents from "@/components/Documents"
 import Analytics from "@/components/Analytics"
 
 import Partners from "@/components/Partners"
@@ -23,7 +21,6 @@ import Footer from "@/components/Footer"
 export default function Home() {
   return (
     <main className="pt-20">
-
       <Navbar />
 
       <Hero />
@@ -33,62 +30,40 @@ export default function Home() {
       <KeyFigures />
 
       {/* =========================
-          OPEN DATA + SIDEBAR
-      ========================== */}
+          ACTUALITÉS + DASHBOARD
+      ========================= */}
 
-      <section className="max-w-7xl mx-auto px-4 py-12">
+    <section className="max-w-7xl mx-auto px-4 py-12">
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+    <News />
 
-          {/* COLONNE GAUCHE */}
+    <DashboardPremium />
 
-          <div className="lg:col-span-2">
-            <OpenData />
-          </div>
+  </div>
 
-          {/* COLONNE DROITE */}
+  <div className="mt-8">
+    <Media />
+  </div>
+</section>
 
-          <div className="space-y-6">
+     <Reports />
 
-            <News />
+{/* <LiveStats /> */}
 
-            <DashboardPremium />
+{/* <Analytics /> */}
 
-          </div>
+<Partners />
 
-        </div>
+<BigCTA />
 
-        {/* ACTUALITÉS & MÉDIAS */}
+{/* <ContactSection /> */}
 
-        <div className="mt-10">
-          <Media />
-        </div>
+{/* <FAQ /> */}
 
-      </section>
+{/* <Newsletter /> */}
 
-      {/* ========================= */}
-
-      <Reports />
-
-      <LiveStats />
-
-      <section className="max-w-6xl mx-auto px-4 py-8">
-        
-      </section>
-
-      <Analytics />
-
-      <Partners />
-
-      <BigCTA />
-
-      <ContactSection />
-
-      <FAQ />
-
-      <Newsletter />
-
-      <Footer />
+<Footer />
 
     </main>
   )

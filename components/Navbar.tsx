@@ -6,22 +6,28 @@ import Image from "next/image"
 import { searchIndex } from "@/data/searchIndex"
 
 export default function Navbar() {
-
   const [query, setQuery] = useState("")
-  const normalize = (text: string) =>
-  text
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
 
+  // 🔥 NORMALISATION (accents + casse)
+  const normalize = (text: string) =>
+    text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+
+  // 🔎 FILTRE
   const results =
-  query.trim() === ""
-    ? []
-    : searchIndex.filter((item) =>
-        normalize(item.title).includes(normalize(query))
-      )
+    query.trim() === ""
+      ? []
+      : searchIndex.filter((item) =>
+          normalize(item.title).includes(normalize(query)) ||
+          normalize(item.href).includes(normalize(query))
+        )
+
+  const hasResults = results.length > 0
+
   return (
-    <header className="fixed top-9 left-0 w-full z-50 backdrop-blur-2xl bg-[#041c3c]/80 border-b border-white/10">
+    <header className="fixed top-10 left-0 w-full z-50 backdrop-blur-2xl bg-[#041c3c]/80 border-b border-white/10">
 
       <div className="max-w-6xl mx-auto px-4 py-2 flex items-center justify-between">
 
@@ -36,146 +42,68 @@ export default function Navbar() {
           />
         </div>
 
-        {/* NAVIGATION */}
+        {/* NAV */}
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
 
-          <Link href="/" className="text-white hover:text-cyan-300 transition">
-            Accueil
-          </Link>
-
-          <Link href="/gouvernance" className="text-white hover:text-cyan-300 transition">
-            Gouvernance
-          </Link>
-
-          <Link href="/rapport" className="text-white hover:text-cyan-300 transition">
-            Rapports
-          </Link>
+          <Link href="/" className="text-white hover:text-cyan-300 transition">Accueil</Link>
+          <Link href="/gouvernance" className="text-white hover:text-cyan-300 transition">Gouvernance</Link>
+          <Link href="/rapport" className="text-white hover:text-cyan-300 transition">Rapports</Link>
 
           {/* SECTEURS */}
           <div className="relative group">
-
             <span className="text-white hover:text-cyan-300 cursor-pointer transition">
               Secteurs ▾
             </span>
 
             <div className="absolute top-8 left-0 hidden group-hover:block bg-[#062b57] border border-white/10 rounded-xl shadow-xl w-64">
-
-              <Link
-                href="/secteur/petrole"
-                className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition"
-              >
-                🛢️ Pétrole
-              </Link>
-
-              <Link
-                href="/secteur/mines"
-                className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition"
-              >
-                ⛏️ Mines
-              </Link>
-
-              <Link
-                href="/secteur/foret"
-                className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition"
-              >
-                🌳 Forêt
-              </Link>
-
+              <Link href="/secteur/petrole" className="block px-4 py-3 text-white hover:bg-cyan-500/20">🛢️ Pétrole</Link>
+              <Link href="/secteur/mines" className="block px-4 py-3 text-white hover:bg-cyan-500/20">⛏️ Mines</Link>
+              <Link href="/secteur/foret" className="block px-4 py-3 text-white hover:bg-cyan-500/20">🌳 Forêt</Link>
             </div>
           </div>
 
-          {/* DONNÉES & PUBLICATIONS */}
+          {/* DONNÉES */}
           <div className="relative group">
-
             <span className="text-white hover:text-cyan-300 cursor-pointer transition">
               Données & Publications ▾
             </span>
 
             <div className="absolute top-8 left-0 hidden group-hover:block bg-[#062b57] border border-white/10 rounded-xl shadow-xl w-72">
 
-              <Link
-                href="/opendata"
-                className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition"
-              >
-                📊 Open Data
-              </Link>
-
-              <Link
-                href="/resultats-impacts"
-                className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition"
-              >
-                📈 Résultats et impacts
-              </Link>
-
-              <Link
-                href="/plan-travail"
-                className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition"
-              >
-                🗂️ Plan de travail
-              </Link>
-
-              <Link
-                href="/validation-itie"
-                className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition"
-              >
-                🟢 Validation ITIE
-              </Link>
-
-              <Link
-                href="/propriete-reelle"
-                className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition"
-              >
-                🏢 Propriété réelle
-              </Link>
-
-              <Link
-                href="/documentation/decrets"
-                className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition"
-              >
-                ⚖️ Textes légaux
-              </Link>
-
-              <Link
-                href="/documentation/norme-itie"
-                className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition"
-              >
-                🌍 Norme ITIE
-              </Link>
+              <Link href="/opendata" className="block px-4 py-3 hover:bg-cyan-500/20">📊 Open Data</Link>
+              <Link href="/resultats-impacts" className="block px-4 py-3 hover:bg-cyan-500/20">📈 Résultats et impacts</Link>
+              <Link href="/plan-travail" className="block px-4 py-3 hover:bg-cyan-500/20">🗂️ Plan de travail</Link>
+              <Link href="/validation-itie" className="block px-4 py-3 hover:bg-cyan-500/20">🟢 Validation ITIE</Link>
+              <Link href="/propriete-reelle" className="block px-4 py-3 hover:bg-cyan-500/20">🏢 Propriété réelle</Link>
+              <Link href="/documentation/decrets" className="block px-4 py-3 hover:bg-cyan-500/20">⚖️ Textes légaux</Link>
+              <Link href="/documentation/norme-itie" className="block px-4 py-3 hover:bg-cyan-500/20">🌍 Norme ITIE</Link>
 
             </div>
           </div>
 
-          <Link href="/actualites" className="text-white hover:text-cyan-300 transition">
-            Actualités
-          </Link>
+          <Link href="/actualites" className="text-white hover:text-cyan-300">Actualités</Link>
+          <Link href="/contact" className="text-white hover:text-cyan-300">Contact</Link>
+{/* SEARCH */}
+<div className="relative flex items-center">
 
-          <Link href="/contact" className="text-white hover:text-cyan-300 transition">
-            Contact
-          </Link>
-
-        </nav>
-
-      {/* SEARCH */}
-<div className="hidden lg:flex relative">
-
-  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-300 z-10">
+  {/* ICON */}
+  <span className="absolute left-3 text-slate-300 pointer-events-none">
     🔍
   </span>
 
+  {/* INPUT */}
   <input
-    type="text"
     value={query}
     onChange={(e) => setQuery(e.target.value)}
     placeholder="Rechercher rapports, données..."
     className="
-      w-72
+      w-64 md:w-72
       pl-10
       pr-4
       py-2
       rounded-xl
       bg-white/10
-      border
-      border-white/20
+      border border-white/20
       text-white
       placeholder:text-slate-300
       outline-none
@@ -184,26 +112,32 @@ export default function Navbar() {
     "
   />
 
-  {results.length > 0 && (
-    <div className="absolute top-12 left-0 w-full bg-[#062b57] border border-white/10 rounded-xl shadow-xl overflow-hidden z-50">
+ {query.trim() !== "" && (
+  <div className="absolute top-full mt-2 left-0 w-72 bg-[#062b57] border border-white/10 rounded-xl shadow-2xl z-[9999] overflow-hidden">
 
-      {results.map((item, index) => (
+    {results.length > 0 ? (
+      results.slice(0, 6).map((item, i) => (
         <Link
-          key={index}
+          key={i}
           href={item.href}
           onClick={() => setQuery("")}
           className="block px-4 py-3 text-white hover:bg-cyan-500/20 transition"
         >
           {item.title}
         </Link>
-      ))}
-
-    </div>
-  )}
-
-</div>
+      ))
+    ) : (
+      <div className="px-4 py-3 text-slate-300">
+        Aucun résultat
       </div>
+    )}
 
+  </div>
+)}
+</div>
+
+        </nav>
+      </div>
     </header>
   )
 }

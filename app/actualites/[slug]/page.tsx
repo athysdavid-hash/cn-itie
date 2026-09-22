@@ -1,53 +1,78 @@
-import { articles } from "@/data/articles"
+import { supabase } from "@/lib/supabase"
+import Link from "next/link"
 
-export default async function ArticlePage({
+export default async function ActualitePage({
   params,
 }: {
   params: Promise<{ slug: string }>
 }) {
-
   const { slug } = await params
 
-  const article =
-    articles[slug as keyof typeof articles]
+const { data: article, error } = await supabase
+  .from("actualites")
+  .select("*")
+  .eq("slug", slug)
+  .single()
+
+console.log("slug =", slug)
+console.log("article =", article)
+console.log("error =", error)
 
   if (!article) {
     return (
-      <div className="p-20">
-        <h1 className="text-4xl font-black text-red-600">
-          Article introuvable
-        </h1>
+      <main className="max-w-4xl mx-auto py-20 px-6">
+       <>
+  <h1 className="text-3xl font-bold text-red-600">
+    Actualité introuvable
+  </h1>
 
-        <p className="mt-4">
-          Slug reçu : {slug}
-        </p>
-      </div>
+  <p className="mt-4 text-xl">
+    Slug reçu : {slug}
+  </p>
+</>
+
+        <Link
+          href="/"
+          className="mt-6 inline-block text-cyan-600 hover:underline"
+        >
+          ← Retour à l'accueil
+        </Link>
+      </main>
     )
   }
 
   return (
-    <main className="max-w-5xl mx-auto px-4 py-16">
+    <main className="max-w-4xl mx-auto py-20 px-6">
 
-      <p className="text-cyan-600 font-black">
-        {article.category}
-      </p>
+      <Link
+        href="/"
+        className="text-cyan-600 hover:underline"
+      >
+        ← Retour à l'accueil
+      </Link>
 
-      <h1 className="text-5xl font-black text-[#062b57] mt-4">
-        {article.title}
-      </h1>
+      <div className="mt-8">
 
-      <p className="text-slate-500 mt-2">
-        {article.date}
-      </p>
+        <p className="text-sm text-slate-500">
+          {article.date_publication}
+        </p>
 
-      <img
-        src={article.image}
-        alt={article.title}
-        className="w-full h-[450px] object-cover rounded-3xl mt-8"
-      />
+        <h1 className="mt-3 text-5xl font-black text-[#062b57]">
+          {article.titre}
+        </h1>
 
-      <div className="mt-10 text-lg leading-8 whitespace-pre-line">
-        {article.content}
+        {article.image_url && (
+          <img
+            src={article.image_url}
+            alt={article.titre}
+            className="w-full rounded-3xl mt-8"
+          />
+        )}
+
+        <div className="mt-8 text-lg leading-8 text-slate-700 whitespace-pre-line">
+          {article.contenu}
+        </div>
+
       </div>
 
     </main>

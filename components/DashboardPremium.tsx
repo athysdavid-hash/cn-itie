@@ -1,103 +1,125 @@
+"use client"
+
+import {
+  AreaChart,
+  Area,
+} from "recharts"
+
 const cards = [
   {
-    title: "Production pétrolière",
-    value: "267K",
-    growth: "+8%",
-    icon: "🛢️",
+    year: "2020",
+    value: "49,50 %",
+    label: "Contribution au PIB",
+    trend: "+2,1 %",
+    chart: [
+      { v: 38 },
+      { v: 40 },
+      { v: 43 },
+      { v: 46 },
+      { v: 49.5 },
+    ],
   },
   {
-    title: "Recettes extractives",
-    value: "1,4 T",
-    growth: "+12%",
-    icon: "💰",
+    year: "2021",
+    value: "50,80 %",
+    label: "Contribution au PIB",
+    trend: "+1,3 %",
+    chart: [
+      { v: 41 },
+      { v: 44 },
+      { v: 46 },
+      { v: 48 },
+      { v: 50.8 },
+    ],
   },
   {
-    title: "Rapports ITIE",
-    value: "15",
-    growth: "+4%",
-    icon: "📘",
+    year: "2022",
+    value: "52,10 %",
+    label: "Contribution au PIB",
+    trend: "+1,8 %",
+    chart: [
+      { v: 44 },
+      { v: 46 },
+      { v: 48 },
+      { v: 50 },
+      { v: 52.1 },
+    ],
   },
   {
-    title: "Données ouvertes",
-    value: "98%",
-    growth: "+16%",
-    icon: "📊",
+    year: "2023",
+    value: "53,26 %",
+    label: "Contribution au PIB",
+    trend: "+1,2 %",
+    chart: [
+      { v: 46 },
+      { v: 48 },
+      { v: 50 },
+      { v: 52 },
+      { v: 53.26 },
+    ],
   },
 ]
 
 export default function DashboardPremium() {
   return (
-    <section className="bg-[#031b34] rounded-[28px] p-6 relative overflow-hidden">
+    <section className="bg-white rounded-[24px] border border-slate-200 shadow-sm p-6 h-full">
+      <div className="mb-6">
+        <p className="uppercase tracking-[4px] text-cyan-600 text-xs font-black">
+          Dashboard ITIE
+        </p>
 
-      {/* Glow */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-60 h-60 bg-cyan-500 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-60 h-60 bg-blue-700 rounded-full blur-3xl" />
+        <h2 className="text-2xl font-black text-[#062b57] mt-2">
+          2020 – 2023
+        </h2>
+
+        <p className="text-slate-500 text-sm mt-2">
+          Évolution de la contribution du secteur extractif au PIB.
+        </p>
       </div>
 
-      <div className="relative z-10">
+      <div className="grid grid-cols-2 gap-4">
+        {cards.map((card) => (
+          <div
+            key={card.year}
+            className="bg-slate-50 border border-slate-200 rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+          >
+            <div className="flex justify-between items-center">
+              <span className="text-sm font-bold text-slate-500">
+                {card.year}
+              </span>
 
-        {/* HEADER */}
-        <div className="mb-6">
-
-          <p className="text-cyan-400 uppercase tracking-[0.25em] font-black text-[10px]">
-            CN-ITIE CONGO
-          </p>
-
-          <h2 className="text-xl font-black text-white mt-2">
-            Tableau de bord du secteur extractif
-          </h2>
-
-          <p className="text-slate-300 text-sm mt-3 leading-relaxed">
-            Principaux indicateurs liés aux hydrocarbures,
-            aux revenus extractifs et à la transparence
-            en République du Congo.
-          </p>
-
-        </div>
-
-        {/* CARDS */}
-        <div className="grid grid-cols-2 gap-3">
-
-          {cards.map((card, index) => (
-            <div
-              key={index}
-              className="group relative bg-white/10 backdrop-blur-xl border border-white/10 rounded-2xl p-5 hover:-translate-y-2 hover:scale-[1.03] hover:border-cyan-400/40 hover:shadow-[0_0_30px_rgba(34,211,238,0.25)] transition-all duration-500"
-            >
-
-              <div className="flex items-center justify-between">
-
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-2xl shadow-lg group-hover:rotate-12 transition-transform duration-500">
-                  {card.icon}
-                </div>
-
-                <span className="text-emerald-300 font-black text-xs">
-                  {card.growth}
-                </span>
-
-              </div>
-
-              <h3 className="text-3xl font-black text-white mt-5">
-                {card.value}
-              </h3>
-
-              <p className="text-slate-300 text-sm mt-2">
-                {card.title}
-              </p>
-
-              <div className="mt-5 h-2 bg-white/10 rounded-full overflow-hidden">
-
-                <div className="h-full w-[80%] bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" />
-
-              </div>
-
+              <span className="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-1 rounded-full">
+                ↗ {card.trend}
+              </span>
             </div>
-          ))}
 
-        </div>
+            <h3 className="mt-5 text-3xl font-black text-[#062b57]">
+              {card.value}
+            </h3>
 
+            <p className="mt-1 text-sm text-slate-500">
+              {card.label}
+            </p>
+
+            <div className="mt-5 flex justify-center">
+              <AreaChart
+                width={180}
+                height={70}
+                data={card.chart}
+              >
+                <Area
+                  type="monotone"
+                  dataKey="v"
+                  stroke="#0891b2"
+                  strokeWidth={3}
+                  fill="#67e8f9"
+                  fillOpacity={0.25}
+                />
+              </AreaChart>
+            </div>
+          </div>
+        ))}
       </div>
-
     </section>
   )
 }

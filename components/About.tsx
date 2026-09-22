@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section className="py-16 px-4">
+    <section className="py-10 px-4">
 
       <div className="max-w-7xl mx-auto">
 
@@ -52,7 +52,7 @@ export default function About() {
                     🌍
                   </div>
 
-                  <h3 className="text-4xl font-black text-[#062b57]">
+                  <h3 className="text-3xl font-black text-[#062b57]">
                     100%
                   </h3>
 
@@ -80,13 +80,13 @@ export default function About() {
                 Vision stratégique
               </p>
 
-              <h2 className="text-2xl lg:text-3xl font-black mt-4 leading-tight">
+              <h2 className="text-2xl lg:text-2xl font-black mt-4 leading-tight">
                 Gouvernance responsable des ressources
               </h2>
 
               <div className="space-y-6 mt-6">
 
-                <div className="bg-white/10 backdrop-blur-md rounded-[24px] p-6 border border-white/10">
+                <div className="bg-white/10 backdrop-blur-md rounded-[24px] p-4 border border-white/10">
 
                   <div className="flex items-center gap-4">
 
@@ -138,7 +138,7 @@ export default function About() {
 
                   <div className="flex items-center gap-4">
 
-                    <div className="w-12 h-12rounded-2xl bg-cyan-500 flex items-center justify-center text-3xl">
+                    <div className="w-10 h-10rounded-2xl bg-cyan-500 flex items-center justify-center text-3xl">
                       🤝
                     </div>
 

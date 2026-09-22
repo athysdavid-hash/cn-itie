@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import CountUp from "react-countup"
+import DashboardNational from "@/components/dashboard/DashboardNational"
+
 export default function Hero() {
   const images = [
     "/hero/hero1.jpg",
@@ -40,33 +42,13 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-[#031b34]/90 via-[#031b34]/70 to-[#031b34]/30" />
 
       {/* GLOW */}
-<motion.div
-  className="absolute top-0 left-0 w-[400px] h-[400px] bg-cyan-400/20 blur-3xl rounded-full"
-  animate={{
-    scale: [1, 1.2, 1],
-    opacity: [0.2, 0.4, 0.2],
-  }}
-  transition={{
-    duration: 8,
-    repeat: Infinity,
-  }}
-/>
+      <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-cyan-400/20 blur-3xl rounded-full" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-500/20 blur-3xl rounded-full" />
 
-<motion.div
-  className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-500/20 blur-3xl rounded-full"
-  animate={{
-    scale: [1.2, 1, 1.2],
-    opacity: [0.2, 0.4, 0.2],
-  }}
-  transition={{
-    duration: 10,
-    repeat: Infinity,
-  }}
-/>
       {/* CONTENT */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 w-full">
 
-        <div className="grid lg:grid-cols-2 gap-10 items-center">
+        <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-16 items-center">
 
           {/* LEFT TEXT */}
           <div>
@@ -78,7 +60,7 @@ export default function Hero() {
               </span>
             </div>
 
-            <h1 className="text-4xl lg:text-6xl font-black text-white leading-tight">
+            <h1 className="text-5xl lg:text-7xl font-black text-white leading-[1.05]">
               Comité National
               <br />
               <span className="text-cyan-400">
@@ -93,9 +75,9 @@ export default function Hero() {
 
             <div className="flex flex-wrap gap-4 mt-8">
 
-              <button className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-4 rounded-xl font-black shadow-xl transition-all duration-300 hover:scale-105">
-                Explorer les données
-              </button>
+             <button className="rounded-xl border border-white/20 bg-white/10 px-7 py-4 font-bold text-white backdrop-blur-xl transition hover:bg-white/20">
+  Voir les rapports
+</button>
 
               <button className="bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-white/20 text-white px-6 py-4 rounded-xl font-black transition-all duration-300 hover:scale-105">
                 Voir les rapports
@@ -105,107 +87,15 @@ export default function Hero() {
 
           </div>
 
-          {/* RIGHT PANEL */}
-          <div className="flex justify-end">
-
-            <div className="w-full max-w-lg bg-white/10 backdrop-blur-2xl border border-white/20 rounded-[30px] p-8 shadow-2xl">
-
-              <p className="text-cyan-300 uppercase tracking-[0.2em] text-xs font-black">
-                Données ITIE 2023
-              </p>
-
-              <h3 className="text-3xl font-black text-white mt-4 leading-tight">
-                Aperçu du secteur extractif
-              </h3>
-
-              <p className="text-slate-200 mt-4 leading-relaxed">
-                Données officielles issues du rapport ITIE Congo 2023 sur la production et les revenus pétroliers.
-              </p>
-
-              <div className="grid grid-cols-2 gap-3 mt-8">
-
-                <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
-                  <p className="text-white font-black text-lg">925 Mds</p>
-                  <p className="text-xs text-slate-300">FCFA revenus</p>
-                </div>
-
-                <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
-                  <p className="text-white font-black text-lg">95,65M</p>
-                  <p className="text-xs text-slate-300">Barils produits</p>
-                </div>
-
-                <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
-                  <p className="text-white font-black text-lg">90,56M</p>
-                  <p className="text-xs text-slate-300">Barils exportés</p>
-                </div>
-
-                <div className="bg-white/10 rounded-xl p-4 text-center border border-white/10">
-                  <p className="text-white font-black text-lg">53,26%</p>
-                  <p className="text-xs text-slate-300">PIB extractif</p>
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
+         {/* RIGHT PANEL */}
+<div className="flex justify-end">
+  <DashboardNational />
+</div>
 
         </div>
 
-        {/* GLOBAL STATS BAR */}
-        <div className="mt-12">
-  <div className="grid md:grid-cols-4 gap-4 bg-white/10 backdrop-blur-2xl border border-white/10 rounded-[24px] p-6">
+     
 
-    <motion.div
-      whileHover={{ scale: 1.05, y: -5 }}
-      className="text-center"
-    >
-      <h3 className="text-3xl font-black text-white">
-        <CountUp end={925} duration={3} />
-      </h3>
-      <p className="text-slate-300 mt-2">
-        Mds FCFA revenus
-      </p>
-    </motion.div>
-
-    <motion.div
-      whileHover={{ scale: 1.05, y: -5 }}
-      className="text-center"
-    >
-      <h3 className="text-3xl font-black text-white">
-        <CountUp end={95.65} decimals={2} duration={3} />
-      </h3>
-      <p className="text-slate-300 mt-2">
-        Millions de barils
-      </p>
-    </motion.div>
-
-    <motion.div
-      whileHover={{ scale: 1.05, y: -5 }}
-      className="text-center"
-    >
-      <h3 className="text-3xl font-black text-white">
-        <CountUp end={90.56} decimals={2} duration={3} />
-      </h3>
-      <p className="text-slate-300 mt-2">
-        Barils exportés
-      </p>
-    </motion.div>
-
-    <motion.div
-      whileHover={{ scale: 1.05, y: -5 }}
-      className="text-center"
-    >
-      <h3 className="text-3xl font-black text-white">
-        <CountUp end={53.26} decimals={2} duration={3} />
-      </h3>
-      <p className="text-slate-300 mt-2">
-        Contribution au PIB
-      </p>
-    </motion.div>
-
-  </div>
-</div>
       </div>
 
       {/* INDICATEURS */}

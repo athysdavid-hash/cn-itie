@@ -13,22 +13,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
-      <body className="pt-24">
+    <body className="pt-24">
+  
+  {/* BANDEAU FIXE */}
+  <div className="fixed top-0 left-0 w-full z-[60] h-9 bg-green-600/20 border-b border-green-400/40 flex items-center justify-center text-sm text-white gap-2 backdrop-blur-md">
 
-        {/* 🔥 BANDEAU ITIE GLOBAL (TOUJOURS EN HAUT) */}
-        <div className="w-full bg-green-600/20 border-b border-green-400/40 text-center py-2 text-sm text-white flex items-center justify-center gap-2 fixed top-0 left-0 z-[60] backdrop-blur-md">
+    <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
 
-  <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+    <span className="font-medium">
+      République du Congo — Processus de validation ITIE en cours
+    </span>
 
-  <span className="font-medium">
-    République du Congo — Processus de validation ITIE en cours
-  </span>
+  </div>
 
-</div>
-        {/* RESTE DU SITE */}
-        {children}
-
-      </body>
+  {children}
+</body>
     </html>
   )
 }

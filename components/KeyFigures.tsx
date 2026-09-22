@@ -1,93 +1,197 @@
 "use client"
-import { CartesianGrid } from "recharts"
 
-<CartesianGrid
-  strokeDasharray="3 3"
-  stroke="rgba(255,255,255,0.08)"
-/>
-import {
-  ResponsiveContainer,
-  BarChart,
-  Bar,
-  XAxis,
-  Tooltip,
-} from "recharts"
+const data = [
+  {
+    indicator: "Contribution au PIB (%)",
+    y2020: "49,90 %",
+    y2021: "52,82 %",
+    y2022: "59,51 %",
+    y2023: "53,26 %",
+  },
+  {
+    indicator: "Revenus publics (%)",
+    y2020: "49,55 %",
+    y2021: "66,02 %",
+    y2022: "67,53 %",
+    y2023: "66,41 %",
+  },
+  {
+    indicator: "Exportations (%)",
+    y2020: "84,86 %",
+    y2021: "89,41 %",
+    y2022: "98,12 %",
+    y2023: "92,00 %",
+  },
+  {
+    indicator: "Emploi direct (%)",
+    y2020: "0,32 %",
+    y2021: "0,31 %",
+    y2022: "0,29 %",
+    y2023: "0,50 %",
+  },
+]
 
-export default function KeyFiguresV2() {
-  const data = [
-    { year: 2020, pib: 48, revenus: 55, export: 85, emploi: 0.4 },
-    { year: 2021, pib: 50, revenus: 60, export: 87, emploi: 0.45 },
-    { year: 2022, pib: 52, revenus: 63, export: 89, emploi: 0.48 },
-    { year: 2023, pib: 53.26, revenus: 66.41, export: 92, emploi: 0.5 },
-  ]
-
+export default function KeyFigures() {
   return (
-    <section className="bg-[#061f3a] py-16">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-white text-3xl font-bold">
-          Dashboard ITIE Congo 2020–2023
-        </h2>
+    <section className="bg-slate-50 py-20">
 
-        <p className="text-slate-400 mt-2 mb-8">
-          Principaux indicateurs du secteur extractif par année.
-        </p>
+      <div className="max-w-7xl mx-auto px-6">
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {data.map((item) => {
-            const chartData = [
-              { name: "PIB", value: item.pib },
-              { name: "Rev.", value: item.revenus },
-              { name: "Exp.", value: item.export },
-              { name: "Emp.", value: item.emploi },
-            ]
+        <div className="mb-10">
 
-            return (
-              <div
-                key={item.year}
-                className="bg-[#0d2d50] rounded-2xl p-4 border border-white/10 hover:border-cyan-400/40 transition"
-              >
-                <div className="flex justify-between items-center mb-3">
-                  <h3 className="text-white font-bold text-lg">
-                    {item.year}
-                  </h3>
+          <span className="uppercase tracking-[0.3em] text-cyan-600 text-xs font-black">
+            Dashboard ITIE Congo
+          </span>
 
-                  <span className="text-cyan-300 text-xs">
-                    ITIE
-                  </span>
-                </div>
+          <h2 className="mt-3 text-4xl font-black text-[#062b57]">
+            Évolution du secteur extractif (2020–2023)
+          </h2>
 
-                <div className="h-[150px]">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={chartData}>
-                      <XAxis
-                        dataKey="name"
-                        tick={{ fill: "#cbd5e1", fontSize: 10 }}
-                        axisLine={false}
-                        tickLine={false}
-                      />
+          <p className="mt-3 max-w-3xl text-slate-500">
+            Principaux indicateurs issus des rapports ITIE Congo.
+          </p>
 
-                      <Tooltip />
-
-                      <Bar
-                        dataKey="value"
-                        radius={[4, 4, 0, 0]}
-                        animationDuration={1200}
-                      />
-                    </BarChart>
-                  </ResponsiveContainer>
-                </div>
-
-                <div className="mt-4 text-xs text-slate-300 space-y-1">
-                  <p>PIB : {item.pib}%</p>
-                  <p>Revenus : {item.revenus}%</p>
-                  <p>Exportations : {item.export}%</p>
-                  <p>Emploi : {item.emploi}%</p>
-                </div>
-              </div>
-            )
-          })}
         </div>
+
+        <div className="rounded-[32px] bg-white border border-slate-200 shadow-sm p-6">
+
+          <div className="mb-8">
+
+            <div className="flex items-center justify-between">
+
+              <h3 className="text-2xl font-black text-[#062b57]">
+                Dashboard ITIE Congo 2020–2023
+              </h3>
+
+              <span className="rounded-full bg-cyan-100 px-4 py-2 text-sm font-bold text-cyan-700">
+                Données officielles
+              </span>
+
+            </div>
+
+            <p className="mt-3 text-slate-500">
+              Contribution du secteur extractif à l'économie congolaise.
+            </p>
+
+          </div>
+
+          <div className="relative h-44 rounded-3xl bg-gradient-to-br from-cyan-50 via-white to-blue-50 overflow-hidden">
+                        {/* Courbe décorative */}
+
+            <svg
+              viewBox="0 0 800 220"
+              className="absolute inset-0 h-full w-full"
+              preserveAspectRatio="none"
+            >
+             <path
+  d="M0 170
+     C100 160 120 120 200 135
+     C300 150 340 40 400 55
+     C500 70 540 95 600 80
+     C680 60 730 40 800 55"
+  fill="none"
+  stroke="#0891b2"
+  strokeWidth="5"
+  strokeLinecap="round"
+  className="drop-shadow-sm"
+/>
+
+              <path
+                d="M0 170
+                   C100 160 120 120 200 135
+                   C300 150 340 40 400 55
+                   C500 70 540 95 600 80
+                   C680 60 730 40 800 55
+                   L800 220
+                   L0 220 Z"
+                fill="rgba(34,211,238,0.15)"
+              />
+            </svg>
+
+            <div className="absolute bottom-5 left-10 right-10 flex justify-between text-sm font-bold text-slate-500">
+              <span>2020</span>
+              <span>2021</span>
+              <span>2022</span>
+              <span>2023</span>
+            </div>
+
+          </div>
+
+          <div className="mt-5 overflow-x-auto">
+
+            <table className="w-full border-collapse">
+
+              <thead>
+
+                <tr className="border-b border-slate-200">
+
+                  <th className="py-3 text-left text-slate-500">
+                    Indicateur
+                  </th>
+
+                  <th className="py-3 text-center text-slate-500">
+                    2020
+                  </th>
+
+                  <th className="py-3 text-center text-slate-500">
+                    2021
+                  </th>
+
+                  <th className="py-3 text-center text-slate-500">
+                    2022
+                  </th>
+
+                  <th className="py-3 text-center text-slate-500">
+                    2023
+                  </th>
+
+                </tr>
+
+              </thead>
+
+              <tbody>
+
+                {data.map((row) => (
+
+                  <tr
+                    key={row.indicator}
+                    className="border-b border-slate-100 hover:bg-slate-50 transition"
+                  >
+
+                    <td className="py-3 font-semibold text-[#062b57]">
+                      {row.indicator}
+                    </td>
+
+                    <td className="py-3 text-center">
+                      {row.y2020}
+                    </td>
+
+                    <td className="py-3 text-center">
+                      {row.y2021}
+                    </td>
+
+                    <td className="py-3 text-center">
+                      {row.y2022}
+                    </td>
+
+                    <td className="py-3 text-center font-bold text-cyan-700">
+                      {row.y2023}
+                    </td>
+
+                  </tr>
+
+                ))}
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
       </div>
+
     </section>
   )
 }

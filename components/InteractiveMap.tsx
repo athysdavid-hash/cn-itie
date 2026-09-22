@@ -1,8 +1,7 @@
 "use client"
 
 import "leaflet/dist/leaflet.css"
-import { motion } from "framer-motion"
-import CountUp from "react-countup"
+
 import {
   MapContainer,
   TileLayer,

@@ -2,21 +2,48 @@
 
 import { useState } from 'react';
 import { supabase } from '@/lib/supabase';
+import QrScanner from '@/components/QrScanner';
 
 export default function AdminPage() {
+  // États pour l'authentification Admin
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [adminPassword, setAdminPassword] = useState('');
+  const [authError, setAuthError] = useState('');
+
+  // États pour la gestion de la carte et des points
   const [cardNumber, setCardNumber] = useState('');
   const [pointsToAdd, setPointsToAdd] = useState<number | ''>('');
   const [currentCard, setCurrentCard] = useState<any>(null);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const [loading, setLoading] = useState(false);
 
-  // Rechercher une carte
-  const handleSearch = async (e: React.FormEvent) => {
+  // État pour afficher/masquer le scanner QR
+  const [showScanner, setShowScanner] = useState(false);
+
+  // Gestion de la connexion Administrateur
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setAuthError('');
+
+    const res = await fetch('/api/admin-login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: adminPassword }),
+    });
+
+    if (res.ok) {
+      setIsAuthenticated(true);
+    } else {
+      setAuthError('Mot de passe incorrect');
+    }
+  };
+
+  // Fonction de recherche générique
+  const searchCard = async (numberToSearch: string) => {
     setMessage(null);
     setLoading(true);
 
-    const formattedCardNumber = cardNumber.trim().toUpperCase();
+    const formattedCardNumber = numberToSearch.trim().toUpperCase();
 
     const { data, error } = await supabase
       .from('cards')
@@ -42,6 +69,18 @@ export default function AdminPage() {
     }
 
     setLoading(false);
+  };
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    searchCard(cardNumber);
+  };
+
+  // Callback quand un QR code est scanné
+  const handleScanSuccess = (scannedCardNumber: string) => {
+    setShowScanner(false);
+    setCardNumber(scannedCardNumber);
+    searchCard(scannedCardNumber);
   };
 
   // Mettre à jour les points
@@ -75,8 +114,61 @@ export default function AdminPage() {
     setLoading(false);
   };
 
+  // ÉCRAN 1 : FORMULAIRE DE CONNEXION
+  if (!isAuthenticated) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 p-4 font-sans text-gray-900">
+        <div className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-xl">
+          <h1 className="text-xl font-bold text-center text-red-600 uppercase tracking-wide mb-1">
+            Espace Caisse / Admin
+          </h1>
+          <p className="text-xs text-center text-gray-500 mb-6">
+            Saisissez le mot de passe pour accéder à la gestion des points.
+          </p>
+
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div>
+              <label className="block text-xs font-semibold text-gray-700 uppercase mb-1">
+                Mot de passe Caisse
+              </label>
+              <input
+                type="password"
+                placeholder="••••••••"
+                value={adminPassword}
+                onChange={(e) => setAdminPassword(e.target.value)}
+                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-red-500 focus:outline-none"
+                required
+              />
+            </div>
+
+            {authError && (
+              <div className="p-2.5 rounded-lg bg-red-100 text-red-700 text-xs font-medium text-center">
+                {authError}
+              </div>
+            )}
+
+            <button
+              type="submit"
+              className="w-full rounded-lg bg-red-600 py-2.5 text-sm font-bold text-white shadow hover:bg-red-700"
+            >
+              Se connecter
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
+  // ÉCRAN 2 : INTERFACE CAISSE AVEC BOUTON SCANNER
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 p-4 font-sans text-gray-900">
+      {showScanner && (
+        <QrScanner
+          onScanSuccess={handleScanSuccess}
+          onClose={() => setShowScanner(false)}
+        />
+      )}
+
       <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
         <h1 className="text-xl font-bold text-center text-red-600 uppercase tracking-wide">
           Espace Caisse / Admin
@@ -98,7 +190,21 @@ export default function AdminPage() {
           </div>
         )}
 
-        {/* Formulaire de recherche */}
+        {/* Bouton pour ouvrir la caméra */}
+        <button
+          type="button"
+          onClick={() => setShowScanner(true)}
+          className="w-full mb-4 flex items-center justify-center gap-2 rounded-xl bg-red-50 border border-red-200 py-3 text-sm font-bold text-red-600 hover:bg-red-100 transition-colors"
+        >
+          📷 Scanner un QR Code client
+        </button>
+
+        <div className="relative my-4 flex items-center justify-center">
+          <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-gray-200"></div></div>
+          <span className="relative bg-white px-2 text-xs text-gray-400 uppercase">ou saisie manuelle</span>
+        </div>
+
+        {/* Formulaire de recherche manuelle */}
         <form onSubmit={handleSearch} className="mb-6">
           <label className="block text-xs font-semibold text-gray-700 uppercase mb-1">
             N° de carte client
