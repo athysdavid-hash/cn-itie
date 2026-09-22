@@ -9,9 +9,10 @@ export default function AdminPage() {
   const [adminPassword, setAdminPassword] = useState('');
   const [authError, setAuthError] = useState('');
 
-  const [cardNumber, setCardNumber] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const [pointsToAdd, setPointsToAdd] = useState<number | ''>('');
   const [currentCard, setCurrentCard] = useState<any>(null);
+  const [searchResults, setSearchResults] = useState<any[]>([]);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -34,18 +35,16 @@ export default function AdminPage() {
     else setAuthError('Mot de passe incorrect');
   };
 
-  // Fonction pour exporter toutes les cartes en CSV
   const handleExportCSV = async () => {
     setLoading(true);
     const { data: cards, error } = await supabase.from('cards').select('*');
 
     if (error || !cards) {
-      setMessage({ type: 'error', text: 'Erreur lors de l’export des données.' });
+      setMessage({ type: 'error', text: 'Erreur lors de l’exportation.' });
       setLoading(false);
       return;
     }
 
-    // Préparation de l'en-tête et des lignes du CSV
     const headers = ['N° Carte', 'Nom Client', 'Points', 'Remise VIP (%)'];
     const rows = cards.map((c) => [
       `"${c.Card_number || c.card_number || ''}"`,
@@ -80,49 +79,72 @@ export default function AdminPage() {
     if (data) setTransactions(data);
   };
 
-  const searchCard = async (numberToSearch: string) => {
+  const selectCard = (card: any) => {
+    setCurrentCard(card);
+    setClientName(card.client_name || '');
+    setCustomDiscount(card.discount_rate || 0);
+    setSearchResults([]);
+    const cardId = card.Card_number || card.card_number;
+    fetchTransactions(cardId);
+  };
+
+  // Recherche intelligente : par N° de Carte, par Nom
+  const handleSearch = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!searchQuery.trim()) return;
+
     setMessage(null);
     setLoading(true);
-    const formattedCardNumber = numberToSearch.trim().toUpperCase();
+    setCurrentCard(null);
+    setSearchResults([]);
+
+    const term = searchQuery.trim().toLowerCase();
 
     const { data, error } = await supabase.from('cards').select('*');
 
-    if (error) {
+    if (error || !data) {
       setMessage({ type: 'error', text: 'Erreur lors de la recherche.' });
       setLoading(false);
       return;
     }
 
-    const foundCard = data?.find(
-      (item: any) =>
-        item.Card_number?.toUpperCase() === formattedCardNumber ||
-        item.card_number?.toUpperCase() === formattedCardNumber
-    );
+    // Filtrer par Numéro de carte OU par Nom de client
+    const matches = data.filter((item: any) => {
+      const num = (item.Card_number || item.card_number || '').toLowerCase();
+      const name = (item.client_name || '').toLowerCase();
+      return num.includes(term) || name.includes(term);
+    });
 
-    if (!foundCard) {
-      setMessage({ type: 'error', text: 'Carte non trouvée dans la base.' });
-      setCurrentCard(null);
-      setTransactions([]);
+    if (matches.length === 0) {
+      setMessage({ type: 'error', text: 'Aucun client ou carte trouvé.' });
+    } else if (matches.length === 1) {
+      selectCard(matches[0]);
     } else {
-      setCurrentCard(foundCard);
-      setClientName(foundCard.client_name || '');
-      setCustomDiscount(foundCard.discount_rate || 0);
-
-      const cardId = foundCard.Card_number || foundCard.card_number;
-      fetchTransactions(cardId);
+      setSearchResults(matches);
     }
-    setLoading(false);
-  };
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    searchCard(cardNumber);
+    setLoading(false);
   };
 
   const handleScanSuccess = (scannedCardNumber: string) => {
     setShowScanner(false);
-    setCardNumber(scannedCardNumber);
-    searchCard(scannedCardNumber);
+    setSearchQuery(scannedCardNumber);
+    // Recherche automatique du QR scanné
+    searchCardByNumber(scannedCardNumber);
+  };
+
+  const searchCardByNumber = async (num: string) => {
+    setLoading(true);
+    const formatted = num.trim().toUpperCase();
+    const { data } = await supabase.from('cards').select('*');
+    const found = data?.find(
+      (item: any) =>
+        item.Card_number?.toUpperCase() === formatted ||
+        item.card_number?.toUpperCase() === formatted
+    );
+    if (found) selectCard(found);
+    else setMessage({ type: 'error', text: 'Carte non trouvée.' });
+    setLoading(false);
   };
 
   const handleUpdatePoints = async (e: React.FormEvent) => {
@@ -223,7 +245,6 @@ export default function AdminPage() {
         <h1 className="text-xl font-bold text-center text-red-600 uppercase tracking-wide">Espace Caisse / Admin</h1>
         <p className="text-xs text-center text-gray-500 mb-4">Boucherie Poissonnerie du Rail</p>
 
-        {/* Bouton Export CSV */}
         <button
           type="button"
           onClick={handleExportCSV}
@@ -243,13 +264,41 @@ export default function AdminPage() {
           📷 Scanner un QR Code client
         </button>
 
+        {/* Formulaire de recherche polyvalent */}
         <form onSubmit={handleSearch} className="mb-6 border-t border-gray-200 pt-4">
-          <label className="block text-xs font-semibold text-gray-700 uppercase mb-1">N° de carte client</label>
+          <label className="block text-xs font-semibold text-gray-700 uppercase mb-1">🔍 Recherche (N° Carte ou Nom client)</label>
           <div className="flex gap-2">
-            <input type="text" placeholder="ex: BDR-000001" value={cardNumber} onChange={(e) => setCardNumber(e.target.value)} className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-red-500 focus:outline-none" required />
+            <input
+              type="text"
+              placeholder="ex: BDR-000001 ou Dupont"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-red-500 focus:outline-none"
+              required
+            />
             <button type="submit" disabled={loading} className="rounded-lg bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-800 disabled:opacity-50">Chercher</button>
           </div>
         </form>
+
+        {/* Résultats multiples si recherche par Nom */}
+        {searchResults.length > 1 && (
+          <div className="mb-6 border-t border-gray-200 pt-3 space-y-2">
+            <span className="block text-xs font-bold text-gray-500 uppercase">Plusieurs clients trouvés ({searchResults.length}) :</span>
+            {searchResults.map((res) => (
+              <button
+                key={res.id || res.Card_number || res.card_number}
+                onClick={() => selectCard(res)}
+                className="w-full text-left p-2.5 bg-gray-50 hover:bg-red-50 border border-gray-200 rounded-lg flex justify-between items-center transition-colors"
+              >
+                <div>
+                  <span className="font-bold text-xs text-gray-800 block">{res.client_name || 'Client Anonyme'}</span>
+                  <span className="font-mono text-[11px] text-gray-500">{res.Card_number || res.card_number}</span>
+                </div>
+                <span className="text-xs font-bold text-amber-600">{res.points || 0} pts</span>
+              </button>
+            ))}
+          </div>
+        )}
 
         {currentCard && (
           <div className="border-t border-gray-200 pt-4 space-y-4">
