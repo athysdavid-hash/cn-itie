@@ -20,8 +20,6 @@ export default function AdminPage() {
   const [updatingInfo, setUpdatingInfo] = useState(false);
 
   const [showScanner, setShowScanner] = useState(false);
-  
-  // NOUVEAU : État pour stocker l'historique
   const [transactions, setTransactions] = useState<any[]>([]);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -36,7 +34,42 @@ export default function AdminPage() {
     else setAuthError('Mot de passe incorrect');
   };
 
-  // NOUVEAU : Fonction pour récupérer l'historique
+  // Fonction pour exporter toutes les cartes en CSV
+  const handleExportCSV = async () => {
+    setLoading(true);
+    const { data: cards, error } = await supabase.from('cards').select('*');
+
+    if (error || !cards) {
+      setMessage({ type: 'error', text: 'Erreur lors de l’export des données.' });
+      setLoading(false);
+      return;
+    }
+
+    // Préparation de l'en-tête et des lignes du CSV
+    const headers = ['N° Carte', 'Nom Client', 'Points', 'Remise VIP (%)'];
+    const rows = cards.map((c) => [
+      `"${c.Card_number || c.card_number || ''}"`,
+      `"${c.client_name || 'Anonyme'}"`,
+      c.points || 0,
+      c.discount_rate || 0,
+    ]);
+
+    const csvContent =
+      'data:text/csv;charset=utf-8,\uFEFF' +
+      [headers.join(';'), ...rows.map((e) => e.join(';'))].join('\n');
+
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute('download', `Export_Clients_BDR_${new Date().toISOString().slice(0, 10)}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    setMessage({ type: 'success', text: 'Fichier CSV téléchargé avec succès !' });
+    setLoading(false);
+  };
+
   const fetchTransactions = async (cardId: string) => {
     const { data } = await supabase
       .from('transactions')
@@ -74,8 +107,7 @@ export default function AdminPage() {
       setCurrentCard(foundCard);
       setClientName(foundCard.client_name || '');
       setCustomDiscount(foundCard.discount_rate || 0);
-      
-      // Récupérer l'historique de cette carte
+
       const cardId = foundCard.Card_number || foundCard.card_number;
       fetchTransactions(cardId);
     }
@@ -113,16 +145,15 @@ export default function AdminPage() {
     } else {
       setMessage({ type: 'success', text: `Points mis à jour ! Nouveau solde : ${newPoints} pts` });
       setCurrentCard({ ...currentCard, points: newPoints });
-      
-      // NOUVEAU : Enregistrer la transaction
+
       await supabase.from('transactions').insert({
         card_number: cardId,
         type: 'POINTS',
         description: Number(pointsToAdd) > 0 ? `Ajout de points en caisse` : `Utilisation/Retrait de points`,
-        amount: Number(pointsToAdd)
+        amount: Number(pointsToAdd),
       });
-      fetchTransactions(cardId); // Rafraîchir l'historique
-      
+      fetchTransactions(cardId);
+
       setPointsToAdd('');
     }
     setLoading(false);
@@ -148,15 +179,14 @@ export default function AdminPage() {
     } else {
       setMessage({ type: 'success', text: `Profil mis à jour : ${clientName || 'Anonyme'} (-${discountValue}%)` });
       setCurrentCard({ ...currentCard, client_name: clientName, discount_rate: discountValue });
-      
-      // NOUVEAU : Enregistrer la modification
+
       await supabase.from('transactions').insert({
         card_number: cardId,
         type: 'PROFIL',
         description: `Mise à jour profil : ${clientName || 'Anonyme'}, Remise -${discountValue}%`,
-        amount: discountValue
+        amount: discountValue,
       });
-      fetchTransactions(cardId); // Rafraîchir l'historique
+      fetchTransactions(cardId);
     }
     setUpdatingInfo(false);
   };
@@ -191,7 +221,17 @@ export default function AdminPage() {
 
       <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl my-4">
         <h1 className="text-xl font-bold text-center text-red-600 uppercase tracking-wide">Espace Caisse / Admin</h1>
-        <p className="text-xs text-center text-gray-500 mb-6">Boucherie Poissonnerie du Rail</p>
+        <p className="text-xs text-center text-gray-500 mb-4">Boucherie Poissonnerie du Rail</p>
+
+        {/* Bouton Export CSV */}
+        <button
+          type="button"
+          onClick={handleExportCSV}
+          disabled={loading}
+          className="w-full mb-4 flex items-center justify-center gap-2 rounded-xl bg-emerald-50 border border-emerald-200 py-2 text-xs font-bold text-emerald-700 hover:bg-emerald-100 transition-colors"
+        >
+          📊 Exporter la liste des clients (CSV / Excel)
+        </button>
 
         {message && (
           <div className={`mb-4 p-3 rounded-lg text-sm font-medium text-center ${message.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
@@ -214,7 +254,6 @@ export default function AdminPage() {
         {currentCard && (
           <div className="border-t border-gray-200 pt-4 space-y-4">
             
-            {/* Résumé de la carte */}
             <div className="flex justify-between items-center bg-gray-50 p-3 rounded-lg border border-gray-100">
               <div>
                 <span className="block text-xs text-gray-500">Carte sélectionnée</span>
@@ -233,7 +272,6 @@ export default function AdminPage() {
               </div>
             )}
 
-            {/* Formulaire Points */}
             <form onSubmit={handleUpdatePoints} className="space-y-3 pt-2">
               <label className="block text-xs font-semibold text-gray-700 uppercase mb-1">Points à ajouter (ex: 5 ou -2)</label>
               <div className="flex gap-2">
@@ -242,7 +280,6 @@ export default function AdminPage() {
               </div>
             </form>
 
-            {/* Formulaire Profil */}
             <form onSubmit={handleUpdateClientInfo} className="border-t border-gray-200 pt-4 space-y-3">
               <div className="grid grid-cols-2 gap-2">
                 <div>
@@ -259,7 +296,6 @@ export default function AdminPage() {
               </div>
             </form>
 
-            {/* NOUVEAU : Historique des transactions */}
             {transactions.length > 0 && (
               <div className="border-t border-gray-200 pt-4 mt-4">
                 <h3 className="text-xs font-semibold text-gray-500 uppercase mb-3 text-center">Dernières actions sur cette carte</h3>
